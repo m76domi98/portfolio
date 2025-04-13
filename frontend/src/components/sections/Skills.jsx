@@ -1,155 +1,108 @@
-import { useState } from 'react';
+import React from 'react';
 import '../../styles/Skills.css';
 
 const Skills = () => {
-  const [activeTab, setActiveTab] = useState('technical');
-
-  const technicalSkills = [
-    { name: 'UI/UX Design', level: 95 },
-    { name: 'HTML5 & CSS3', level: 90 },
-    { name: 'JavaScript', level: 85 },
-    { name: 'React', level: 88 },
-    { name: 'Figma', level: 92 },
-    { name: 'Responsive Design', level: 94 },
-  ];
-
-  const softSkills = [
-    { name: 'Communication', level: 90 },
-    { name: 'Problem Solving', level: 85 },
-    { name: 'Creativity', level: 95 },
-    { name: 'Teamwork', level: 88 },
-    { name: 'Time Management', level: 82 },
-    { name: 'Adaptability', level: 90 },
-  ];
-
-  const tools = [
-    { name: 'Figma', icon: 'figma' },
-    { name: 'Adobe XD', icon: 'adobe' },
-    { name: 'Photoshop', icon: 'photoshop' },
-    { name: 'VS Code', icon: 'code' },
-    { name: 'Git', icon: 'git-alt' },
-    { name: 'Sketch', icon: 'sketch' },
-    { name: 'Illustrator', icon: 'adobe' },
-    { name: 'React', icon: 'react' },
+  const skillCategories = [
+    {
+      title: "Languages & Frameworks",
+      skills: [
+        { name: "Python", icon: "python" },
+        { name: "C++", icon: "code" },
+        { name: "Java", icon: "java" },
+        { name: "HTML5", icon: "html5" },
+        { name: "CSS3", icon: "css3" },
+        { name: "JavaScript", icon: "js" },
+        { name: "Node.js", icon: "node-js" },
+        { name: "Vue.js", icon: "vuejs" },
+        { name: "React", icon: "react" },
+        { name: "TypeScript", icon: "code" },
+        { name: "C#", icon: "code" },
+        { name: ".NET", icon: "microsoft" },
+        { name: "Flask", icon: "flask" }
+      ]
+    },
+    {
+      title: "AI/ML & Data",
+      skills: [
+        { name: "TensorFlow", icon: "brain" },
+        { name: "Scikit-learn", icon: "brain" },
+        { name: "Pandas", icon: "database" },
+        { name: "XGBoost", icon: "bolt" },
+        { name: "SQL", icon: "database" },
+        { name: "Regression Models", icon: "chart-line" },
+        { name: "Transformers", icon: "robot" },
+        { name: "NLTK", icon: "language" }
+      ]
+    },
+    {
+      title: "Hardware",
+      skills: [
+        { name: "STM32 NucleoBoards", icon: "microchip" },
+        { name: "Raspberry Pi", icon: "raspberry-pi" },
+        { name: "Arduino", icon: "microchip" },
+        { name: "Breadboarding", icon: "project-diagram" },
+        { name: "Soldering", icon: "tools" },
+        { name: "3D Printing", icon: "cube" }
+      ]
+    },
+    {
+      title: "Tools & Software",
+      skills: [
+        { name: "Git", icon: "git-alt" },
+        { name: "VS Code", icon: "code" },
+        { name: "PyCharm", icon: "code" },
+        { name: "Unity", icon: "gamepad" },
+        { name: "Arduino IDE", icon: "microchip" },
+        { name: "Onshape", icon: "cubes" },
+        { name: "AutoCAD", icon: "drafting-compass" },
+        { name: "PCB Design", icon: "microchip" },
+        { name: "Speechify", icon: "headphones" },
+        { name: "Ollama", icon: "brain" }
+      ]
+    },
+    {
+      title: "Soft Skills",
+      skills: [
+        { name: "Leadership", icon: "user-tie" },
+        { name: "Teamwork", icon: "users" },
+        { name: "Communication", icon: "comments" },
+        { name: "Problem-solving", icon: "lightbulb" },
+        { name: "Time Management", icon: "clock" },
+        { name: "Adaptability", icon: "sync" }
+      ]
+    },
+    {
+      title: "Certifications",
+      skills: [
+        { name: "React JS (Certified)", icon: "certificate" },
+        { name: "SQL for Data Analysis (Enrolled)", icon: "book-open" }
+      ]
+    }
   ];
 
   return (
-    <section id="skills" className="skills">
+    <section id="skills" className="skills-section">
       <div className="container">
         <div className="section-header">
-          <h2 className="section-title">My Skills</h2>
-          <p className="section-subtitle">What I can do for you</p>
+          <h1 className="stack-heading">My Tech Stack</h1>
         </div>
-
-        <div className="skill-tabs">
-          <button
-            className={`tab-btn ${activeTab === 'technical' ? 'active' : ''}`}
-            onClick={() => setActiveTab('technical')}
-          >
-            Technical Skills
-          </button>
-          <button
-            className={`tab-btn ${activeTab === 'soft' ? 'active' : ''}`}
-            onClick={() => setActiveTab('soft')}
-          >
-            Soft Skills
-          </button>
-          <button
-            className={`tab-btn ${activeTab === 'tools' ? 'active' : ''}`}
-            onClick={() => setActiveTab('tools')}
-          >
-            Tools & Software
-          </button>
-        </div>
-
-        <div className="skills-content">
-          {activeTab === 'technical' && (
-            <div className="tab-content">
-              <div className="skills-description">
-                <h3>Technical Expertise</h3>
-                <p>
-                  With a deep understanding of frontend technologies and design principles,
-                  I create visually striking and functionally robust digital experiences.
-                  My technical skills combine both design and development, allowing me to
-                  bridge the gap between creativity and implementation.
-                </p>
-              </div>
-              <div className="skills-list">
-                {technicalSkills.map((skill, index) => (
-                  <div className="skill-item" key={index}>
-                    <div className="skill-info">
-                      <span className="skill-name">{skill.name}</span>
-                      <span className="skill-percentage">{skill.level}%</span>
+        
+        <div className="skills-container">
+          {skillCategories.map((category, index) => (
+            <div key={index} className="skills-category">
+              <h3 className="category-title">{category.title}</h3>
+              <div className="skills-grid">
+                {category.skills.map((skill, skillIndex) => (
+                  <div key={skillIndex} className="skill-badge">
+                    <div className="icon-container">
+                      <i className={`fas fa-${skill.icon}`}></i>
                     </div>
-                    <div className="skill-bar">
-                      <div
-                        className="skill-progress"
-                        style={{ width: `${skill.level}%` }}
-                      ></div>
-                    </div>
+                    <span className="skill-name">{skill.name}</span>
                   </div>
                 ))}
               </div>
             </div>
-          )}
-          <div className="tech-stack">
-                <div className="tech-item"><i className="fab fa-react"></i></div>
-                <div className="tech-item"><i className="fab fa-js"></i></div>
-                <div className="tech-item"><i className="fab fa-figma"></i></div>
-              </div>
-          {activeTab === 'soft' && (
-            <div className="tab-content">
-              <div className="skills-description">
-                <h3>Personal Qualities</h3>
-                <p>
-                  Beyond technical abilities, I bring a suite of soft skills that enhance
-                  collaboration and project outcomes. My approach combines creative thinking
-                  with structured problem-solving, ensuring effective communication and
-                  timely delivery on every project.
-                </p>
-              </div>
-              <div className="skills-list">
-                {softSkills.map((skill, index) => (
-                  <div className="skill-item" key={index}>
-                    <div className="skill-info">
-                      <span className="skill-name">{skill.name}</span>
-                      <span className="skill-percentage">{skill.level}%</span>
-                    </div>
-                    <div className="skill-bar">
-                      <div
-                        className="skill-progress soft"
-                        style={{ width: `${skill.level}%` }}
-                      ></div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {activeTab === 'tools' && (
-            <div className="tab-content">
-              <div className="skills-description">
-                <h3>Tools & Technologies</h3>
-                <p>
-                  I maintain proficiency with industry-standard tools and emerging technologies,
-                  continuously expanding my toolkit to deliver cutting-edge solutions. These
-                  tools facilitate my design and development process, enabling me to create
-                  high-quality, polished products.
-                </p>
-              </div>
-              <div className="tools-grid">
-                {tools.map((tool, index) => (
-                  <div className="tool-item" key={index}>
-                    <div className="tool-icon">
-                      <i className={`fab fa-${tool.icon}`}></i>
-                    </div>
-                    <span className="tool-name">{tool.name}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
+          ))}
         </div>
       </div>
     </section>
