@@ -1,28 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../styles/Skills.css';
 import {
-  FaUserTie,
-  FaUsers,
-  FaComments,
-  FaLightbulb,
-  FaClock,
-  FaSync,
-  FaCertificate,
-  FaBookOpen,
-  FaCube,
-  FaTools,
-  FaDraftingCompass,
-  FaHeadphones,
-  FaProjectDiagram,
-  FaMicrochip,
-  FaBolt,
-  FaRobot,
-  FaLanguage,
-  FaChartLine,
-  FaBrain
+  FaCertificate, FaMicrochip, FaBolt, FaRobot, FaCube,
+  FaTools, FaDraftingCompass, FaHeadphones, FaProjectDiagram,
+  FaBrain, FaChartLine, FaLanguage
 } from 'react-icons/fa';
 
 const Skills = () => {
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
   const skillCategories = [
     {
       title: "Languages & Frameworks",
@@ -39,32 +25,32 @@ const Skills = () => {
         { name: "TypeScript", iconClass: "devicon-typescript-plain colored" },
         { name: "C#", iconClass: "devicon-csharp-plain colored" },
         { name: ".NET", iconClass: "devicon-dot-net-plain colored" },
-        { name: "Flask", iconClass: "devicon-flask-original colored" }
-      ]
+        { name: "Flask", iconClass: "devicon-flask-original colored" },
+      ],
     },
     {
       title: "AI/ML & Data",
       skills: [
         { name: "TensorFlow", iconClass: "devicon-tensorflow-original colored" },
-        { name: "Scikit-learn", customIcon: <FaBrain className="custom-icon" /> },
-        { name: "Pandas", iconClass: "devicon-pandas-plain colored" },
-        { name: "XGBoost", customIcon: <FaBolt className="custom-icon" /> },
+        { name: "Scikit-learn", iconClass: "devicon-scikit-learn-plain colored" },
+        { name: "Pandas", iconClass: "devicon-pandas-original colored" },
+        { name: "XGBoost", customIcon: <FaChartLine /> },
         { name: "SQL", iconClass: "devicon-mysql-plain colored" },
-        { name: "Regression Models", customIcon: <FaChartLine className="custom-icon" /> },
-        { name: "Transformers", customIcon: <FaRobot className="custom-icon" /> },
-        { name: "NLTK", customIcon: <FaLanguage className="custom-icon" /> }
-      ]
+        { name: "Regression Models", customIcon: <FaBrain /> },
+        { name: "Transformers", customIcon: <FaRobot /> },
+        { name: "NLTK", customIcon: <FaLanguage /> },
+      ],
     },
     {
       title: "Hardware",
       skills: [
-        { name: "STM32 NucleoBoards", customIcon: <FaMicrochip className="custom-icon" /> },
-        { name: "Raspberry Pi", iconClass: "devicon-raspberrypi-line colored" },
+        { name: "STM32", customIcon: <FaMicrochip /> },
+        { name: "Raspberry Pi", customIcon: <FaCube /> },
         { name: "Arduino", iconClass: "devicon-arduino-plain colored" },
-        { name: "Breadboarding", customIcon: <FaProjectDiagram className="custom-icon" /> },
-        { name: "Soldering", customIcon: <FaTools className="custom-icon" /> },
-        { name: "3D Printing", customIcon: <FaCube className="custom-icon" /> }
-      ]
+        { name: "Breadboarding", customIcon: <FaTools /> },
+        { name: "Soldering", customIcon: <FaBolt /> },
+        { name: "3D Printing", customIcon: <FaDraftingCompass /> },
+      ],
     },
     {
       title: "Tools & Software",
@@ -73,38 +59,41 @@ const Skills = () => {
         { name: "VS Code", iconClass: "devicon-vscode-plain colored" },
         { name: "PyCharm", iconClass: "devicon-pycharm-plain colored" },
         { name: "Unity", iconClass: "devicon-unity-original colored" },
-        { name: "Arduino IDE", iconClass: "devicon-arduino-plain-wordmark colored" },
-        { name: "Onshape", customIcon: <FaCube className="custom-icon" /> },
-        { name: "AutoCAD", customIcon: <FaDraftingCompass className="custom-icon" /> },
-        { name: "PCB Design", customIcon: <FaMicrochip className="custom-icon" /> },
-        { name: "Speechify", customIcon: <FaHeadphones className="custom-icon" /> },
-        { name: "Ollama", customIcon: <FaBrain className="custom-icon" /> }
-      ]
-    },
-    {
-      title: "Soft Skills",
-      skills: [
-        { name: "Leadership", customIcon: <FaUserTie className="custom-icon" /> },
-        { name: "Teamwork", customIcon: <FaUsers className="custom-icon" /> },
-        { name: "Communication", customIcon: <FaComments className="custom-icon" /> },
-        { name: "Problem-solving", customIcon: <FaLightbulb className="custom-icon" /> },
-        { name: "Time Management", customIcon: <FaClock className="custom-icon" /> },
-        { name: "Adaptability", customIcon: <FaSync className="custom-icon" /> }
-      ]
+        { name: "Arduino IDE", iconClass: "devicon-arduino-plain colored" },
+        { name: "Onshape", customIcon: <FaProjectDiagram /> },
+        { name: "AutoCAD", iconClass: "devicon-autocad-plain colored" },
+        { name: "PCB Design", customIcon: <FaMicrochip /> },
+        { name: "Speechify", customIcon: <FaHeadphones /> },
+        { name: "Ollama", customIcon: <FaRobot /> },
+      ],
     },
     {
       title: "Certifications",
       skills: [
-        { name: "React JS (Certified)", iconClass: "devicon-react-plain colored" },
-        { name: "SQL for Data Analysis (Enrolled)", iconClass: "devicon-mysql-plain colored" }
-      ]
-    }
+        { name: "React JS", iconClass: "devicon-react-original colored" },
+        { name: "SQL for Data Analysis (In Progress)", customIcon: <FaCertificate /> },
+      ],
+    },
   ];
 
-  // Custom styles for Devicon and custom icons to match existing styling
+  const allSkills = skillCategories.flatMap(cat => cat.skills);
+
+  useEffect(() => {
+    if (selectedCategory === "All") return;
+
+    const interval = setInterval(() => {
+      setSelectedCategory(prev => {
+        const categories = skillCategories.map(cat => cat.title);
+        const currentIndex = categories.indexOf(prev);
+        const nextIndex = (currentIndex + 1) % categories.length;
+        return categories[nextIndex];
+      });
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [selectedCategory]);
+
   const additionalStyles = `
-  
-    
     .devicon-python-plain.colored { color: #3772A4 !important; }
     .devicon-cplusplus-plain.colored { color: #00599C !important; }
     .devicon-java-plain.colored { color: #EA2D2E !important; }
@@ -117,13 +106,20 @@ const Skills = () => {
     .devicon-typescript-plain.colored { color: #3178C6 !important; }
     .devicon-csharp-plain.colored { color: #239120 !important; }
     .devicon-dot-net-plain.colored { color: #512BD4 !important; }
-    .devicon-git-plain.colored { color: #F05032 !important; }
+    .devicon-flask-original.colored { color: #000000 !important; }
+    .devicon-tensorflow-original.colored { color: #FF6F00 !important; }
+    .devicon-pandas-original.colored { color: #150458 !important; }
+    .devicon-scikit-learn-plain.colored { color: #F7931E !important; }
     .devicon-mysql-plain.colored { color: #4479A1 !important; }
+    .devicon-git-plain.colored { color: #F05032 !important; }
+    .devicon-vscode-plain.colored { color: #007ACC !important; }
+    .devicon-pycharm-plain.colored { color: #31A8FF !important; }
+    .devicon-unity-original.colored { color: #222C37 !important; }
+    .devicon-autocad-plain.colored { color: #DA1212 !important; }
   `;
 
   return (
     <section id="skills" className="skills-section">
-      {/* Include the Devicon stylesheet in your component */}
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
       <style>{additionalStyles}</style>
 
@@ -133,27 +129,55 @@ const Skills = () => {
           <h1 className="stack-heading">My Tech Stack</h1>
         </div>
 
-        <div className="skills-container">
-          {skillCategories.map((category, index) => (
-            <div key={index} className="skills-category">
-              <h3 className="category-title">{category.title}</h3>
-              <div className="skills-grid">
-                {category.skills.map((skill, skillIndex) => (
-                  <button key={skillIndex} className="skill-badge">
-                    <div className="icon-container">
-                      {skill.iconClass ? (
-                        <i className={skill.iconClass}></i>
-                      ) : (
-                        skill.customIcon
-                      )}
-                    </div>
-                    <span className="skill-name">{skill.name}</span>
-                  </button>
-                ))}
-              </div>
-
-            </div>
+        <div className="category-buttons">
+          <button onClick={() => setSelectedCategory("All")} className={selectedCategory === "All" ? "active" : ""}>All</button>
+          {skillCategories.map((cat, index) => (
+            <button
+              key={index}
+              onClick={() => setSelectedCategory(cat.title)}
+              className={selectedCategory === cat.title ? "active" : ""}
+            >
+              {cat.title}
+            </button>
           ))}
+        </div>
+
+        <div className="skills-container">
+          {selectedCategory === "All" ? (
+            <div className="skills-grid">
+              {allSkills.map((skill, index) => (
+                <button key={index} className="skill-badge">
+                  <div className="icon-container">
+                    {skill.iconClass ? (
+                      <i className={skill.iconClass}></i>
+                    ) : (
+                      skill.customIcon
+                    )}
+                  </div>
+                  <span className="skill-name">{skill.name}</span>
+                </button>
+              ))}
+            </div>
+          ) : (
+            skillCategories
+              .filter(cat => cat.title === selectedCategory)
+              .map((category, index) => (
+                <div key={index} className="skills-grid">
+                  {category.skills.map((skill, skillIndex) => (
+                    <button key={skillIndex} className="skill-badge">
+                      <div className="icon-container">
+                        {skill.iconClass ? (
+                          <i className={skill.iconClass}></i>
+                        ) : (
+                          skill.customIcon
+                        )}
+                      </div>
+                      <span className="skill-name">{skill.name}</span>
+                    </button>
+                  ))}
+                </div>
+              ))
+          )}
         </div>
       </div>
     </section>

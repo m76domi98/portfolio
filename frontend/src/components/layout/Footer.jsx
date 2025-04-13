@@ -52,14 +52,8 @@ const Footer = () => {
                   <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LinkedIn">
                     <i className="fab fa-linkedin"></i>
                   </a>
-                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Twitter">
-                    <i className="fab fa-twitter"></i>
-                  </a>
-                  <a href="https://dribbble.com" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Dribbble">
-                    <i className="fab fa-dribbble"></i>
-                  </a>
-                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Instagram">
-                    <i className="fab fa-instagram"></i>
+                  <a href="https://www.appropedia.org/User:Mdominic06" className='social-icon' aria-label="Appropedia" target="_blank" rel="noopener noreferrer">
+                    <i className="fab fa-wikipedia-w"></i>
                   </a>
                 </div>
                 <div className="newsletter">

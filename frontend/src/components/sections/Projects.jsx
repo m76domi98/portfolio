@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import '../../styles/Projects.css';
+import printing3dImage from '../../assets/print3d.jpg';
+import sama from '../../assets/sama.jpg';
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -10,8 +12,8 @@ const Projects = () => {
     {
       id: 1,
       title: '3D-Printing Infill Error Correction',
-      category: 'app',
-      image: 'https://images.unsplash.com/photo-1581092919535-42eaf62d58b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80',
+      category: 'automation',
+      image: printing3dImage,
       description: 'Algorithm to fix 3D-printing infill errors using coordinate analysis and toolpath optimization.',
       technologies: ['Python', 'Matplotlib', 'FullControl', 'Onshape'],
       demoLink: '',
@@ -21,8 +23,8 @@ const Projects = () => {
     {
       id: 2,
       title: 'SAMA Economic Heatmaps',
-      category: 'web',
-      image: 'https://images.unsplash.com/photo-1607703705954-d7c946e1c1a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80',
+      category: 'ai-data',
+      image: sama,
       description: 'Economic heatmaps for a solar PV system optimizer showing hybrid energy system costs over time.',
       technologies: ['Python', 'Matplotlib'],
       demoLink: '',
@@ -65,7 +67,7 @@ const Projects = () => {
     {
       id: 6,
       title: 'Real-time Sign Language Detection',
-      category: 'ai',
+      category: 'ai-data',
       image: 'https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80',
       description: 'Real-time detection of sign language using computer vision and deep learning with TensorFlow.',
       technologies: ['Python', 'TensorFlow', 'OpenCV', 'Transfer Learning'],
@@ -76,7 +78,7 @@ const Projects = () => {
     {
       id: 7,
       title: 'Portfolio Website',
-      category: 'ui',
+      category: 'web',
       image: 'https://images.unsplash.com/photo-1505685296765-3a2736de412f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80',
       description: 'Personal portfolio built with React and JavaScript showcasing technical projects and design.',
       technologies: ['React', 'JavaScript', 'CSS'],
@@ -85,7 +87,6 @@ const Projects = () => {
       featured: false
     }
   ];
-  
 
   useEffect(() => {
     setFilteredProjects(projects);
@@ -115,35 +116,23 @@ const Projects = () => {
         </div>
 
         <div className="project-filters">
-          <button
-            className={activeFilter === 'all' ? 'active' : ''}
-            onClick={() => handleFilterClick('all')}
-          >
+          <button className={activeFilter === 'all' ? 'active' : ''} onClick={() => handleFilterClick('all')}>
             All
           </button>
-          <button
-            className={activeFilter === 'featured' ? 'active' : ''}
-            onClick={() => handleFilterClick('featured')}
-          >
+          <button className={activeFilter === 'featured' ? 'active' : ''} onClick={() => handleFilterClick('featured')}>
             Featured
           </button>
-          <button
-            className={activeFilter === 'web' ? 'active' : ''}
-            onClick={() => handleFilterClick('web')}
-          >
+          <button className={activeFilter === 'ai-data' ? 'active' : ''} onClick={() => handleFilterClick('ai-data')}>
+            AI / Data
+          </button>
+          <button className={activeFilter === 'hardware' ? 'active' : ''} onClick={() => handleFilterClick('hardware')}>
+            Hardware
+          </button>
+          <button className={activeFilter === 'web' ? 'active' : ''} onClick={() => handleFilterClick('web')}>
             Web
           </button>
-          <button
-            className={activeFilter === 'app' ? 'active' : ''}
-            onClick={() => handleFilterClick('app')}
-          >
-            App
-          </button>
-          <button
-            className={activeFilter === 'ui' ? 'active' : ''}
-            onClick={() => handleFilterClick('ui')}
-          >
-            UI/UX
+          <button className={activeFilter === 'automation' ? 'active' : ''} onClick={() => handleFilterClick('automation')}>
+            Automation
           </button>
         </div>
 
@@ -154,12 +143,41 @@ const Projects = () => {
                 <img src={project.image} alt={project.title} />
                 <div className="project-overlay">
                   <div className="project-links">
-                    <a href={project.demoLink} target="_blank" rel="noopener noreferrer" className="project-link">
-                      <i className="fas fa-eye"></i> Live Demo
-                    </a>
-                    <a href={project.codeLink} target="_blank" rel="noopener noreferrer" className="project-link">
-                      <i className="fas fa-code"></i> Source Code
-                    </a>
+                    {project.id === 7 && (
+                      <a href={project.demoLink} target="_blank" rel="noopener noreferrer" className="project-link">
+                        <i className="fas fa-eye"></i> Live Demo
+                      </a>
+                    )}
+                    {project.id !== 2 && (
+                      <a href={project.codeLink} target="_blank" rel="noopener noreferrer" className="project-link">
+                        <i className="fas fa-code"></i> Source Code
+                      </a>
+                    )}
+                    {project.id === 1 && (
+                      <div className="project-attribution">
+                        <a
+                          href="https://www.freepik.com/free-photo/designer-using-3d-printer_78922830.htm#fromView=keyword&page=1&position=1&uuid=222603b4-e842-4e71-b2dd-297d087c79b2&query=Prusa"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="attribution-link"
+                        >
+                          Image by Freepik
+                        </a>
+                      </div>
+                    )}
+                    {project.id === 2 && (
+                      <div className="project-attribution">
+                        <a
+                          href="https://www.freepik.com/free-photo/beautiful-alternative-energy-plant-with-solar-panels_20735352.htm#fromView=search&page=1&position=3&uuid=76c81470-fc84-42e6-994e-d07c732fda2b&query=solar+panel"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="attribution-link"
+                        >
+                          Image by Freepik
+                        </a>
+                      </div>
+                    )}
+
                   </div>
                 </div>
               </div>

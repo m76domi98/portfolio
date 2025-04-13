@@ -70,7 +70,7 @@ const Contact = () => {
                 </div>
                 <div className="contact-text">
                   <h4>Location</h4>
-                  <p>New York, NY, USA</p>
+                  <p>Canada</p>
                 </div>
               </div>
 
@@ -90,7 +90,7 @@ const Contact = () => {
                 </div>
                 <div className="contact-text">
                   <h4>Phone</h4>
-                  <p>(123) 456-7890</p>
+                  <p>(111) - 111 - 1111</p>
                 </div>
               </div>
             </div>
@@ -104,14 +104,8 @@ const Contact = () => {
                 <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon">
                   <i className="fab fa-linkedin-in"></i>
                 </a>
-                <a href="https://dribbble.com" target="_blank" rel="noopener noreferrer" className="social-icon">
-                  <i className="fab fa-dribbble"></i>
-                </a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon">
-                  <i className="fab fa-twitter"></i>
-                </a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon">
-                  <i className="fab fa-instagram"></i>
+                <a href="https://www.appropedia.org/User:Mdominic06" className='social-icon' aria-label="Appropedia" target="_blank" rel="noopener noreferrer">
+                  <i className="fab fa-wikipedia-w"></i>
                 </a>
               </div>
             </div>
