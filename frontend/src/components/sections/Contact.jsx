@@ -50,104 +50,151 @@ const Contact = () => {
   return (
     <section id="contact" className="contact">
       <div className="container">
-        <h2 className="section-title">Get In Touch</h2>
+        <div className="section-header">
+          <h2 className="section-title">Get In Touch</h2>
+          <p className="section-subtitle">Let's create something amazing together</p>
+        </div>
+
         <div className="contact-container">
           <div className="contact-info">
-            <h3>Let's talk about everything!</h3>
-            <p>
-              Have a project idea or just want to say hi? Feel free to reach out.
-              I'm always open to discussing new projects, creative ideas, or opportunities
-              to be part of your vision.
+            <h3>Have a project in mind?</h3>
+            <p className="contact-intro">
+              I'm currently available for freelance work and collaborations. Feel free to reach out
+              if you're looking for a designer and developer who can bring your ideas to life.
             </p>
+
             <div className="contact-details">
               <div className="contact-item">
-                <i className="fas fa-map-marker-alt"></i>
-                <div>
-                  <h4>Location:</h4>
-                  <p>Canada</p>
+                <div className="contact-icon">
+                  <i className="fas fa-map-marker-alt"></i>
+                </div>
+                <div className="contact-text">
+                  <h4>Location</h4>
+                  <p>New York, NY, USA</p>
                 </div>
               </div>
+
               <div className="contact-item">
-                <i className="fas fa-envelope"></i>
-                <div>
-                  <h4>Email:</h4>
-                  <p> fake email.com</p>
+                <div className="contact-icon">
+                  <i className="fas fa-envelope"></i>
+                </div>
+                <div className="contact-text">
+                  <h4>Email</h4>
+                  <p>hello@michelledominic.com</p>
                 </div>
               </div>
+
               <div className="contact-item">
-                <i className="fas fa-phone"></i>
-                <div>
-                  <h4>Phone:</h4>
-                  <p>(111) 111-1111</p>
+                <div className="contact-icon">
+                  <i className="fas fa-phone-alt"></i>
+                </div>
+                <div className="contact-text">
+                  <h4>Phone</h4>
+                  <p>(123) 456-7890</p>
                 </div>
               </div>
             </div>
-            <div className="social-links">
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="social-icon">
-                <i className="fab fa-github"></i>
-              </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon">
-                <i className="fab fa-linkedin"></i>
-              </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon">
-                <i className="fab fa-twitter"></i>
-              </a>
+
+            <div className="social-connect">
+              <h4>Connect with me</h4>
+              <div className="social-links">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+                  <i className="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+                  <i className="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://dribbble.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+                  <i className="fab fa-dribbble"></i>
+                </a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+                  <i className="fab fa-twitter"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+                  <i className="fab fa-instagram"></i>
+                </a>
+              </div>
             </div>
           </div>
-          <div className="contact-form">
-            <form onSubmit={handleSubmit}>
+
+          <div className="contact-form-container">
+            <div className="form-header">
+              <h3>Send me a message</h3>
+              <p>I'll get back to you as soon as possible</p>
+            </div>
+
+            <form onSubmit={handleSubmit} className="contact-form">
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="name">Your Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    placeholder="John Doe"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="email">Your Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    placeholder="john@example.com"
+                  />
+                </div>
+              </div>
+
               <div className="form-group">
+                <label htmlFor="subject">Subject</label>
                 <input
                   type="text"
-                  name="name"
-                  id="name"
-                  placeholder="Your Name"
-                  required
-                  value={formData.name}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="form-group">
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="Your Email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="form-group">
-                <input
-                  type="text"
-                  name="subject"
                   id="subject"
-                  placeholder="Subject"
-                  required
+                  name="subject"
                   value={formData.subject}
                   onChange={handleChange}
+                  required
+                  placeholder="Project Inquiry"
                 />
               </div>
+
               <div className="form-group">
+                <label htmlFor="message">Your Message</label>
                 <textarea
-                  name="message"
                   id="message"
-                  placeholder="Your Message"
-                  required
+                  name="message"
                   value={formData.message}
                   onChange={handleChange}
+                  required
+                  placeholder="Tell me about your project..."
+                  rows="5"
                 ></textarea>
               </div>
+
               <button
                 type="submit"
                 className="btn btn-primary submit-btn"
                 disabled={formStatus.isSubmitting}
               >
-                {formStatus.isSubmitting ? 'Sending...' : 'Send Message'}
+                {formStatus.isSubmitting ? (
+                  <span className="loading-text">
+                    <i className="fas fa-spinner fa-spin"></i> Sending...
+                  </span>
+                ) : (
+                  <span>Send Message <i className="fas fa-paper-plane"></i></span>
+                )}
               </button>
+
               {formStatus.message && (
                 <div className={`form-message ${formStatus.isSuccess ? 'success' : 'error'}`}>
+                  <i className={`fas ${formStatus.isSuccess ? 'fa-check-circle' : 'fa-exclamation-circle'}`}></i>
                   {formStatus.message}
                 </div>
               )}
