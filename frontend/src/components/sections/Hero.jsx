@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
 import '../../styles/Hero.css';
-import michelleCover from '../../assets/michelle_cover.png'
 
 const Hero = () => {
   const starsRef = useRef(null);
@@ -42,24 +41,16 @@ const Hero = () => {
           <div className="hero-text">
             <h3 className="hero-greeting">Hello, I'm</h3>
             <h1 className="hero-name">Michelle <span className="highlight">Dominic</span></h1>
-            <h2 className="hero-title">UI/UX Designer & Frontend Developer</h2>
+            <h2 className="hero-title">Computer Engineering Student at the University of Waterloo</h2>
             <p className="hero-description">
-              I transform ideas into beautiful digital experiences with a blend of design and code.
+              I'm a passionate developer and problem solver, always exploring innovative technologies to craft impactful solutions. Whether it's AI, web, or embedded systems—I'm here to build with purpose.
             </p>
             <div className="hero-buttons">
               <a href="#projects" className="btn btn-primary">View My Work</a>
               <a href="#contact" className="btn btn-secondary">Let's Connect</a>
             </div>
           </div>
-          <div className="hero-image">
-            <div className="image-wrapper">
-              <div className="blob-bg"></div>
-              <img
-                src= {michelleCover}
-                alt="Michelle Dominic"
-              />
-            </div>
-          </div>
+
         </div>
         <div className="scroll-indicator">
           <div className="mouse">
@@ -70,7 +61,7 @@ const Hero = () => {
             <span></span>
             <span></span>
           </div>
-          
+
         </div>
       </div>
     </section>

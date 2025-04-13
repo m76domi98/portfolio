@@ -112,7 +112,6 @@ const Projects = () => {
       <div className="container">
         <div className="section-header">
           <h2 className="section-title">My Projects</h2>
-          <p className="section-subtitle">Recent work I've done</p>
         </div>
 
         <div className="project-filters">
