@@ -10,7 +10,6 @@ const Footer = () => {
           <div className="footer-content">
             <div className="footer-logo">
               <h2 className="logo-text">Michelle <span className="highlight">Dominic</span></h2>
-              <p className="footer-desc">Creating beautiful digital experiences through design and code.</p>
             </div>
 
             <div className="footer-links">
@@ -29,16 +28,8 @@ const Footer = () => {
                 <h3 className="footer-heading">Contact</h3>
                 <ul>
                   <li>
-                    <span className="contact-icon"><i className="fas fa-map-marker-alt"></i></span>
-                    <span>canada</span>
-                  </li>
-                  <li>
                     <span className="contact-icon"><i className="fas fa-envelope"></i></span>
-                    <span>email</span>
-                  </li>
-                  <li>
-                    <span className="contact-icon"><i className="fas fa-phone"></i></span>
-                    <span>(111) - 111- 1111</span>
+                    <a href="mailto:mmdomini@uwaterloo.ca">Email</a>
                   </li>
                 </ul>
               </div>
@@ -55,15 +46,6 @@ const Footer = () => {
                   <a href="https://www.appropedia.org/User:Mdominic06" className='social-icon' aria-label="Appropedia" target="_blank" rel="noopener noreferrer">
                     <i className="fab fa-wikipedia-w"></i>
                   </a>
-                </div>
-                <div className="newsletter">
-                  <p>Subscribe to my newsletter</p>
-                  <form className="newsletter-form">
-                    <input type="email" placeholder="Your email" required />
-                    <button type="submit" aria-label="Subscribe">
-                      <i className="fas fa-paper-plane"></i>
-                    </button>
-                  </form>
                 </div>
               </div>
             </div>

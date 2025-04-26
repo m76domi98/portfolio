@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import '../../styles/Projects.css';
 import printing3dImage from '../../assets/print3d.jpg';
 import sama from '../../assets/sama.jpg';
+import stm from '../../assets/stm.jpg';
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -35,7 +36,7 @@ const Projects = () => {
       id: 3,
       title: 'SenseSecure Alarm System',
       category: 'hardware',
-      image: 'https://images.unsplash.com/photo-1605902711622-cfb43c4437f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80',
+      image: stm,
       description: 'Adaptive alarm system for the legally blind with audio, LED, and Braille integration.',
       technologies: ['C++', 'STM32', 'PCB Design', 'Ultrasonic Sensors'],
       demoLink: '',
@@ -165,6 +166,20 @@ const Projects = () => {
                         </a>
                       </div>
                     )}
+                    {
+                      project.id === 3 && (
+                        <div className="project-attribution">
+                          <a
+                            href="https://fr.freepik.com/vecteurs-libre/fond-ingenierie-informatique-isometrique_4501450.htm#fromView=keyword&page=1&position=2&uuid=b27cfac8-ce59-4472-b532-6e9c957a360f&query=Stm32"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="attribution-link"
+                          >
+                            Image by Freepik
+                          </a>
+                        </div>
+                      )
+                    }
                     {project.id === 2 && (
                       <div className="project-attribution">
                         <a
