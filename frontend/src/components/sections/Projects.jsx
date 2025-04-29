@@ -5,7 +5,7 @@ import sama from '../../assets/sama.jpg';
 import stm from '../../assets/stm.jpg';
 import summus from '../../assets/summus.jpg';
 import podcast from '../../assets/podcast.png';
-import portfolio from '../../assets/image.png';
+import portfolio from '../../assets/portfolio.jpg';
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -155,6 +155,13 @@ const Projects = () => {
                     {project.id === 5 && (
                       <div className="project-attribution">
                         <a href="https://www.freepik.com/free-photo/terms-use-conditions-rule-policy-regulation-concept_18045122.htm" target="_blank" rel="noopener noreferrer" className="attribution-link">Image by Freepik</a>
+                      </div>
+                    )}
+                    {project.id === 7 && (
+                      <div className="project-attribution">
+                        <p>
+                          Photo by <a href="https://unsplash.com/@lautaroandreani?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Lautaro Andreani</a> on <a href="https://unsplash.com/photos/a-computer-screen-with-a-logo-on-it-UYsBCu9RP3Y?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+                        </p>
                       </div>
                     )}
                     {project.id !== 2 && (
