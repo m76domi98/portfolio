@@ -52,16 +52,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-
-      <div className="footer-bottom">
-        <div className="container">
-          <p className="copyright">&copy; {currentYear} Michelle Dominic. All Rights Reserved.</p>
-          <div className="footer-bottom-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-          </div>
-        </div>
-      </div>
     </footer>
   );
 };

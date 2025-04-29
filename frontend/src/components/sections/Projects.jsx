@@ -3,6 +3,9 @@ import '../../styles/Projects.css';
 import printing3dImage from '../../assets/print3d.jpg';
 import sama from '../../assets/sama.jpg';
 import stm from '../../assets/stm.jpg';
+import summus from '../../assets/summus.jpg';
+import podcast from '../../assets/podcast.png';
+import portfolio from '../../assets/image.png';
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -13,7 +16,7 @@ const Projects = () => {
     {
       id: 1,
       title: '3D-Printing Infill Error Correction',
-      category: 'automation',
+      category: ['automation'],
       image: printing3dImage,
       description: 'Algorithm to fix 3D-printing infill errors using coordinate analysis and toolpath optimization.',
       technologies: ['Python', 'Matplotlib', 'FullControl', 'Onshape'],
@@ -24,7 +27,7 @@ const Projects = () => {
     {
       id: 2,
       title: 'SAMA Economic Heatmaps',
-      category: 'ai-data',
+      category: ['data-analytics'],
       image: sama,
       description: 'Economic heatmaps for a solar PV system optimizer showing hybrid energy system costs over time.',
       technologies: ['Python', 'Matplotlib'],
@@ -35,7 +38,7 @@ const Projects = () => {
     {
       id: 3,
       title: 'SenseSecure Alarm System',
-      category: 'hardware',
+      category: ['embedded-iot'],
       image: stm,
       description: 'Adaptive alarm system for the legally blind with audio, LED, and Braille integration.',
       technologies: ['C++', 'STM32', 'PCB Design', 'Ultrasonic Sensors'],
@@ -46,8 +49,8 @@ const Projects = () => {
     {
       id: 4,
       title: 'Podcastify',
-      category: 'web',
-      image: 'https://images.unsplash.com/photo-1553729459-efe14ef6055d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80',
+      category: ['ai-ml', 'web'],
+      image: podcast,
       description: 'Hackathon project that turns PDFs into audio using NLP, voice tools, and Flask backend.',
       technologies: ['Python', 'Flask', 'Speechify', 'NLTK', 'Vue'],
       demoLink: '',
@@ -57,21 +60,10 @@ const Projects = () => {
     {
       id: 5,
       title: 'Summus (T&C Summarizer)',
-      category: 'web',
-      image: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80',
+      category: ['web', 'ai-ml'],
+      image: summus,
       description: 'Chrome extension that summarizes terms and conditions using a Python backend with Ollama and a clean JavaScript UI.',
-      technologies: ['Python', 'JavaScript', 'HTML', 'Ollama'],
-      demoLink: '',
-      codeLink: '',
-      featured: true
-    },
-    {
-      id: 6,
-      title: 'Real-time Sign Language Detection',
-      category: 'ai-data',
-      image: 'https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80',
-      description: 'Real-time detection of sign language using computer vision and deep learning with TensorFlow.',
-      technologies: ['Python', 'TensorFlow', 'OpenCV', 'Transfer Learning'],
+      technologies: ['Python', 'JavaScript', 'HTML', 'LLMs'],
       demoLink: '',
       codeLink: '',
       featured: true
@@ -79,8 +71,8 @@ const Projects = () => {
     {
       id: 7,
       title: 'Portfolio Website',
-      category: 'web',
-      image: 'https://images.unsplash.com/photo-1505685296765-3a2736de412f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80',
+      category: ['web'],
+      image: portfolio,
       description: 'Personal portfolio built with React and JavaScript showcasing technical projects and design.',
       technologies: ['React', 'JavaScript', 'CSS'],
       demoLink: '',
@@ -103,7 +95,9 @@ const Projects = () => {
       } else if (filter === 'featured') {
         setFilteredProjects(projects.filter(project => project.featured));
       } else {
-        setFilteredProjects(projects.filter(project => project.category === filter));
+        setFilteredProjects(projects.filter(project =>
+          project.category.includes(filter)
+        ));
       }
       setIsAnimating(false);
     }, 500);
@@ -117,24 +111,13 @@ const Projects = () => {
         </div>
 
         <div className="project-filters">
-          <button className={activeFilter === 'all' ? 'active' : ''} onClick={() => handleFilterClick('all')}>
-            All
-          </button>
-          <button className={activeFilter === 'featured' ? 'active' : ''} onClick={() => handleFilterClick('featured')}>
-            Featured
-          </button>
-          <button className={activeFilter === 'ai-data' ? 'active' : ''} onClick={() => handleFilterClick('ai-data')}>
-            AI / Data
-          </button>
-          <button className={activeFilter === 'hardware' ? 'active' : ''} onClick={() => handleFilterClick('hardware')}>
-            Hardware
-          </button>
-          <button className={activeFilter === 'web' ? 'active' : ''} onClick={() => handleFilterClick('web')}>
-            Web
-          </button>
-          <button className={activeFilter === 'automation' ? 'active' : ''} onClick={() => handleFilterClick('automation')}>
-            Automation
-          </button>
+          <button className={activeFilter === 'all' ? 'active' : ''} onClick={() => handleFilterClick('all')}>All</button>
+          <button className={activeFilter === 'featured' ? 'active' : ''} onClick={() => handleFilterClick('featured')}>Featured</button>
+          <button className={activeFilter === 'ai-ml' ? 'active' : ''} onClick={() => handleFilterClick('ai-ml')}>AI & Machine Learning</button>
+          <button className={activeFilter === 'data-analytics' ? 'active' : ''} onClick={() => handleFilterClick('data-analytics')}>Data Analytics & Visualization</button>
+          <button className={activeFilter === 'embedded-iot' ? 'active' : ''} onClick={() => handleFilterClick('embedded-iot')}>Embedded Systems & IoT</button>
+          <button className={activeFilter === 'web' ? 'active' : ''} onClick={() => handleFilterClick('web')}>Web Applications</button>
+          <button className={activeFilter === 'automation' ? 'active' : ''} onClick={() => handleFilterClick('automation')}>Software Automation</button>
         </div>
 
         <div className={`projects-grid ${isAnimating ? 'animating' : ''}`}>
@@ -144,55 +127,41 @@ const Projects = () => {
                 <img src={project.image} alt={project.title} />
                 <div className="project-overlay">
                   <div className="project-links">
-                    {project.id === 7 && (
+                    {project.id === 7 && project.demoLink && (
                       <a href={project.demoLink} target="_blank" rel="noopener noreferrer" className="project-link">
                         <i className="fas fa-eye"></i> Live Demo
                       </a>
                     )}
-                    {project.id !== 2 && (
+                    {project.codeLink && (
                       <a href={project.codeLink} target="_blank" rel="noopener noreferrer" className="project-link">
                         <i className="fas fa-code"></i> Source Code
                       </a>
                     )}
                     {project.id === 1 && (
                       <div className="project-attribution">
-                        <a
-                          href="https://www.freepik.com/free-photo/designer-using-3d-printer_78922830.htm#fromView=keyword&page=1&position=1&uuid=222603b4-e842-4e71-b2dd-297d087c79b2&query=Prusa"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="attribution-link"
-                        >
-                          Image by Freepik
-                        </a>
+                        <a href="https://www.freepik.com/free-photo/designer-using-3d-printer_78922830.htm" target="_blank" rel="noopener noreferrer" className="attribution-link">Image by Freepik</a>
                       </div>
                     )}
-                    {
-                      project.id === 3 && (
-                        <div className="project-attribution">
-                          <a
-                            href="https://fr.freepik.com/vecteurs-libre/fond-ingenierie-informatique-isometrique_4501450.htm#fromView=keyword&page=1&position=2&uuid=b27cfac8-ce59-4472-b532-6e9c957a360f&query=Stm32"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="attribution-link"
-                          >
-                            Image by Freepik
-                          </a>
-                        </div>
-                      )
-                    }
                     {project.id === 2 && (
                       <div className="project-attribution">
-                        <a
-                          href="https://www.freepik.com/free-photo/beautiful-alternative-energy-plant-with-solar-panels_20735352.htm#fromView=search&page=1&position=3&uuid=76c81470-fc84-42e6-994e-d07c732fda2b&query=solar+panel"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="attribution-link"
-                        >
-                          Image by Freepik
-                        </a>
+                        <a href="https://www.freepik.com/free-photo/beautiful-alternative-energy-plant-with-solar-panels_20735352.htm" target="_blank" rel="noopener noreferrer" className="attribution-link">Image by Freepik</a>
                       </div>
                     )}
-
+                    {project.id === 3 && (
+                      <div className="project-attribution">
+                        <a href="https://fr.freepik.com/vecteurs-libre/fond-ingenierie-informatique-isometrique_4501450.htm" target="_blank" rel="noopener noreferrer" className="attribution-link">Image by Freepik</a>
+                      </div>
+                    )}
+                    {project.id === 5 && (
+                      <div className="project-attribution">
+                        <a href="https://www.freepik.com/free-photo/terms-use-conditions-rule-policy-regulation-concept_18045122.htm" target="_blank" rel="noopener noreferrer" className="attribution-link">Image by Freepik</a>
+                      </div>
+                    )}
+                    {project.id !== 2 && (
+                      <a href={project.codeLink} target="_blank" rel="noopener noreferrer" className="project-link">
+                        <i className="fas fa-code"></i> Source Code
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
@@ -204,9 +173,7 @@ const Projects = () => {
                 <p className="project-description">{project.description}</p>
                 <div className="project-tech">
                   {project.technologies.map((tech, index) => (
-                    <span key={index} className="tech-tag">
-                      {tech}
-                    </span>
+                    <span key={index} className="tech-tag">{tech}</span>
                   ))}
                 </div>
               </div>
