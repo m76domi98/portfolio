@@ -20,7 +20,6 @@ const Footer = () => {
                   <li><a href="#about">About</a></li>
                   <li><a href="#skills">Skills</a></li>
                   <li><a href="#projects">Projects</a></li>
-                  <li><a href="#contact">Contact</a></li>
                 </ul>
               </div>
 
@@ -37,10 +36,10 @@ const Footer = () => {
               <div className="footer-column">
                 <h3 className="footer-heading">Follow Me</h3>
                 <div className="social-links">
-                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="GitHub">
+                  <a href="https://github.com/m76domi98" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="GitHub">
                     <i className="fab fa-github"></i>
                   </a>
-                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LinkedIn">
+                  <a href="https://www.linkedin.com/in/michelle-dominic-155238260/" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LinkedIn">
                     <i className="fab fa-linkedin"></i>
                   </a>
                   <a href="https://www.appropedia.org/User:Mdominic06" className='social-icon' aria-label="Appropedia" target="_blank" rel="noopener noreferrer">

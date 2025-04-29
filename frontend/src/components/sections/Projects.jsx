@@ -3,7 +3,7 @@ import '../../styles/Projects.css';
 import printing3dImage from '../../assets/print3d.jpg';
 import sama from '../../assets/sama.jpg';
 import stm from '../../assets/stm.jpg';
-import summus from '../../assets/summus.jpg';
+import summus from '../../assets/summus.png'
 import podcast from '../../assets/podcast.png';
 import portfolio from '../../assets/portfolio.jpg';
 
@@ -21,8 +21,8 @@ const Projects = () => {
       description: 'Algorithm to fix 3D-printing infill errors using coordinate analysis and toolpath optimization.',
       technologies: ['Python', 'Matplotlib', 'FullControl', 'Onshape'],
       demoLink: '',
-      codeLink: '',
-      featured: true
+      codeLink: 'https://github.com/m76domi98/FAST-LAB',
+      featured: false
     },
     {
       id: 2,
@@ -43,7 +43,7 @@ const Projects = () => {
       description: 'Adaptive alarm system for the legally blind with audio, LED, and Braille integration.',
       technologies: ['C++', 'STM32', 'PCB Design', 'Ultrasonic Sensors'],
       demoLink: '',
-      codeLink: '',
+      codeLink: 'https://github.com/samiksha-satthy/ece-198-SenseSecure',
       featured: true
     },
     {
@@ -54,8 +54,8 @@ const Projects = () => {
       description: 'Hackathon project that turns PDFs into audio using NLP, voice tools, and Flask backend.',
       technologies: ['Python', 'Flask', 'Speechify', 'NLTK', 'Vue'],
       demoLink: '',
-      codeLink: '',
-      featured: false
+      codeLink: 'https://github.com/m76domi98/geesehack2025',
+      featured: true
     },
     {
       id: 5,
@@ -65,7 +65,7 @@ const Projects = () => {
       description: 'Chrome extension that summarizes terms and conditions using a Python backend with Ollama and a clean JavaScript UI.',
       technologies: ['Python', 'JavaScript', 'HTML', 'LLMs'],
       demoLink: '',
-      codeLink: '',
+      codeLink: 'https://github.com/m76domi98/AI_AGENT',
       featured: true
     },
     {
@@ -76,7 +76,7 @@ const Projects = () => {
       description: 'Personal portfolio built with React and JavaScript showcasing technical projects and design.',
       technologies: ['React', 'JavaScript', 'CSS'],
       demoLink: '',
-      codeLink: '',
+      codeLink: 'https://github.com/m76domi98/portfolio',
       featured: false
     }
   ];
@@ -152,22 +152,12 @@ const Projects = () => {
                         <a href="https://fr.freepik.com/vecteurs-libre/fond-ingenierie-informatique-isometrique_4501450.htm" target="_blank" rel="noopener noreferrer" className="attribution-link">Image by Freepik</a>
                       </div>
                     )}
-                    {project.id === 5 && (
-                      <div className="project-attribution">
-                        <a href="https://www.freepik.com/free-photo/terms-use-conditions-rule-policy-regulation-concept_18045122.htm" target="_blank" rel="noopener noreferrer" className="attribution-link">Image by Freepik</a>
-                      </div>
-                    )}
                     {project.id === 7 && (
                       <div className="project-attribution">
                         <p>
                           Photo by <a href="https://unsplash.com/@lautaroandreani?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Lautaro Andreani</a> on <a href="https://unsplash.com/photos/a-computer-screen-with-a-logo-on-it-UYsBCu9RP3Y?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
                         </p>
                       </div>
-                    )}
-                    {project.id !== 2 && (
-                      <a href={project.codeLink} target="_blank" rel="noopener noreferrer" className="project-link">
-                        <i className="fas fa-code"></i> Source Code
-                      </a>
                     )}
                   </div>
                 </div>
@@ -189,7 +179,7 @@ const Projects = () => {
         </div>
 
         <div className="projects-cta">
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
+          <a href="https://github.com/m76domi98" target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
             <i className="fab fa-github"></i> View More on GitHub
           </a>
         </div>

@@ -47,7 +47,7 @@ const Hero = () => {
             </p>
             <div className="hero-buttons">
               <a href="#projects" className="btn btn-primary">View My Work</a>
-              <a href="#contact" className="btn btn-secondary">Let's Connect</a>
+              <a href="https://www.linkedin.com/in/michelle-dominic-155238260/" className="btn btn-secondary">Let's Connect</a>
             </div>
           </div>
 

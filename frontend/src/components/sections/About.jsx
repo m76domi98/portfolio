@@ -51,7 +51,7 @@ const About = () => {
 
             <div className="about-cta-wrapper">
               <div className="about-cta">
-                <a href="#contact" className="btn btn-primary">Let's Work Together</a>
+                <a href="https://www.linkedin.com/in/michelle-dominic-155238260/" className="btn btn-primary">Let's Work Together</a>
                 <a href="/resume.pdf" className="btn btn-secondary" target="_blank" rel="noopener noreferrer">Download Resume</a>
               </div>
             </div>

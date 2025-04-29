@@ -43,11 +43,10 @@ const Header = () => {
             <li><a href="#about" onClick={() => setMenuOpen(false)}>About</a></li>
             <li><a href="#skills" onClick={() => setMenuOpen(false)}>Skills</a></li>
             <li><a href="#projects" onClick={() => setMenuOpen(false)}>Projects</a></li>
-            <li><a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a></li>
           </ul>
         </nav>
         <div className="header-actions">
-          <a href="#contact" className="btn btn-primary contact-btn">Let's Talk</a>
+          <a href="https://www.linkedin.com/in/michelle-dominic-155238260/" className="btn btn-primary contact-btn">Let's Talk</a>
         </div>
       </div>
     </header>
