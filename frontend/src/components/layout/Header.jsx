@@ -46,7 +46,7 @@ const Header = () => {
           </ul>
         </nav>
         <div className="header-actions">
-          <a href="https://www.linkedin.com/in/michelle-dominic-155238260/" className="btn btn-primary contact-btn">Let's Talk</a>
+          <a href="#footer" className="btn btn-primary contact-btn" onClick={() => setMenuOpen(false)}>Let's Talk</a>
         </div>
       </div>
     </header>

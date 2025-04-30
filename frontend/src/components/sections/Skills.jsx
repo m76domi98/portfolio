@@ -71,7 +71,7 @@ const Skills = () => {
       title: "Certifications",
       skills: [
         { name: "React JS", iconClass: "devicon-react-original colored" },
-        { name: "SQL for Data Analysis (In Progress)", customIcon: <FaCertificate /> },
+        { name: "SQL for Data Analysis (In Progress)", iconClass: "devicon-mysql-plain colored" },
       ],
     },
   ];

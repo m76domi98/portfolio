@@ -4,7 +4,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="footer">
+    <footer id='footer' className="footer">
       <div className="footer-top">
         <div className="container">
           <div className="footer-content">
@@ -16,10 +16,22 @@ const Footer = () => {
               <div className="footer-column">
                 <h3 className="footer-heading">Navigation</h3>
                 <ul>
-                  <li><a href="#home">Home</a></li>
-                  <li><a href="#about">About</a></li>
-                  <li><a href="#skills">Skills</a></li>
-                  <li><a href="#projects">Projects</a></li>
+                  <li>
+                    <span className="contact-icon"><i className="fas fa-home"></i></span>
+                    <a href="#home"> Home</a>
+                  </li>
+                  <li>
+                    <span className="contact-icon"><i className="fas fa-user"></i></span>
+                    <a href="#about"> About</a>
+                  </li>
+                  <li>
+                    <span className="contact-icon"><i className="fas fa-tools"></i></span>
+                    <a href="#skills"> Skills</a>
+                  </li>
+                  <li>
+                    <span className="contact-icon"><i className="fas fa-project-diagram"></i></span>
+                    <a href="#projects"> Projects</a>
+                  </li>
                 </ul>
               </div>
 
