@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import '../../styles/Projects.css';
 import printing3dImage from '/print3d.jpg';
 import sama from '/sama.jpg';
-import stm from '/stm.jpg';
+import SenseSecure from '/SenseSecure.png';
 import summus from '/summus.png'
 import portfolio from '/portfolio.jpg';
 import podcastify from '/podcast.png';
@@ -39,7 +39,7 @@ const Projects = () => {
       id: 3,
       title: 'SenseSecure Alarm System',
       category: ['embedded-iot'],
-      image: stm,
+      image: SenseSecure,
       description: 'Adaptive alarm system for the legally blind with audio, LED, and Braille integration.',
       technologies: ['C++', 'STM32', 'PCB Design', 'Ultrasonic Sensors', 'Microcontroller Communication'],
       demoLink: '',
@@ -145,11 +145,6 @@ const Projects = () => {
                     {project.id === 2 && (
                       <div className="project-attribution">
                         <a href="https://www.freepik.com/free-photo/beautiful-alternative-energy-plant-with-solar-panels_20735352.htm" target="_blank" rel="noopener noreferrer" className="attribution-link">Image by Freepik</a>
-                      </div>
-                    )}
-                    {project.id === 3 && (
-                      <div className="project-attribution">
-                        <a href="https://fr.freepik.com/vecteurs-libre/fond-ingenierie-informatique-isometrique_4501450.htm" target="_blank" rel="noopener noreferrer" className="attribution-link">Image by Freepik</a>
                       </div>
                     )}
                     {project.id === 7 && (
