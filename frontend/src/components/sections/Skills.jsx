@@ -65,6 +65,7 @@ const Skills = () => {
         { name: "PCB Design", customIcon: <FaMicrochip /> },
         { name: "Speechify", customIcon: <FaHeadphones /> },
         { name: "Ollama", customIcon: <FaRobot /> },
+        {name: 'Vercel', iconClass: 'devicon-vercel-original colored'},
       ],
     },
     {
@@ -116,6 +117,7 @@ const Skills = () => {
     .devicon-pycharm-plain.colored { color: #31A8FF !important; }
     .devicon-unity-original.colored { color: #222C37 !important; }
     .devicon-autocad-plain.colored { color: #DA1212 !important; }
+    .devicon-vercel-original.colored { color: #239120 !important; }
   `;
 
   return (
