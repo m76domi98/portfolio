@@ -43,7 +43,7 @@ const About = () => {
           <h2 className="section-title">About Me</h2>
         </div>
           <div className="about-description">
-            <p>Hi! I'm Michelle, a <b>Computer Engineering</b> student at the <b>University of Waterloo</b> passionate about autonomous systems and AI/ML. I recently completed a co-op at <b>Stubbe’s Precast</b> integrating AI chatbots and building ML models with TensorFlow and Scikit-learn. I also contributed to open-source research at <b>Western University</b>, creating solar optimization and 3D-printing correction tools using Python.</p>
+            <p>Hi! I'm Michelle, a <b>Computer Engineering</b> student at the <b>University of Waterloo</b> passionate about autonomous systems and AI/ML. I recently completed a co-op at <b>Stubbe’s Precast</b> integrating AI chatbots and building ML models with TensorFlow and Scikit-learn. I also contributed to <a href='https://www.appropedia.org/User:Mdominic06'><b>open-source research</b> </a>at <b>Western University</b>, creating solar optimization and 3D-printing correction tools using Python.</p>
             <p>Outside of school, I build projects, explore full-stack development, and compete in hackathons.</p>
             <p>I'm looking for <b>Fall 2025</b> co-op opportunities — feel free to <b>reach out!</b></p>
           </div>

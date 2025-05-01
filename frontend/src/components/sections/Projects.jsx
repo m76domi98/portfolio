@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import '../../styles/Projects.css';
-import printing3dImage from '../../assets/print3d.jpg';
-import sama from '../../assets/sama.jpg';
-import stm from '../../assets/stm.jpg';
-import summus from '../../assets/summus.png'
-import podcast from '../../assets/podcast.png';
-import portfolio from '../../assets/portfolio.jpg';
+import printing3dImage from '/print3d.jpg';
+import sama from '/sama.jpg';
+import stm from '/stm.jpg';
+import summus from '/summus.png'
+import portfolio from '/portfolio.jpg';
+import podcastify from '/podcast.png';
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -19,7 +19,7 @@ const Projects = () => {
       category: ['automation'],
       image: printing3dImage,
       description: 'Algorithm to fix 3D-printing infill errors using coordinate analysis and toolpath optimization.',
-      technologies: ['Python', 'Matplotlib', 'FullControl', 'Onshape'],
+      technologies: ['Python', 'Matplotlib', 'FullControl', 'Onshape', '3D Printing', 'CAD', 'G-code'],
       demoLink: '',
       codeLink: 'https://github.com/m76domi98/FAST-LAB',
       featured: false
@@ -41,7 +41,7 @@ const Projects = () => {
       category: ['embedded-iot'],
       image: stm,
       description: 'Adaptive alarm system for the legally blind with audio, LED, and Braille integration.',
-      technologies: ['C++', 'STM32', 'PCB Design', 'Ultrasonic Sensors'],
+      technologies: ['C++', 'STM32', 'PCB Design', 'Ultrasonic Sensors', 'Microcontroller Communication'],
       demoLink: '',
       codeLink: 'https://github.com/samiksha-satthy/ece-198-SenseSecure',
       featured: true
@@ -50,9 +50,9 @@ const Projects = () => {
       id: 4,
       title: 'Podcastify',
       category: ['ai-ml', 'web'],
-      image: podcast,
-      description: 'Hackathon project that turns PDFs into audio using NLP, voice tools, and Flask backend.',
-      technologies: ['Python', 'Flask', 'Speechify', 'NLTK', 'Vue'],
+      image: podcastify,
+      description: 'Hackathon project that turns PDFs into audio using Natural Language Processing, voice tools, and Flask backend.',
+      technologies: ['Python', 'Flask', 'Speechify', 'NLTK', 'Vue', ],
       demoLink: '',
       codeLink: 'https://github.com/m76domi98/geesehack2025',
       featured: true
@@ -62,8 +62,8 @@ const Projects = () => {
       title: 'Summus (T&C Summarizer)',
       category: ['web', 'ai-ml'],
       image: summus,
-      description: 'Chrome extension that summarizes terms and conditions using a Python backend with Ollama and a clean JavaScript UI.',
-      technologies: ['Python', 'JavaScript', 'HTML', 'LLMs'],
+      description: 'Chrome extension that summarizes terms and conditions using a Python backend with Ollama and a vanilla JavaScript UI.',
+      technologies: ['Python', 'JavaScript', 'HTML', 'LLMs','FastAPI'],
       demoLink: '',
       codeLink: 'https://github.com/m76domi98/AI_AGENT',
       featured: true
@@ -74,7 +74,7 @@ const Projects = () => {
       category: ['web'],
       image: portfolio,
       description: 'Personal portfolio built with React and JavaScript showcasing technical projects and design.',
-      technologies: ['React', 'JavaScript', 'CSS'],
+      technologies: ['React', 'JavaScript', 'CSS', 'HTML'],
       demoLink: '',
       codeLink: 'https://github.com/m76domi98/portfolio',
       featured: false
@@ -155,7 +155,9 @@ const Projects = () => {
                     {project.id === 7 && (
                       <div className="project-attribution">
                         <p>
-                          Photo by <a href="https://unsplash.com/@lautaroandreani?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Lautaro Andreani</a> on <a href="https://unsplash.com/photos/a-computer-screen-with-a-logo-on-it-UYsBCu9RP3Y?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+                          Photo by <a href="https://unsplash.com/@lautaroandreani?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash" target='_blank' rel="noopener noreferrer" className="attribution-link">Lautaro Andreani </a>
+                           on 
+                          <a href="https://unsplash.com/photos/a-computer-screen-with-a-logo-on-it-UYsBCu9RP3Y?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash" target="_blank" rel="noopener noreferrer" className="attribution-link"> Unsplash</a>
                         </p>
                       </div>
                     )}
