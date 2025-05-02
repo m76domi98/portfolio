@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import '../../styles/Projects.css';
-import printing3dImage from '/print3d.jpg';
-import sama from '/sama.jpg';
+import printing3dImage from '/3d_print.webp';
+import sama from '/heatmap.webp';
 import SenseSecure from '/SenseSecure.png';
 import summus from '/summus.png'
-import portfolio from '/portfolio.jpg';
+import portfolio from '/portfolio_.png';
 import podcastify from '/podcast.png';
 
 const Projects = () => {
@@ -15,28 +15,6 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: '3D-Printing Infill Error Correction',
-      category: ['automation'],
-      image: printing3dImage,
-      description: 'Algorithm to fix 3D-printing infill errors using coordinate analysis and toolpath optimization.',
-      technologies: ['Python', 'Matplotlib', 'FullControl', 'Onshape', '3D Printing', 'CAD', 'G-code'],
-      demoLink: '',
-      codeLink: 'https://github.com/m76domi98/FAST-LAB',
-      featured: false
-    },
-    {
-      id: 2,
-      title: 'SAMA Economic Heatmaps',
-      category: ['data-analytics'],
-      image: sama,
-      description: 'Economic heatmaps for a solar PV system optimizer showing hybrid energy system costs over time.',
-      technologies: ['Python', 'Matplotlib'],
-      demoLink: '',
-      codeLink: '',
-      featured: false
-    },
-    {
-      id: 3,
       title: 'SenseSecure Alarm System',
       category: ['embedded-iot'],
       image: SenseSecure,
@@ -47,7 +25,7 @@ const Projects = () => {
       featured: true
     },
     {
-      id: 4,
+      id: 2,
       title: 'Podcastify',
       category: ['ai-ml', 'web'],
       image: podcastify,
@@ -58,7 +36,7 @@ const Projects = () => {
       featured: true
     },
     {
-      id: 5,
+      id: 3,
       title: 'Summus (T&C Summarizer)',
       category: ['web', 'ai-ml'],
       image: summus,
@@ -69,7 +47,18 @@ const Projects = () => {
       featured: true
     },
     {
-      id: 7,
+      id: 4,
+      title: '3D-Printing Infill Error Correction',
+      category: ['automation'],
+      image: printing3dImage,
+      description: 'Algorithm to fix 3D-printing infill errors using coordinate analysis and toolpath optimization.',
+      technologies: ['Python', 'Matplotlib', 'FullControl', 'Onshape', '3D Printing', 'CAD', 'G-code'],
+      demoLink: '',
+      codeLink: 'https://github.com/m76domi98/FAST-LAB',
+      featured: false
+    },
+    {
+      id: 5,
       title: 'Portfolio Website',
       category: ['web'],
       image: portfolio,
@@ -78,7 +67,18 @@ const Projects = () => {
       demoLink: '',
       codeLink: 'https://github.com/m76domi98/portfolio',
       featured: false
-    }
+    },
+    {
+      id: 6,
+      title: 'SAMA Economic Heatmaps',
+      category: ['data-analytics'],
+      image: sama,
+      description: 'Economic heatmaps for a solar PV system optimizer showing hybrid energy system costs over time.',
+      technologies: ['Python', 'Matplotlib'],
+      demoLink: '',
+      codeLink: '',
+      featured: false
+    },
   ];
 
   useEffect(() => {
@@ -136,25 +136,6 @@ const Projects = () => {
                       <a href={project.codeLink} target="_blank" rel="noopener noreferrer" className="project-link">
                         <i className="fas fa-code"></i> Source Code
                       </a>
-                    )}
-                    {project.id === 1 && (
-                      <div className="project-attribution">
-                        <a href="https://www.freepik.com/free-photo/designer-using-3d-printer_78922830.htm" target="_blank" rel="noopener noreferrer" className="attribution-link">Image by Freepik</a>
-                      </div>
-                    )}
-                    {project.id === 2 && (
-                      <div className="project-attribution">
-                        <a href="https://www.freepik.com/free-photo/beautiful-alternative-energy-plant-with-solar-panels_20735352.htm" target="_blank" rel="noopener noreferrer" className="attribution-link">Image by Freepik</a>
-                      </div>
-                    )}
-                    {project.id === 7 && (
-                      <div className="project-attribution">
-                        <p>
-                          Photo by <a href="https://unsplash.com/@lautaroandreani?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash" target='_blank' rel="noopener noreferrer" className="attribution-link">Lautaro Andreani </a>
-                           on 
-                          <a href="https://unsplash.com/photos/a-computer-screen-with-a-logo-on-it-UYsBCu9RP3Y?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash" target="_blank" rel="noopener noreferrer" className="attribution-link"> Unsplash</a>
-                        </p>
-                      </div>
                     )}
                   </div>
                 </div>
