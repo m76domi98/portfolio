@@ -23,7 +23,7 @@ const Experience = () => {
             title: 'Stubbes Precast',
             role: 'Programmer Analyst',
             date: 'Jan 2025- April 2025',
-            description: 'As a Programmer Analyst, I improved how employees interact with our internal systems by integrating an AI chatbot. This made it easier for staff to get answers to common questions and work more efficiently. I also developed predictive models that help estimate warehouse production timelines more accurately, improving forecasts by 15%. To ensure these predictions were useful in real-world operations, I worked closely with the production team. Additionally, I streamlined data processes by enhancing SQL queries and building automated reporting tools using Python, helping the company access real-time insights',
+             description: 'As a Programmer Analyst, I integrated an AI chatbot into in-house software, making it easier for staff to get answers to common questions and work more efficiently. Additionally, I developed machine learning models to predict warehouse production timelines, collaborating with the production team to verify predictions—leading to a 15% improvement in forecast accuracy.',
             technologies: [ 'C#', 'SQL', 'Vue.js', 'Python', 'TensorFlow', '.NET', 'Node.js', 'TypeScript', 'XGBoost', 'Scikit-learn', 'Pandas', 'Data Analysis'],
             image: stubbes
         }
