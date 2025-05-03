@@ -32,6 +32,10 @@ const Footer = () => {
                     <span className="contact-icon"><i className="fas fa-project-diagram"></i></span>
                     <a href="#projects"> Projects</a>
                   </li>
+                  <li>
+                    <span className="contact-icon"><i className="fas fa-briefcase"></i></span>
+                    <a href="#experience"> Experience</a>
+                  </li>
                 </ul>
               </div>
 

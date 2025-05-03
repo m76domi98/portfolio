@@ -43,7 +43,7 @@ const Hero = () => {
             <h1 className="hero-name">Michelle <span className="highlight">Dominic</span></h1>
             <h2 className="hero-title">Computer Engineering Student at the University of Waterloo</h2>
             <p className="hero-description">
-              I'm a passionate developer and problem solver, always exploring innovative technologies to craft impactful solutions. Whether it's AI, web, or embedded systems—I'm here to build with purpose.
+            I’m a developer who’s into solving problems, building cool stuff, and diving into whatever tech grabs my curiosity—AI, web, embedded systems, you name it. I like turning ideas into things that actually work (and hopefully make someone’s life a little easier).
             </p>
             <div className="hero-buttons">
               <a href="#projects" className="btn btn-primary">View My Work</a>

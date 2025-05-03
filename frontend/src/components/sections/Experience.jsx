@@ -4,9 +4,7 @@ import stubbes from '/stubbes.png';
 import '../../styles/Experience.css';
 
 const Experience = () => {
-    const [activeFilter, setActiveFilter] = useState('all');
     const [filteredProjects, setFilteredProjects] = useState([]);
-    const [isAnimating, setIsAnimating] = useState(false);
 
     const experiences = [
         {
@@ -62,6 +60,7 @@ const Experience = () => {
                             <div className="timeline-details">
                                 <h3 className="timeline-title">{item.title}</h3>
                                 <p className="timeline-role">{item.role}</p>
+                                <p className="timeline-date">{item.date}</p>
                                 <div className="timeline-description">
                                    <p>{item.description}</p> 
                                 </div>
