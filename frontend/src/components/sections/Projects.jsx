@@ -6,6 +6,7 @@ import SenseSecure from '/SenseSecure.png';
 import summus from '/summus.png'
 import portfolio from '/portfolio_.png';
 import podcastify from '/podcast.png';
+import smart from '/smart.jpg';
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -19,7 +20,7 @@ const Projects = () => {
       category: ['embedded-iot'],
       image: SenseSecure,
       description: 'Adaptive alarm system for the legally blind with audio, LED, and Braille integration.',
-      technologies: ['C++', 'STM32', 'PCB Design', 'Ultrasonic Sensors', 'Microcontroller Communication'],
+      technologies: ['C', 'STM32', 'PCB Design', 'Ultrasonic Sensors', 'Microcontroller Communication'],
       demoLink: '',
       codeLink: 'https://github.com/samiksha-satthy/ece-198-SenseSecure',
       featured: true
@@ -75,6 +76,17 @@ const Projects = () => {
       image: sama,
       description: 'Economic heatmaps for a solar PV system optimizer showing hybrid energy system costs over time.',
       technologies: ['Python', 'Matplotlib'],
+      demoLink: '',
+      codeLink: '',
+      featured: false
+    },
+    {
+      id: 7,
+      title: 'Smart Plant Monitoring System',
+      category: ['embedded-iot'],
+      image: smart,
+      description: 'IoT-based plant monitoring system with soil moisture, temperature, and light sensors for optimal growth conditions.',
+      technologies: ['C++', 'Arduino', 'IoT', 'Sensors'],
       demoLink: '',
       codeLink: '',
       featured: false
@@ -137,6 +149,13 @@ const Projects = () => {
                         <i className="fas fa-code"></i> Source Code
                       </a>
                     )}
+                    {project.id === 7 && (
+                      <p className='project-attribution'>
+                        Photo by <a href="https://unsplash.com/@dark_matter_09?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Nekhil R</a> on <a href="https://unsplash.com/photos/blue-and-black-circuit-board-hz7EFrw06Qk?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+                      </p>   
+                    )
+
+                    }
                   </div>
                 </div>
               </div>
