@@ -7,6 +7,7 @@ import summus from '/summus.png'
 import portfolio from '/portfolio_.png';
 import podcastify from '/podcast.png';
 import smart from '/smart.jpg';
+import frenzy from '/plastic-frenzy.jpg';
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -71,6 +72,17 @@ const Projects = () => {
     },
     {
       id: 6,
+      title: 'Plastic Frenzy',
+      category: ['game'],
+      image: frenzy,
+      description: 'Interactive video game that rewards players for progressing through challenges while simultaneously funding real-world plastic removal',
+      technologies: ['Unity', 'C#', 'Game Development'],
+      demoLink: 'https://devpost.com/software/depth-defenders',
+      codeLink: 'https://github.com/selvxhini-10/Platform-Game',
+      featured: false
+    },
+    {
+      id: 7,
       title: 'SAMA Economic Heatmaps',
       category: ['data-analytics'],
       image: sama,
@@ -81,7 +93,7 @@ const Projects = () => {
       featured: false
     },
     {
-      id: 7,
+      id: 8,
       title: 'Smart Plant Monitoring System',
       category: ['embedded-iot'],
       image: smart,
@@ -130,6 +142,7 @@ const Projects = () => {
           <button className={activeFilter === 'embedded-iot' ? 'active' : ''} onClick={() => handleFilterClick('embedded-iot')}>Embedded Systems & IoT</button>
           <button className={activeFilter === 'web' ? 'active' : ''} onClick={() => handleFilterClick('web')}>Web Applications</button>
           <button className={activeFilter === 'automation' ? 'active' : ''} onClick={() => handleFilterClick('automation')}>Software Automation</button>
+          <button className={activeFilter === 'game' ? 'active' : ''} onClick={() => handleFilterClick('game')}>Game Dev</button>
         </div>
 
         <div className={`projects-grid ${isAnimating ? 'animating' : ''}`}>
@@ -149,7 +162,7 @@ const Projects = () => {
                         <i className="fas fa-code"></i> Source Code
                       </a>
                     )}
-                    {project.id === 7 && (
+                    {project.id === 8 && (
                       <p className='project-attribution'>
                         Photo by <a href="https://unsplash.com/@dark_matter_09?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Nekhil R</a> on <a href="https://unsplash.com/photos/blue-and-black-circuit-board-hz7EFrw06Qk?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
                       </p>   
