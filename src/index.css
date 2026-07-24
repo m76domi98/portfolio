@@ -1,0 +1,186 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 6% 5%;
+    --foreground: 40 20% 85%;
+    --card: 36 18% 82%;
+    --card-foreground: 240 6% 6%;
+    --popover: 36 18% 82%;
+    --popover-foreground: 240 6% 6%;
+    --primary: 186 100% 47%;
+    --primary-foreground: 240 6% 5%;
+    --secondary: 349 71% 44%;
+    --secondary-foreground: 36 18% 92%;
+    --muted: 240 5% 14%;
+    --muted-foreground: 40 14% 60%;
+    --accent: 186 100% 47%;
+    --accent-foreground: 240 6% 5%;
+    --destructive: 349 71% 44%;
+    --destructive-foreground: 36 18% 92%;
+    --border: 40 10% 22%;
+    --input: 40 10% 18%;
+    --ring: 186 100% 47%;
+    --radius: 0.25rem;
+    --font-heading: 'Courier Prime', ui-monospace, monospace;
+    --font-body: 'IBM Plex Mono', ui-monospace, monospace;
+    --font-display: 'Special Elite', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+    --font-scribble: 'Permanent Marker', cursive;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    background-color: #0A0A0C;
+  }
+}
+
+@layer utilities {
+  .font-heading { font-family: 'Courier Prime', ui-monospace, monospace; font-weight: 700; }
+  .font-scribble { font-family: 'Permanent Marker', cursive; }
+  .font-body { font-family: 'IBM Plex Mono', ui-monospace, monospace; }
+
+  .text-cyan-signal { color: #00F0FF; }
+  .bg-cyan-signal { background-color: #00F0FF; }
+  .border-cyan-signal { border-color: #00F0FF; }
+  .text-crimson { color: #C41E3A; }
+  .bg-crimson { background-color: #C41E3A; }
+  .border-crimson { border-color: #C41E3A; }
+  .bg-vellum { background-color: #E4DCD3; }
+  .text-vellum { color: #E4DCD3; }
+  .bg-ink { background-color: #0A0A0C; }
+  .text-ink { color: #0A0A0C; }
+
+  .vellum-paper {
+    background-color: #E4DCD3;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(10,10,12,0.04) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(196,30,58,0.05) 0%, transparent 45%),
+      repeating-linear-gradient(0deg, rgba(10,10,12,0.015) 0px, rgba(10,10,12,0.015) 1px, transparent 1px, transparent 3px);
+  }
+
+  .ink-grain {
+    background-image:
+      radial-gradient(circle at 50% 50%, transparent 0%, rgba(10,10,12,0.6) 100%),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+  }
+
+  .sketch-border {
+    border: 2px solid #E4DCD3;
+    border-radius: 3px 4px 2px 5px / 4px 2px 5px 3px;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.5);
+  }
+
+  .sketch-border-cyan {
+    border: 2px solid #00F0FF;
+    border-radius: 3px 4px 2px 5px / 4px 2px 5px 3px;
+    box-shadow: 0 0 12px rgba(0,240,255,0.25);
+  }
+
+  .tape-strip {
+    background: repeating-linear-gradient(
+      -45deg,
+      #C41E3A 0px, #C41E3A 14px,
+      #0A0A0C 14px, #0A0A0C 28px
+    );
+  }
+
+  .stamp-confidential {
+    border: 3px solid #C41E3A;
+    color: #C41E3A;
+    transform: rotate(-8deg);
+    font-family: 'Special Elite', sans-serif;
+    letter-spacing: 0.15em;
+    padding: 6px 14px;
+    opacity: 0.85;
+  }
+
+  .glow-cyan { text-shadow: 0 0 8px rgba(0,240,255,0.6); }
+  .glow-crimson { text-shadow: 0 0 8px rgba(196,30,58,0.6); }
+
+  .string-link {
+    position: absolute;
+    background: linear-gradient(to right, #C41E3A, #C41E3A);
+    height: 1.5px;
+    transform-origin: left center;
+    opacity: 0.6;
+  }
+
+  .clip-corner {
+    clip-path: polygon(0 0, 100% 0, 100% 86%, 92% 100%, 0 100%);
+  }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+.scanline {
+  animation: scanline 6s linear infinite;
+}
+
+/* Skills board: columns flicker on like old fluorescent panels */
+@keyframes flicker-in {
+  0% { opacity: 0.2; }
+  12% { opacity: 1; }
+  22% { opacity: 0.35; }
+  34% { opacity: 1; }
+  48% { opacity: 0.6; }
+  62%, 100% { opacity: 1; }
+}
+.flicker-in { animation: flicker-in 0.9s both; }
+
+/* Current flowing along an energized skill bar */
+@keyframes signal-flow {
+  from { background-position: -40px 0; }
+  to { background-position: calc(100% + 40px) 0; }
+}
+.signal-flow {
+  background-image: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
+  background-size: 40px 100%;
+  background-repeat: no-repeat;
+  animation: signal-flow 1.8s linear infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(196,30,58,0.35); }
+  50% { box-shadow: 0 0 20px rgba(196,30,58,0.75); }
+}
+.pulse-glow { animation: pulse-glow 2.5s ease-in-out infinite; }
+
+/* Desk lamp: cone sways about its apex; counter rotates opposite so the color desk stays pinned */
+@keyframes lamp-sway {
+  0%, 100% { transform: rotate(-6deg); }
+  50% { transform: rotate(6deg); }
+}
+@keyframes lamp-sway-counter {
+  0%, 100% { transform: rotate(6deg); }
+  50% { transform: rotate(-6deg); }
+}
+.lamp-sway { animation: lamp-sway 7s ease-in-out infinite; }
+.lamp-sway-counter { animation: lamp-sway-counter 7s ease-in-out infinite; }
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0) rotate(-1.5deg); }
+  25% { transform: translateY(-6px) rotate(1.5deg); }
+  50% { transform: translateY(0) rotate(-1.5deg); }
+  75% { transform: translateY(-3px) rotate(1.5deg); }
+}
+.bob { animation: bob 0.45s ease-in-out infinite; }
+
+::selection {
+  background: #00F0FF;
+  color: #0A0A0C;
+}
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #0A0A0C; }
+::-webkit-scrollbar-thumb { background: #C41E3A; border: 2px solid #0A0A0C; }
