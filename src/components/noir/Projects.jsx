@@ -2,12 +2,29 @@ import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import {
   FolderOpen, Folder, X, Cpu, Tag, Pin, Play, Github,
-  Grab, GitBranch, Users, Coins, Hand, Thermometer,
+  Grab, GitBranch, Users, Hand, Thermometer,
 } from 'lucide-react';
+
+/**
+ * @typedef {Object} Project
+ * @property {string} id
+ * @property {number[]} pin
+ * @property {string} title
+ * @property {string} [img]
+ * @property {string} [video]
+ * @property {string} [github]
+ * @property {import('lucide-react').LucideIcon} [icon]
+ * @property {string} tagline
+ * @property {string[]} tech
+ * @property {string[]} tags
+ * @property {string} summary
+ * @property {string[]} details
+ */
 
 // Board coordinates: units match the 260vw × 260vh board (svg viewBox shares them).
 // Each `pin` is where the card's pin sits; the camera and the red string both use it.
 // Serpentine: zig-zag left→right across the top row, then right→left across the bottom.
+/** @type {Project[]} */
 const PROJECTS = [
   {
     id: 'handshake',
@@ -178,11 +195,12 @@ const STRING_PATH = PROJECTS.slice(1).reduce((d, p, i) => {
   return `${d} Q ${(x0 + x1) / 2} ${Math.max(y0, y1) + 12} ${x1} ${y1}`;
 }, `M ${PROJECTS[0].pin[0]} ${PROJECTS[0].pin[1]}`);
 
+/** @param {{ p: Project, index: number, onOpen: (id: string) => void, floating?: boolean }} props */
 function FolderCard({ p, index, onOpen, floating = true }) {
-  const Icon = p.icon;
+  const Icon = p.icon || Folder;
   return (
     <div
-      className={floating ? 'absolute w-80 md:w-[28rem]' : 'relative w-full max-w-md mx-auto'}
+      className={floating ? 'absolute w-[35rem]' : 'relative w-full max-w-md mx-auto'}
       style={
         floating
           ? {
@@ -223,10 +241,10 @@ function FolderCard({ p, index, onOpen, floating = true }) {
               <img
                 src={p.img}
                 alt={p.title}
-                className="w-full h-44 object-cover"
+                className={`w-full object-cover ${floating ? 'h-72' : 'h-44'}`}
               />
             ) : (
-              <div className="w-full h-44 flex items-center justify-center border-2 border-dashed border-ink/25">
+              <div className={`w-full flex items-center justify-center border-2 border-dashed border-ink/25 ${floating ? 'h-72' : 'h-44'}`}>
                 <Icon className="w-20 h-20 text-ink/60 group-hover:text-crimson transition-colors" strokeWidth={1} />
               </div>
             )}
@@ -250,7 +268,7 @@ function FolderCard({ p, index, onOpen, floating = true }) {
 }
 
 export default function Projects() {
-  const [openId, setOpenId] = useState(null);
+  const [openId, setOpenId] = useState(/** @type {string | null} */ (null));
   const active = PROJECTS.find((p) => p.id === openId);
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] });
@@ -345,13 +363,7 @@ export default function Projects() {
             </div>
 
             <div className="grid md:grid-cols-[200px_1fr] gap-5">
-              {active.img ? (
-                <img src={active.img} alt={active.title} className="w-full h-auto border-2 border-ink/20" />
-              ) : (
-                <div className="w-full h-40 flex items-center justify-center border-2 border-dashed border-ink/25">
-                  <active.icon className="w-20 h-20 text-ink/60" strokeWidth={1} />
-                </div>
-              )}
+              <img src={active.img} alt={active.title} className="w-full h-auto border-2 border-ink/20" />
               <div>
                 <h3 className="font-heading text-ink text-2xl md:text-3xl leading-tight mb-2">{active.title}</h3>
                 <p className="font-body text-ink/80 text-sm mb-4">{active.summary}</p>
