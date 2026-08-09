@@ -59,7 +59,7 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <nav className="md:hidden flex flex-col gap-1 px-4 pt-3 pb-2 bg-ink/98">
+        <nav className="md:hidden flex flex-col gap-1 px-4 pt-3 pb-2 bg-ink/95">
           {TABS.map((tab) => (
             <a
               key={tab.href}
