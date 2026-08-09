@@ -189,7 +189,8 @@ function buildScene(canvas) {
     );
     outline.scale.setScalar(1.02);
     car.add(outline, body);
-    const box = new THREE.Box3().setFromObject(body);
+    geo.computeBoundingBox();
+    const box = geo.boundingBox;
     for (const sx of [-1, 1]) {
       const t = new THREE.Sprite(
         new THREE.SpriteMaterial({ map: tailTex, blending: THREE.AdditiveBlending, depthWrite: false })
