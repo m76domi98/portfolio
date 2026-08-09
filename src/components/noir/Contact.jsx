@@ -47,7 +47,8 @@ export default function Contact() {
           <p className="font-body text-vellum/50 text-xs text-center md:text-left">
             MICHELLE DOMINIC'S CASE FILE // ALL DIGITAL EVIDENCE SECURED
           </p>
-          <p className="font-scribble text-crimson text-xs -rotate-2">© 2026</p>
+<p className="font-scribble text-crimson text-xs -rotate-2">© 2026</p> 
+<p className="font-scribble text-crimson text-xs -rotate-2">Privacy Notice: This is a personal website that does not directly collect, track, or store any personal data. It is hosted on Vercel, which automatically processes standard server logs (such as IP addresses) solely to ensure site security and performance. External links to third-party platforms (like LinkedIn) are subject to their own privacy policies. </p>         
         </div>
       </div>
     </footer>
