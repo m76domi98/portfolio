@@ -19,12 +19,16 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-ink/95 backdrop-blur border-b border-crimson/40 py-2' : 'py-4'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between">
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'py-2' : 'py-4'}`}>
+      {/* background lives on its own layer, separate from the fixed+interactive
+          box above: iOS/Chrome mobile can desync touch hit-testing from paint
+          when backdrop-filter sits directly on a position:fixed element */}
+      <div
+        className={`absolute inset-0 -z-10 bg-ink/95 backdrop-blur border-b border-crimson/40 transition-opacity duration-300 ${
+          scrolled ? 'opacity-100' : 'opacity-0'
+        }`}
+      />
+      <div className="relative max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between">
         <a href="#dossier" className="flex items-center gap-2 group">
           <span className="font-heading text-vellum text-lg md:text-xl tracking-wider group-hover:text-cyan-signal transition-colors">
             M.DOMINIC
