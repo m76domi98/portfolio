@@ -5,6 +5,7 @@ import About from '@/components/noir/About';
 import Projects from '@/components/noir/Projects';
 import Experience from '@/components/noir/Experience';
 import Skills from '@/components/noir/Skills';
+import SkillsDrive from '@/components/noir/SkillsDrive';
 import Contact from '@/components/noir/Contact';
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <About />
       <Projects />
       <Experience />
+      <SkillsDrive />
       <Skills />
       <Contact />
     </div>
