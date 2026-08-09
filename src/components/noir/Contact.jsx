@@ -1,5 +1,5 @@
-import React from 'react';
-import { Mail, Github, Linkedin } from 'lucide-react';
+import React, { useState } from 'react';
+import { Mail, Github, Linkedin, X } from 'lucide-react';
 
 const CHANNELS = [
   { icon: Mail, label: 'EMAIL', value: 'mmdomini@uwaterloo.ca', href: 'mailto:mmdomini@uwaterloo.ca' },
@@ -8,6 +8,8 @@ const CHANNELS = [
 ];
 
 export default function Contact() {
+  const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
+
   return (
     <footer id="wiretap" className="relative bg-ink overflow-hidden py-16 md:py-20">
       <div className="absolute inset-0 ink-grain opacity-25" />
@@ -43,14 +45,40 @@ export default function Contact() {
           ))}
         </div>
 
+        {/* Footer Layout Fixed */}
         <div className="mt-12 pt-6 border-t border-vellum/15 flex flex-col md:flex-row items-center justify-between gap-3">
           <p className="font-body text-vellum/50 text-xs text-center md:text-left">
             MICHELLE DOMINIC'S CASE FILE // ALL DIGITAL EVIDENCE SECURED
           </p>
-<p className="font-scribble text-crimson text-xs -rotate-2">© 2026</p> 
-<p className="font-scribble text-crimson text-xs -rotate-2">Privacy Notice: This is a personal website that does not directly collect, track, or store any personal data. It is hosted on Vercel, which automatically processes standard server logs (such as IP addresses) solely to ensure site security and performance. External links to third-party platforms (like LinkedIn) are subject to their own privacy policies. </p>         
+          <div className="flex items-center gap-4">
+            <button 
+              onClick={() => setIsPrivacyOpen(true)}
+              className="font-body text-cyan-signal/60 hover:text-cyan-signal text-xs tracking-wider transition-colors cursor-pointer"
+            >
+              [ PRIVACY NOTICE ]
+            </button>
+            <p className="font-scribble text-crimson text-sm -rotate-2 font-bold select-none">© 2026</p> 
+          </div>
         </div>
       </div>
+
+      {/* Styled Theme Modal */}
+      {isPrivacyOpen && (
+        <div className="fixed inset-0 bg-ink/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-ink border border-cyan-signal/40 p-6 max-w-md w-full relative shadow-lg shadow-cyan-signal/10">
+            <button 
+              onClick={() => setIsPrivacyOpen(false)}
+              className="absolute top-4 right-4 text-vellum/50 hover:text-cyan-signal transition-colors"
+            >
+              <X className="w-4 h-4" />
+            </button>
+            <div className="font-heading text-cyan-signal text-xs tracking-[0.2em] mb-3">DECRYPTED // PRIVACY_POLICY.TXT</div>
+            <p className="font-body text-vellum/80 text-xs leading-relaxed">
+              This is a personal website that does not directly collect, track, or store any personal data. It is hosted on Vercel, which automatically processes standard server logs (such as IP addresses) solely to ensure site security and performance. External links to third-party platforms (like LinkedIn) are subject to their own privacy policies.
+            </p>
+          </div>
+        </div>
+      )}
     </footer>
   );
 }
