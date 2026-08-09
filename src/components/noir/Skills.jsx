@@ -1,7 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Power, Cpu, CircuitBoard, Code2, Wrench, Layers, Award } from 'lucide-react';
 
-const SKILLS = [
+// True where the SkillsDrive pursuit renders; the schematic then stands down.
+export const driveEnabled = () =>
+  typeof window !== 'undefined' &&
+  window.matchMedia('(min-width: 1024px)').matches &&
+  !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+export const SKILLS = [
   { group: 'LANGUAGES', icon: Code2, items: [
     { name: 'Python', level: 92, via: 'hand.shake, Stubbe’s, FAST' },
     { name: 'C / C++', level: 90, via: 'SenseSecure, coursework' },
@@ -66,6 +72,7 @@ const CUM = PTS.reduce((acc, [x, y], i) => {
 }, []);
 const NODE_DIST = NODE_PT.map((i) => CUM[i]);
 
+/** @param {number} d */
 function pointAt(d) {
   for (let i = 1; i < PTS.length; i++) {
     if (d <= CUM[i]) {
@@ -82,10 +89,11 @@ function pointAt(d) {
 const TRACE_D = 'M' + PTS.map(([x, y]) => `${x} ${y}`).join(' L');
 
 export default function Skills() {
+  const [hidden] = useState(driveEnabled);
   const [powered, setPowered] = useState(false);
   const [active, setActive] = useState(0);
   const sectionRef = useRef(null);
-  const electronRef = useRef(null);
+  const electronRef = useRef(/** @type {SVGGElement | null} */ (null));
   const distRef = useRef(0);
   const rafRef = useRef(0);
 
@@ -111,7 +119,7 @@ export default function Skills() {
     const to = NODE_DIST[active];
     const dur = Math.max(400, Math.abs(to - from) * 2.2); // ~ms, speed scales with distance
     const t0 = performance.now();
-    const step = (now) => {
+    const step = (/** @type {number} */ now) => {
       const t = Math.min(1, (now - t0) / dur);
       const e = t < 0.5 ? 2 * t * t : 1 - (-2 * t + 2) ** 2 / 2; // ease in-out
       const d = from + (to - from) * e;
@@ -123,6 +131,8 @@ export default function Skills() {
     rafRef.current = requestAnimationFrame(step);
     return () => cancelAnimationFrame(rafRef.current);
   }, [active, powered]);
+
+  if (hidden) return null; // desktop shows the SkillsDrive pursuit instead
 
   const wire = powered ? '#C41E3A' : 'rgba(228,220,211,0.25)';
   const col = SKILLS[active];
