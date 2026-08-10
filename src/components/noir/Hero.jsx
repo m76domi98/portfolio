@@ -65,12 +65,14 @@ export default function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 pt-20 md:pt-24 pb-16 text-center">
         {/* Name + role, one line */}
         <h1 className="font-heading text-vellum tracking-tight leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
-          MICHELLE DOMINIC // DIGITAL INVESTIGATOR
+          MICHELLE DOMINIC
         </h1>
         <p className="mt-3 font-heading text-vellum/80 text-base md:text-xl tracking-[0.15em]">
-          COMPUTER ENGINEERING // IN PROGRESS
+          COMPUTER ENGINEERING - DIGITAL INVESTIGATOR
         </p>
-
+        <p className="mt-3 font-heading text-vellum/80 text-base md:text-xl tracking-[0.15em]">
+          SOFTWARE • EMBEDDED • ML • PRODUCT
+        </p>
         {/* Light & desk — lamp cone sways over the desk, revealing the color desk only where it lands */}
         <div className="relative mx-auto my-4 md:my-6 w-72 sm:w-96 md:w-[28rem] pointer-events-none">
           <div className="w-0.5 h-6 bg-vellum/70 mx-auto" />

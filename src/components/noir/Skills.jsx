@@ -9,16 +9,16 @@ export const driveEnabled = () =>
 
 export const SKILLS = [
   { group: 'LANGUAGES', icon: Code2, items: [
-    { name: 'Python', level: 92, via: 'hand.shake, Stubbe’s, FAST' },
-    { name: 'C / C++', level: 90, via: 'SenseSecure, coursework' },
-    { name: 'SQL', level: 78, via: 'Stubbe’s' },
-    { name: 'C#', level: 72, via: 'Stubbe’s' },
-    { name: 'Java', level: 70, via: 'coursework' },
-    { name: 'VHDL', level: 68, via: 'HVAC controller' },
-    { name: 'SystemVerilog', level: 65, via: 'UWASIC' },
-    { name: 'Assembly', level: 55, via: 'coursework' },
-    { name: 'JavaScript / TypeScript', level: 55, via: 'Summus, MeshGit' },
-    { name: 'HTML / CSS', level: 55, via: 'Summus' },
+    { name: 'Python', level: 92, via: 'hand.shake, Stubbe’s, FAST', subgroup: 'Software' },
+    { name: 'C / C++', level: 90, via: 'SenseSecure, coursework', subgroup: 'Software' },
+    { name: 'Java', level: 70, via: 'coursework', subgroup: 'Software' },
+    { name: 'JavaScript / TypeScript', level: 55, via: 'Summus, MeshGit', subgroup: 'Software' },
+    { name: 'C#', level: 72, via: 'Stubbe’s', subgroup: 'Software' },
+    { name: 'HTML / CSS', level: 55, via: 'Summus', subgroup: 'Software' },
+    { name: 'SystemVerilog', level: 65, via: 'UWASIC', subgroup: 'Hardware' },
+    { name: 'VHDL', level: 68, via: 'HVAC controller', subgroup: 'Hardware' },
+    { name: 'Assembly', level: 55, via: 'coursework', subgroup: 'Hardware' },
+    { name: 'SQL', level: 78, via: 'Stubbe’s', subgroup: 'Data' },
   ]},
   { group: 'FRAMEWORKS', icon: Layers, items: [
     { name: 'FastAPI / Flask', level: 85, via: 'Summus, ASL, Credit+' },
@@ -29,7 +29,7 @@ export const SKILLS = [
     { name: '.NET', level: 62, via: 'Stubbe’s' },
     { name: 'Vue.js', level: 60, via: 'Stubbe’s' },
   ]},
-  { group: 'EMBEDDED', icon: Cpu, items: [
+  { group: 'EMBEDDED / SYSTEMS', icon: Cpu, items: [
     { name: 'Arduino', level: 90, via: 'personal builds' },
     { name: 'STM32', level: 82, via: 'SenseSecure' },
     { name: '3D Modeling / CAD', level: 80, via: 'FAST, MeshGit' },
@@ -291,8 +291,8 @@ export default function Skills() {
               </span>
             </div>
 
-            <div className="space-y-4">
-              {col.items.map((s, idx) => (
+            {(() => {
+              const item = (s, idx) => (
                 <div key={s.name} className="group cursor-crosshair">
                   <div className="flex items-baseline gap-2 mb-1">
                     <span className="font-body text-vellum/85 group-hover:text-vellum text-xs transition-colors">{s.name}</span>
@@ -315,8 +315,20 @@ export default function Skills() {
                     />
                   </div>
                 </div>
-              ))}
-            </div>
+              );
+              const subgroups = [...new Set(col.items.map((s) => s.subgroup).filter(Boolean))];
+              if (subgroups.length === 0) {
+                return <div className="space-y-4">{col.items.map(item)}</div>;
+              }
+              return subgroups.map((sg) => (
+                <div key={sg} className="mb-5 last:mb-0">
+                  <div className="font-heading text-crimson text-[10px] tracking-[0.25em] mb-3">{sg.toUpperCase()}</div>
+                  <div className="space-y-4">
+                    {col.items.filter((s) => s.subgroup === sg).map(item)}
+                  </div>
+                </div>
+              ));
+            })()}
           </div>
         </div>
 
