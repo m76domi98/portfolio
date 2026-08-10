@@ -27,7 +27,7 @@ const LANES = [
   [0, 0],
   ...TAGS.flatMap((t) => {
     const lane = t.side === 'L' ? 2.2 : -2.2;
-    return [[t.at + 0.02, lane], [t.at + TAG_SPAN - 0.02, lane]];
+    return [[t.at + 0.045, lane], [t.at + TAG_SPAN - 0.045, lane]];
   }),
   [TAGS[TAGS.length - 1].at + TAG_SPAN + 0.04, 0],
   [1, 0],
@@ -258,7 +258,7 @@ export default function SkillsDrive() {
       {
         const x = laneX(p);
         const dxdp = (laneX(p + 0.01) - x) / 0.01; // lateral vs ~260 units/p forward
-        const yaw = -Math.atan2(dxdp, 240) * 2.5; // exaggerated drift angle
+        const yaw = -Math.atan2(dxdp, 240) * 1.3; // exaggerated drift angle
         const travel = p * 260;
         roadTex.offset.y = travel / 10;
         lights.position.z = travel % 16;
