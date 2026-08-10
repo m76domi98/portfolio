@@ -3,11 +3,9 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { SKILLS, CERTS, driveEnabled } from './Skills';
 
-// Scroll-driven pursuit: two CSS door panels (the inked door art from
-// Skills.mp4 frame 0) swing open onto a three.js chase where the car drifts
-// lane to lane and skills fly in on the opposite roadside.
-const DOOR_END = 0.16; // doors fully open
-const DOOR_GONE = 0.2; // door layer faded out after the push-through
+// Scroll-driven pursuit: you're behind the wheel of the chase car from the
+// first frame (windshield frame + hood in view), no door reveal — the fled
+// car drifts lane to lane ahead and skills fly in on the opposite roadside.
 const END_FADE = 0.94;
 
 // one stop per SKILLS group, plus a final stop for certifications
@@ -26,7 +24,7 @@ const TAGS = STOPS.map((s, i) => ({
 
 // car lane keyframes: holds the lane opposite each stop, swerves between them
 const LANES = [
-  [DOOR_END, 0],
+  [0, 0],
   ...TAGS.flatMap((t) => {
     const lane = t.side === 'L' ? 2.2 : -2.2;
     return [[t.at + 0.02, lane], [t.at + TAG_SPAN - 0.02, lane]];
@@ -113,7 +111,7 @@ function buildScene(canvas) {
   scene.background = new THREE.Color(0x211f1c);
   scene.fog = new THREE.Fog(0x211f1c, 12, 95);
   const camera = new THREE.PerspectiveCamera(55, 1, 0.1, 300);
-  camera.position.set(0, 2.5, 0);
+  camera.position.set(0, 1.6, 0);
 
   // no lights: the car is an inked silhouette, everything else is MeshBasic
 
@@ -220,9 +218,6 @@ function buildScene(canvas) {
 export default function SkillsDrive() {
   const [enabled] = useState(driveEnabled);
   const wrapRef = useRef(null);
-  const doorRef = useRef(null);
-  const doorLRef = useRef(null);
-  const doorRRef = useRef(null);
   const canvasRef = useRef(null);
   const hintRef = useRef(null);
   const stampRef = useRef(null);
@@ -257,24 +252,14 @@ export default function SkillsDrive() {
       const scrubbing = prevP !== -1;
       prevP = p;
 
-      // door panels swing open, then the whole frame pushes past the camera
-      const doorP = smooth(Math.min(1, p / DOOR_END));
-      if (doorRef.current) {
-        doorLRef.current.style.transform = `rotateY(${-doorP * 102}deg)`;
-        doorRRef.current.style.transform = `rotateY(${doorP * 102}deg)`;
-        doorRef.current.style.transform = `scale(${1 + doorP * 0.45})`;
-        doorRef.current.style.opacity = p < DOOR_END ? 1 : Math.max(0, 1 - (p - DOOR_END) / (DOOR_GONE - DOOR_END));
-        doorRef.current.style.visibility = p >= DOOR_GONE ? 'hidden' : 'visible';
-      }
       if (hintRef.current) hintRef.current.style.opacity = p < 0.03 && scrubbing === false ? 1 : Math.max(0, 1 - p / 0.05);
 
-      // 3d stage: always live behind the doors
       canvasRef.current.style.opacity = 1;
       {
         const x = laneX(p);
         const dxdp = (laneX(p + 0.01) - x) / 0.01; // lateral vs ~260 units/p forward
         const yaw = -Math.atan2(dxdp, 240) * 2.5; // exaggerated drift angle
-        const travel = Math.max(0, p - DOOR_END) * 260;
+        const travel = p * 260;
         roadTex.offset.y = travel / 10;
         lights.position.z = travel % 16;
         car.position.x = x;
@@ -283,8 +268,9 @@ export default function SkillsDrive() {
         car.rotation.z = -yaw * 0.2;
         const flare = 0.5 + Math.min(0.5, Math.abs(yaw) * 1.4);
         for (const t of tails) t.scale.setScalar(flare);
-        camera.position.x = x * 0.3;
-        camera.lookAt(x * 0.6, 1, -13);
+        // chase car (us) tracks the fled car's lane a beat late, like we're steering to follow
+        camera.position.x = x * 0.55;
+        camera.lookAt(x * 0.75, 1, -13);
         renderer.render(scene, camera);
       }
 
@@ -331,22 +317,22 @@ export default function SkillsDrive() {
     <section ref={wrapRef} id="schematic" className="relative" style={{ height: '500vh' }}>
       <div className="sticky top-0 h-screen overflow-hidden bg-ink">
         <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" style={{ opacity: 0 }} />
-        <div ref={doorRef} className="absolute inset-0" style={{ perspective: '1100px' }}>
-          {[doorLRef, doorRRef].map((ref, i) => (
-            <div
-              key={i}
-              ref={ref}
-              className="absolute inset-y-0 w-[50.1%]"
-              style={{
-                [i === 0 ? 'left' : 'right']: 0,
-                transformOrigin: i === 0 ? 'left center' : 'right center',
-                backfaceVisibility: 'hidden',
-                backgroundImage: 'url(/door.jpg)',
-                backgroundSize: '200.4% 100%',
-                backgroundPosition: i === 0 ? 'left center' : 'right center',
-              }}
-            />
-          ))}
+
+        {/* windshield frame + hood: sells "we're the ones chasing" */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div
+            className="absolute inset-y-0 left-0 w-[7vw] bg-[#050506]"
+            style={{ clipPath: 'polygon(0 0, 100% 0, 42% 100%, 0 100%)' }}
+          />
+          <div
+            className="absolute inset-y-0 right-0 w-[7vw] bg-[#050506]"
+            style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 58% 100%)' }}
+          />
+          <div
+            className="absolute inset-x-0 bottom-0 h-[15vh] bg-[#050506]"
+            style={{ clipPath: 'polygon(0% 100%, 0% 45%, 50% 5%, 100% 45%, 100% 100%)' }}
+          />
+          <div className="absolute left-1/2 bottom-0 h-[13vh] w-px -translate-x-1/2 bg-vellum/10" />
         </div>
 
         {TAGS.map((tag, i) => (
@@ -384,7 +370,7 @@ export default function SkillsDrive() {
           ref={hintRef}
           className="absolute bottom-10 inset-x-0 text-center font-heading text-vellum/80 text-sm tracking-[0.4em] animate-bounce"
         >
-          SCROLL TO OPEN THE DOOR
+          SCROLL TO GIVE CHASE
         </div>
 
         <div
