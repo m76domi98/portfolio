@@ -119,7 +119,8 @@ export default function Hero() {
         {/* CTAs */}
         <div className="flex flex-wrap items-center justify-center gap-4">
           <a
-            href="#evidence"
+            href="/Michelle_Dominic_Range.pdf"
+            download
             className="group relative inline-flex items-center gap-2 bg-cyan-signal text-ink font-heading text-sm tracking-wider px-6 py-3 clip-corner hover:bg-vellum transition-colors"
           >
             OPEN CASE FILE
@@ -143,14 +144,6 @@ export default function Hero() {
           ))}
         </div>
       </div>
-
-      {/* Case file tab CTA */}
-      <a
-        href="#dossier"
-        className="absolute bottom-0 right-4 md:right-12 z-20 bg-crimson text-vellum font-heading text-xs tracking-widest px-5 py-2 -rotate-3 shadow-lg hover:rotate-0 transition-transform"
-      >
-        ▼ CASE FILE
-      </a>
     </section>
   );
 }
