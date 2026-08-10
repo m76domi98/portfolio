@@ -4,7 +4,7 @@ const TABS = [
   { label: 'DOSSIER', href: '#dossier' },
   { label: 'EVIDENCE', href: '#evidence' },
   { label: 'CASE LOG', href: '#experience' },
-  { label: 'SCHEMATIC', href: '#schematic' },
+  { label: 'PURSUIT', mobileLabel: 'SCHEMATIC', href: '#schematic' },
   { label: 'WIRETAP', href: '#wiretap' },
 ];
 
@@ -71,7 +71,7 @@ export default function Navbar() {
               onClick={() => setOpen(false)}
               className="font-heading text-sm tracking-wider text-vellum px-3 py-2 border-l-2 border-crimson hover:border-cyan-signal hover:text-cyan-signal"
             >
-              {tab.label}
+              {tab.mobileLabel ?? tab.label}
             </a>
           ))}
         </nav>

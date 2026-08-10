@@ -52,7 +52,7 @@ export const SKILLS = [
   ]},
 ];
 
-const CERTS = ['React JS — Scalar Topics', 'SQL — HackerRank'];
+export const CERTS = ['React JS — Scalar Topics', 'SQL — HackerRank'];
 
 // Motherboard trace: boustrophedon snake, right-angle polyline through 4 station pads.
 const PTS = [

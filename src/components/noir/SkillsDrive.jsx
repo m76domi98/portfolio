@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { SKILLS, driveEnabled } from './Skills';
+import { SKILLS, CERTS, driveEnabled } from './Skills';
 
 // Scroll-driven pursuit: two CSS door panels (the inked door art from
 // Skills.mp4 frame 0) swing open onto a three.js chase where the car drifts
@@ -10,19 +10,29 @@ const DOOR_END = 0.16; // doors fully open
 const DOOR_GONE = 0.2; // door layer faded out after the push-through
 const END_FADE = 0.94;
 
-// four stops, one per SKILLS group — each shows the group's full roster
-const TAGS = SKILLS.map((g, i) => ({
-  at: 0.21 + i * 0.18,
-  side: i % 2 ? 'R' : 'L',
-  group: g.group,
-  items: g.items.map((s) => s.name),
-}));
+// one stop per SKILLS group, plus a final stop for certifications
 const TAG_SPAN = 0.15;
+const STOP_START = 0.21;
+const STOP_END = 0.9 - TAG_SPAN; // last stop fades out exactly as the end stamp fades in
+const STOPS = [
+  ...SKILLS.map((g) => ({ group: g.group, items: g.items.map((s) => s.name) })),
+  { group: 'CERTIFICATIONS', items: CERTS },
+];
+const TAGS = STOPS.map((s, i) => ({
+  ...s,
+  at: STOP_START + (i * (STOP_END - STOP_START)) / (STOPS.length - 1),
+  side: i % 2 ? 'R' : 'L',
+}));
 
 // car lane keyframes: holds the lane opposite each stop, swerves between them
 const LANES = [
-  [0.16, 0], [0.23, 2.2], [0.34, 2.2], [0.41, -2.2], [0.52, -2.2],
-  [0.59, 2.2], [0.7, 2.2], [0.77, -2.2], [0.87, -2.2], [0.94, 0], [1.0, 0],
+  [DOOR_END, 0],
+  ...TAGS.flatMap((t) => {
+    const lane = t.side === 'L' ? 2.2 : -2.2;
+    return [[t.at + 0.02, lane], [t.at + TAG_SPAN - 0.02, lane]];
+  }),
+  [TAGS[TAGS.length - 1].at + TAG_SPAN + 0.04, 0],
+  [1, 0],
 ];
 
 const smooth = (t) => t * t * (3 - 2 * t);
