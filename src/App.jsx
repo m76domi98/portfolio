@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PageNotFound from './lib/PageNotFound';
 import ScrollToTop from './components/ScrollToTop';
 import Home from '@/pages/Home';
+import { Analytics } from '@vercel/analytics/react';
 // Add page imports here
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         </Routes>
       </Router>
       <Toaster />
+      <Analytics />
     </QueryClientProvider>
   )
 }
