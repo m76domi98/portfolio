@@ -74,7 +74,7 @@ export default function Contact() {
             </button>
             <div className="font-heading text-cyan-signal text-xs tracking-[0.2em] mb-3">DECRYPTED // PRIVACY_POLICY.TXT</div>
             <p className="font-body text-vellum/80 text-xs leading-relaxed">
-              This is a personal website that does not directly collect, track, or store any personal data. It is hosted on Vercel, which automatically processes standard server logs (such as IP addresses) solely to ensure site security and performance. External links to third-party platforms (like LinkedIn) are subject to their own privacy policies.
+              This is a personal website that does not directly collect, track, or store any personal data. It is hosted on Vercel, which automatically processes standard server logs (such as IP addresses) solely to ensure site security and performance. It also uses Vercel Analytics, a cookieless, privacy-friendly tool that reports aggregated page-view metrics (e.g. page path, referrer, device type) — it does not use cookies or track individuals across sites. External links to third-party platforms (like LinkedIn) are subject to their own privacy policies.
             </p>
           </div>
         </div>
