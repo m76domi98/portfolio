@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Power, Cpu, CircuitBoard, Code2, Wrench, Layers, Award } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { Power, Cpu, CircuitBoard, Code2, Wrench, Layers, Award, Brain, Target } from 'lucide-react';
 
 // True where the SkillsDrive pursuit renders; the schematic then stands down.
 export const driveEnabled = () =>
@@ -7,69 +7,134 @@ export const driveEnabled = () =>
   window.matchMedia('(min-width: 1024px)').matches &&
   !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+/** @typedef {{ name: string, level: number, via: string, subgroup?: string }} SkillItem */
+
+/** @type {{ group: string, icon: any, items: SkillItem[] }[]} */
 export const SKILLS = [
-  { group: 'LANGUAGES', icon: Code2, items: [
-    { name: 'Python', level: 92, via: 'hand.shake, Stubbe’s, FAST', subgroup: 'Software' },
-    { name: 'C / C++', level: 90, via: 'SenseSecure, coursework', subgroup: 'Software' },
-    { name: 'Java', level: 70, via: 'coursework', subgroup: 'Software' },
-    { name: 'JavaScript / TypeScript', level: 55, via: 'Summus, MeshGit', subgroup: 'Software' },
-    { name: 'C#', level: 72, via: 'Stubbe’s', subgroup: 'Software' },
-    { name: 'HTML / CSS', level: 55, via: 'Summus', subgroup: 'Software' },
-    { name: 'SystemVerilog', level: 65, via: 'UWASIC', subgroup: 'Hardware' },
-    { name: 'VHDL', level: 68, via: 'HVAC controller', subgroup: 'Hardware' },
-    { name: 'Assembly', level: 55, via: 'coursework', subgroup: 'Hardware' },
-    { name: 'SQL', level: 78, via: 'Stubbe’s', subgroup: 'Data' },
-  ]},
-  { group: 'FRAMEWORKS', icon: Layers, items: [
-    { name: 'FastAPI / Flask', level: 85, via: 'Summus, ASL, Credit+' },
-    { name: 'TensorFlow', level: 75, via: 'Stubbe’s, ASL' },
-    { name: 'Node.js', level: 70, via: 'MeshGit, ElevateHER' },
-    { name: 'Hugging Face', level: 70, via: 'Summus' },
-    { name: 'React / React Native', level: 65, via: 'MeshGit, ElevateHER' },
-    { name: '.NET', level: 62, via: 'Stubbe’s' },
-    { name: 'Vue.js', level: 60, via: 'Stubbe’s' },
-  ]},
-  { group: 'EMBEDDED / SYSTEMS', icon: Cpu, items: [
-    { name: 'Arduino', level: 90, via: 'personal builds' },
-    { name: 'STM32', level: 82, via: 'SenseSecure' },
-    { name: '3D Modeling / CAD', level: 80, via: 'FAST, MeshGit' },
-    { name: 'PWM / UART', level: 80, via: 'hand.shake, SenseSecure' },
-    { name: 'FPGA Design', level: 75, via: 'UWASIC, HVAC controller' },
-    { name: 'KiCad', level: 75, via: 'SenseSecure' },
-    { name: 'ESP32', level: 70, via: 'hand.shake' },
-    { name: 'QNX', level: 65, via: 'hand.shake' },
-    { name: 'Raspberry Pi', level: 60, via: 'hand.shake' },
-    { name: 'RISC-V Architecture', level: 58, via: 'coursework' },
-  ]},
-  { group: 'TOOLS', icon: Wrench, items: [
-    { name: 'Git', level: 88, via: 'every case on file' },
-    { name: 'Docker', level: 80, via: 'MeshGit, ASL' },
-    { name: 'REST APIs / Postman', level: 82, via: 'Summus' },
-    { name: 'MongoDB / Supabase', level: 72, via: 'ElevateHER' },
-    { name: 'Azure App Insights', level: 75, via: 'SAP' },
-    { name: 'Power BI', level: 68, via: 'Stubbe’s' },
-    { name: 'Quartus / ModelSim', level: 72, via: 'HVAC controller' },
-  ]},
+  {
+    group: 'LANGUAGES',
+    icon: Code2,
+    items: [
+      { name: 'Python', level: 92, via: 'hand.shake, Stubbe’s, FAST', subgroup: 'Software' },
+      { name: 'C / C++', level: 90, via: 'SenseSecure, coursework', subgroup: 'Software' },
+      { name: 'Java', level: 70, via: 'coursework', subgroup: 'Software' },
+      { name: 'JavaScript / TypeScript', level: 55, via: 'Summus, MeshGit', subgroup: 'Software' },
+      { name: 'C#', level: 72, via: 'Stubbe’s', subgroup: 'Software' },
+      { name: 'HTML / CSS', level: 55, via: 'Summus', subgroup: 'Software' },
+      { name: 'SystemVerilog', level: 65, via: 'UWASIC', subgroup: 'Hardware / RTL' },
+      { name: 'VHDL', level: 68, via: 'HVAC controller', subgroup: 'Hardware / RTL' },
+      { name: 'Assembly', level: 55, via: 'coursework', subgroup: 'Hardware / RTL' },
+      { name: 'SQL', level: 78, via: 'Stubbe’s, SAP', subgroup: 'Data' },
+    ],
+  },
+
+  {
+    group: 'FRAMEWORKS',
+    icon: Layers,
+    items: [
+      { name: 'FastAPI / Flask', level: 85, via: 'Summus, ASL, Credit+' },
+      { name: 'TensorFlow', level: 75, via: 'Stubbe’s, ASL' },
+      { name: 'Node.js', level: 70, via: 'MeshGit, ElevateHER' },
+      { name: 'Hugging Face', level: 70, via: 'Summus' },
+      { name: 'React / React Native', level: 65, via: 'MeshGit, ElevateHER' },
+      { name: '.NET', level: 62, via: 'Stubbe’s' },
+      { name: 'Vue.js', level: 60, via: 'Stubbe’s' },
+    ],
+  },
+
+  {
+    group: 'EMBEDDED / SYSTEMS',
+    icon: Cpu,
+    items: [
+      { name: 'Arduino', level: 90, via: 'personal builds' },
+      { name: 'STM32', level: 82, via: 'SenseSecure' },
+      { name: '3D Modeling / CAD', level: 80, via: 'FAST, MeshGit' },
+      { name: 'PWM / UART', level: 80, via: 'hand.shake, SenseSecure' },
+      { name: 'FPGA Design', level: 75, via: 'UWASIC, HVAC controller' },
+      { name: 'RTL Design / Verification', level: 72, via: 'UWASIC' },
+      { name: 'KiCad', level: 75, via: 'SenseSecure' },
+      { name: 'ESP32', level: 70, via: 'hand.shake' },
+      { name: 'QNX', level: 65, via: 'hand.shake' },
+      { name: 'Raspberry Pi', level: 60, via: 'hand.shake' },
+      { name: 'RISC-V Architecture', level: 58, via: 'coursework' },
+    ],
+  },
+
+  {
+    group: 'ML / DATA',
+    icon: Brain,
+    items: [
+      { name: 'TensorFlow', level: 75, via: 'Stubbe’s, ASL' },
+      { name: 'Computer Vision', level: 72, via: 'ASL, hand.shake' },
+      { name: 'Azure OpenAI / Embeddings', level: 70, via: 'SAP' },
+      { name: 'Hugging Face', level: 70, via: 'Summus' },
+      { name: 'SQL', level: 78, via: 'Stubbe’s, SAP' },
+      { name: 'Power BI', level: 68, via: 'SAP, Stubbe’s' },
+      { name: 'Application Insights', level: 75, via: 'SAP' },
+    ],
+  },
+
+  {
+    group: 'TOOLS',
+    icon: Wrench,
+    items: [
+      { name: 'Git / GitHub', level: 88, via: 'every case on file' },
+      { name: 'Docker', level: 80, via: 'MeshGit, ASL' },
+      { name: 'REST APIs / Postman', level: 82, via: 'Summus' },
+      { name: 'MongoDB / Supabase', level: 72, via: 'ElevateHER' },
+      { name: 'Quartus / ModelSim', level: 72, via: 'HVAC controller' },
+      { name: 'Linux', level: 75, via: 'SAP, QNX, embedded projects' },
+    ],
+  },
+
+  {
+    group: 'PRODUCT',
+    icon: Target,
+    items: [
+      { name: 'Jira', level: 85, via: 'SAP' },
+      { name: 'Confluence', level: 82, via: 'SAP' },
+      { name: 'Figma', level: 78, via: 'SAP, product work' },
+      { name: 'MVP Definition', level: 85, via: 'SAP HANA Cloud' },
+      { name: 'Requirements / Prioritization', level: 85, via: 'SAP HANA Cloud' },
+      { name: 'Customer Validation', level: 80, via: 'SAP HANA Cloud' },
+      { name: 'Competitive Analysis', level: 78, via: 'SAP' },
+    ],
+  },
 ];
 
 export const CERTS = ['React JS — Scalar Topics', 'SQL — HackerRank'];
 
-// Motherboard trace: boustrophedon snake, right-angle polyline through 4 station pads.
-const PTS = [
-  [30, 70], [170, 70],                  // → node 0 (row 1, L→R)
-  [420, 70], [420, 190], [240, 190],    // → node 1 (row 2, R→L, op-amp)
-  [80, 190], [80, 310], [280, 310],     // → node 2 (row 3, L→R, resistor)
-  [420, 310], [420, 430], [240, 430],   // → node 3 (row 4, R→L, capacitor)
-  [80, 430], [80, 475],                 // → ground
-];
-const NODE_PT = [1, 4, 7, 10]; // indices in PTS where the skill stations sit
+// Motherboard trace: boustrophedon snake, right-angle polyline through one
+// station pad per SKILLS group. Row count follows SKILLS.length so adding or
+// removing a category doesn't need the layout hand-redrawn.
+const ROW_Y = SKILLS.map((_, i) => 70 + i * 120);
+const LEFT_X = 80, RIGHT_X = 420, START_X = 30, NODE_FRAC = 0.42;
+const GROUND_X = ROW_Y.length % 2 === 0 ? LEFT_X : RIGHT_X;
+const GROUND_Y = ROW_Y[ROW_Y.length - 1] + 45;
+const VIEWBOX_H = GROUND_Y + 25;
+
+/** @type {[number, number][]} */
+const PTS = [];
+/** @type {number[]} */
+const NODE_PT = [];
+ROW_Y.forEach((y, i) => {
+  const ltr = i % 2 === 0;
+  const entryX = i === 0 ? START_X : ltr ? LEFT_X : RIGHT_X;
+  const exitX = ltr ? RIGHT_X : LEFT_X;
+  if (i === 0) PTS.push([entryX, y]);
+  PTS.push([entryX + (exitX - entryX) * NODE_FRAC, y]);
+  NODE_PT.push(PTS.length - 1);
+  PTS.push([exitX, y]);
+  if (i < ROW_Y.length - 1) PTS.push([exitX, ROW_Y[i + 1]]); // drop to next row
+});
+PTS.push([GROUND_X, GROUND_Y]);
 
 const CUM = PTS.reduce((acc, [x, y], i) => {
   if (i === 0) return [0];
   const [px, py] = PTS[i - 1];
   acc.push(acc[i - 1] + Math.abs(x - px) + Math.abs(y - py)); // axis-aligned segments
   return acc;
-}, []);
+}, /** @type {number[]} */ ([]));
 const NODE_DIST = NODE_PT.map((i) => CUM[i]);
 
 /** @param {number} d */
@@ -176,7 +241,7 @@ export default function Skills() {
         {/* ── Schematic (left) + active station readout (right); stacked on phones ── */}
         <div className="grid lg:grid-cols-2 gap-6 items-stretch">
           <div className={`flex flex-col border-2 transition-colors duration-500 ${powered ? 'border-crimson/60 bg-crimson/[0.04]' : 'border-vellum/20 bg-vellum/[0.02]'}`}>
-            <svg viewBox="0 0 500 500" className="w-full block flex-1" role="img" aria-label="Skill schematic: circuit trace connecting skill groups">
+            <svg viewBox={`0 0 500 ${VIEWBOX_H}`} className="w-full block flex-1" role="img" aria-label="Skill schematic: circuit trace connecting skill groups">
               {/* main trace */}
               <path d={TRACE_D} fill="none" stroke={wire} strokeWidth="2" opacity="0.7" style={{ transition: 'stroke 0.5s' }} />
 
@@ -217,9 +282,9 @@ export default function Skills() {
 
               {/* ground at the end */}
               <g stroke={wire} strokeWidth="2">
-                <line x1="68" y1="475" x2="92" y2="475" />
-                <line x1="73" y1="481" x2="87" y2="481" />
-                <line x1="78" y1="487" x2="82" y2="487" />
+                <line x1={GROUND_X - 12} y1={GROUND_Y} x2={GROUND_X + 12} y2={GROUND_Y} />
+                <line x1={GROUND_X - 7} y1={GROUND_Y + 6} x2={GROUND_X + 7} y2={GROUND_Y + 6} />
+                <line x1={GROUND_X - 2} y1={GROUND_Y + 12} x2={GROUND_X + 2} y2={GROUND_Y + 12} />
               </g>
 
               {/* station pads */}
@@ -292,7 +357,7 @@ export default function Skills() {
             </div>
 
             {(() => {
-              const item = (s, idx) => (
+              const item = (/** @type {SkillItem} */ s, /** @type {number} */ idx) => (
                 <div key={s.name} className="group cursor-crosshair">
                   <div className="flex items-baseline gap-2 mb-1">
                     <span className="font-body text-vellum/85 group-hover:text-vellum text-xs transition-colors">{s.name}</span>
@@ -316,7 +381,7 @@ export default function Skills() {
                   </div>
                 </div>
               );
-              const subgroups = [...new Set(col.items.map((s) => s.subgroup).filter(Boolean))];
+              const subgroups = /** @type {string[]} */ ([...new Set(col.items.map((s) => s.subgroup).filter(Boolean))]);
               if (subgroups.length === 0) {
                 return <div className="space-y-4">{col.items.map(item)}</div>;
               }

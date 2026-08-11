@@ -9,16 +9,22 @@ import { SKILLS, CERTS, driveEnabled } from './Skills';
 const END_FADE = 0.94;
 
 // one stop per SKILLS group, plus a final stop for certifications
-const TAG_SPAN = 0.15;
 const STOP_START = 0.21;
-const STOP_END = 0.9 - TAG_SPAN; // last stop fades out exactly as the end stamp fades in
+const STAMP_AT = 0.9; // last stop fades out exactly as the end stamp fades in
+const TAG_OVERLAP = 1.111; // tag visible-span vs stop spacing: >1 gives adjacent cards a brief crossfade
+const HOLD_FRAC = 0.3; // fraction of each tag's span the car holds steady in-lane; the rest is the swerve
 const STOPS = [
   ...SKILLS.map((g) => ({ group: g.group, items: g.items.map((s) => s.name) })),
   { group: 'CERTIFICATIONS', items: CERTS },
 ];
+// spacing/TAG_SPAN/margin all scale off stop count, so the hold-vs-swerve ratio
+// (and the last-tag/end-stamp sync) stays the same as SKILLS grows or shrinks
+const SPACING = (STAMP_AT - STOP_START) / (STOPS.length - 1 + TAG_OVERLAP);
+const TAG_SPAN = SPACING * TAG_OVERLAP;
+const HOLD_MARGIN = TAG_SPAN * HOLD_FRAC;
 const TAGS = STOPS.map((s, i) => ({
   ...s,
-  at: STOP_START + (i * (STOP_END - STOP_START)) / (STOPS.length - 1),
+  at: STOP_START + i * SPACING,
   side: i % 2 ? 'R' : 'L',
 }));
 
@@ -27,9 +33,9 @@ const LANES = [
   [0, 0],
   ...TAGS.flatMap((t) => {
     const lane = t.side === 'L' ? 2.2 : -2.2;
-    return [[t.at + 0.045, lane], [t.at + TAG_SPAN - 0.045, lane]];
+    return [[t.at + HOLD_MARGIN, lane], [t.at + TAG_SPAN - HOLD_MARGIN, lane]];
   }),
-  [TAGS[TAGS.length - 1].at + TAG_SPAN + 0.04, 0],
+  [TAGS[TAGS.length - 1].at + TAG_SPAN + HOLD_MARGIN, 0],
   [1, 0],
 ];
 
