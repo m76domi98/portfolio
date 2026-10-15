@@ -30,7 +30,7 @@ const PROJECTS = [
     id: 'int4-gemv',
     pin: [25, 40],
     title: 'INT4 GEMV Accelerator',
-    img: '/int4-gemv-pe-waveform.png',
+    img: '/int4-module-map.png',
     github: 'https://github.com/m76domi98/INT4-GEMV-Accelerator',
     icon: Cpu,
     tagline: 'Quantized LLM decode, in RTL.',
