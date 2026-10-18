@@ -2,7 +2,7 @@
 
 This is the source for my personal site, **[michelledominic.dev](https://michelledominic.dev)**.
 
-I'm a big art person and a huge detective-story fan. I've read all the Sherlock Holmes books and watched pretty much every adaptation, and I'm a sucker for the opening title sequences of movies and shows. This site is my love letter to all of that: a noir "digital investigator" theme where my résumé is a case file and scrolling through it feels like the intro to a good mystery.
+I'm a big art person and a huge detective-story fan. I've read all the Sherlock Holmes books and watched pretty much every adaptation, and I'm a sucker for the opening title sequences of movies and shows. This site is inspired by all of that: a noir "digital investigator" theme where my résumé is a case file and scrolling through it feels like the intro to a good mystery.
 
 Under the hood it's a small static Vite + React + Tailwind app with no backend.
 
