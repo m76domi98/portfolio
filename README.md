@@ -1,40 +1,42 @@
 # Portfolio
 
-Michelle Dominic's portfolio site — a noir "digital investigator" theme built as a static Vite + React + Tailwind app. No backend.
+This is the source for my personal site, **[michelledominic.dev](https://michelledominic.dev)**.
 
-## Sections
+I wanted it to feel like a case file instead of a résumé, so the whole thing is a noir "digital investigator" theme. Under the hood it's a small static Vite + React + Tailwind app with no backend.
 
-- **Dossier** — hero + about
-- **Evidence Locker** — projects, styled as pinned case files
-- **Case Log** — work experience
-- **Schematic Lab** — interactive skills board: a circuit schematic (VCC → op-amp → R1 → C1 → ground) where clicking a station routes a glowing electron along the trace and shows that group's skills
-- **Wiretap** — contact
+## What's on the site
 
-## Run Locally
+- **Dossier** — who I am
+- **Evidence Locker** — my projects, pinned up like case files
+- **Case Log** — where I've worked
+- **Schematic Lab** — my skills as a circuit schematic. Click a station and a little electron runs down the trace to show that group of skills
+- **Wiretap** — how to reach me
+
+## Running it locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open the local URL printed by Vite.
+Then open the local URL Vite prints.
 
-## Checks
+Before pushing anything:
 
 ```bash
 npm run lint
 npm run typecheck
 ```
 
-## Build
+To build and preview the production version:
 
 ```bash
 npm run build
 npm run preview
 ```
 
-## Structure
+## Finding your way around
 
-- `src/pages/Home.jsx` — the only route; composes the sections from `src/components/noir/`
+- `src/pages/Home.jsx` — the only page; it stitches together the sections from `src/components/noir/`
 - `src/components/ui/` — shadcn/radix UI primitives
-- `about-me/` — resume + facts; source of truth for all site copy
+- `about-me/` — my résumé and the source of truth for all the copy on the site
