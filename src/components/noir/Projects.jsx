@@ -1,9 +1,10 @@
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import {
-  FolderOpen, Folder, X, Cpu, Tag, Pin, Play, Github,
+  Folder, Cpu, Pin, Github,
   Grab, GitBranch, Users, Hand, Thermometer,
 } from 'lucide-react';
+import ForensicReport from './ForensicReport';
 
 /**
  * @typedef {Object} Project
@@ -358,85 +359,12 @@ export default function Projects() {
 
       {/* Forensic report overlay */}
       {active && (
-        <div
-          className="fixed inset-0 z-[60] bg-ink/80 backdrop-blur-sm flex items-center justify-center p-4"
-          onClick={() => setOpenId(null)}
-        >
-          <div
-            className="relative vellum-paper max-w-3xl w-full p-6 md:p-8 sketch-border max-h-[90vh] overflow-y-auto"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={() => setOpenId(null)}
-              className="absolute top-3 right-3 text-ink/60 hover:text-crimson"
-            >
-              <X className="w-5 h-5" />
-            </button>
-            <div className="absolute -top-2 left-6 w-5 h-5 bg-crimson rounded-full" />
-            <div className="flex items-center gap-2 mb-4">
-              <FolderOpen className="w-4 h-4 text-crimson" />
-              <span className="font-heading text-ink text-xs tracking-widest">FORENSIC REPORT</span>
-              <span className="h-px flex-1 bg-ink/30" />
-              <span className="font-heading text-crimson text-[10px]">CASE OPEN</span>
-            </div>
-
-            <div className="grid md:grid-cols-[200px_1fr] gap-5">
-              {active.img ? (
-                <img src={active.img} alt={active.title} className="w-full h-auto border-2 border-ink/20" />
-              ) : (
-                <div className="w-full h-44 flex items-center justify-center border-2 border-dashed border-ink/25">
-                  <Cpu className="w-20 h-20 text-ink/60" strokeWidth={1} />
-                </div>
-              )}
-              <div>
-                <h3 className="font-heading text-ink text-2xl md:text-3xl leading-tight mb-2">{active.title}</h3>
-                <p className="font-body text-ink/80 text-sm mb-4">{active.summary}</p>
-                <ul className="font-body text-ink/80 text-sm space-y-2 mb-4">
-                  {active.details.map((d) => (
-                    <li key={d} className="flex gap-2">
-                      <span className="text-crimson mt-0.5">▸</span>
-                      <span>{d}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {active.video && (
-                    <a
-                      href={active.video}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-2 font-heading text-xs tracking-widest text-crimson border-2 border-crimson px-3 py-2 hover:bg-crimson hover:text-vellum transition-colors"
-                    >
-                      <Play className="w-4 h-4" /> SURVEILLANCE FOOTAGE
-                    </a>
-                  )}
-                  {active.github && (
-                    <a
-                      href={active.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-2 font-heading text-xs tracking-widest text-ink border-2 border-ink px-3 py-2 hover:bg-ink hover:text-vellum transition-colors"
-                    >
-                      <Github className="w-4 h-4" /> VIEW SOURCE
-                    </a>
-                  )}
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {active.tech.map((t) => (
-                    <span key={t} className="font-body text-ink text-[10px] border border-ink/40 px-2 py-1 flex items-center gap-1">
-                      <Cpu className="w-3 h-3" /> {t}
-                    </span>
-                  ))}
-                  {active.tags.map((t) => (
-                    <span key={t} className="font-body text-ink text-[10px] border border-crimson/50 text-crimson px-2 py-1 flex items-center gap-1">
-                      <Tag className="w-3 h-3" /> {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <ForensicReport
+          key={active.id}
+          project={active}
+          caseNo={String(PROJECTS.indexOf(active) + 1).padStart(2, '0')}
+          onClose={() => setOpenId(null)}
+        />
       )}
     </section>
   );
