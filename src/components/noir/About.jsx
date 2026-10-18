@@ -99,7 +99,7 @@ function AboutContent() {
                 Recent trail of evidence: two Product Management internships on SAP HANA
                 Cloud, a full-stack internship building predictive models, and FPGA design
                 work on a 10 Gbps Ethernet packet parser with UWASIC. Off the clock it's
-                hackathons and hardware — an AI grip-assist glove, an STM32 alarm system,
+                hackathons and hardware — an LLM Accelerator, an AI grip-assist glove, 
                 and a version control system for 3D meshes.
               </p>
             </div>

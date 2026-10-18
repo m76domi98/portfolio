@@ -27,8 +27,26 @@ import {
 /** @type {Project[]} */
 const PROJECTS = [
   {
+    id: 'int4-gemv',
+    pin: [25, 40],
+    title: 'INT4 GEMV Accelerator',
+    img: '/int4-module-map.png',
+    github: 'https://github.com/m76domi98/INT4-GEMV-Accelerator',
+    icon: Cpu,
+    tagline: 'Quantized LLM decode, in RTL.',
+    tech: ['SystemVerilog', 'cocotb', 'Icarus Verilog', 'Python', 'PyTorch'],
+    tags: ['Hardware', 'RTL', 'AI'],
+    summary: 'An RTL study of an INT4 matrix-vector accelerator for one quantized SmolLM2 linear layer, the core operation of single-token LLM decode.',
+    details: [
+      'Built a SystemVerilog INT4 GEMV datapath targeting the up_proj weights of layer 15 in SmolLM2.',
+      'Verified processing elements with 84 cocotb test cases covering corner grids, worst-case, random inputs, and hold behavior.',
+      'Verified tiles against real-layer rows, including idle gaps between terms and a missing-clr contract check.',
+      'Built a Python reference flow: a golden integer model, a float reference, and weight/activation export from Hugging Face.',
+    ],
+  },
+  {
     id: 'handshake',
-    pin: [30, 40],
+    pin: [77, 90],
     title: 'hand.shake — AI Grip-Assist Glove',
     img: '/handshake1.jpg',
     video: 'https://youtu.be/rRj_OVckCcA',
@@ -47,7 +65,7 @@ const PROJECTS = [
   },
   {
     id: 'meshgit',
-    pin: [90, 90],
+    pin: [130, 35],
     title: 'MeshGit',
     icon: GitBranch,
     img:'/meshgit.png',
@@ -64,7 +82,7 @@ const PROJECTS = [
   },
   {
     id: 'elevateher',
-    pin: [150, 35],
+    pin: [182, 90],
     title: 'ElevateHER',
     img: '/elevateHer.png',
     video: 'https://youtu.be/79R0GDeVhUc?si=ABAqgYDvfBFryECb',
@@ -82,7 +100,7 @@ const PROJECTS = [
   },
   {
     id: 'summus',
-    pin: [210, 40],
+    pin: [235, 40],
     title: 'Summus — T&C Summarizer',
     img: '/summus.png',
     github: 'https://github.com/m76domi98/AI_AGENT',
@@ -363,7 +381,13 @@ export default function Projects() {
             </div>
 
             <div className="grid md:grid-cols-[200px_1fr] gap-5">
-              <img src={active.img} alt={active.title} className="w-full h-auto border-2 border-ink/20" />
+              {active.img ? (
+                <img src={active.img} alt={active.title} className="w-full h-auto border-2 border-ink/20" />
+              ) : (
+                <div className="w-full h-44 flex items-center justify-center border-2 border-dashed border-ink/25">
+                  <Cpu className="w-20 h-20 text-ink/60" strokeWidth={1} />
+                </div>
+              )}
               <div>
                 <h3 className="font-heading text-ink text-2xl md:text-3xl leading-tight mb-2">{active.title}</h3>
                 <p className="font-body text-ink/80 text-sm mb-4">{active.summary}</p>
