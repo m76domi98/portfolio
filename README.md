@@ -4,14 +4,14 @@ This is the source for my personal site, **[michelledominic.dev](https://michell
 
 I'm a big art person and a huge detective-story fan. I've read all the Sherlock Holmes books and watched pretty much every adaptation, and I'm a sucker for the opening title sequences of movies and shows. This site is inspired by all of that: a noir "digital investigator" theme where my résumé is a case file and scrolling through it feels like the intro to a good mystery.
 
-Under the hood it's a small static Vite + React + Tailwind app with no backend.
+Under the hood it's a  Vite + React + Tailwind app.
 
 ## What's on the site
 
 - **Dossier** — who I am
-- **Evidence Locker** — my projects, pinned up like case files
+- **Evidence Locker** — my projects, pinned up like case files on an investigation board
 - **Case Log** — where I've worked
-- **Schematic Lab** — my skills as a circuit schematic. Click a station and a little electron runs down the trace to show that group of skills
+- **Schematic Lab** — my skills as a circuit schematic for people on a phone and a car chase at night for people on larger screens. For the circuit, you can click a station and a little electron runs down the trace to show that group of skills
 - **Wiretap** — how to reach me
 
 ## Running it locally
