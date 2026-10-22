@@ -4,21 +4,6 @@ import { Pin } from 'lucide-react';
 
 const EXPERIENCES = [
   {
-    org: 'SAP',
-    role: 'Product Management Intern',
-    period: 'MAY 2026 — PRESENT',
-    imgs: ['/sap.png'],
-    summary:
-      'Prioritized Administration & Monitoring features for SAP HANA Cloud, synthesizing customer requests, engineering constraints, and product strategy to define MVP scope.',
-    points: [
-      'Applied Azure OpenAI embeddings to cluster customer prompts and identify opportunities for specialized AI agents.',
-      'Performed competitive analysis of AI model capabilities and pricing to support roadmap decisions.',
-      'Validated MVP requirements with customers, engineering, and product leadership through preview testing and feedback sessions.',
-      'Analyzed product adoption with Azure Application Insights and delivered internal workshops on customer pain points.',
-    ],
-    tags: ['Product', 'AI', 'HANA Cloud'],
-  },
-  {
     org: 'UWASIC',
     role: 'FPGA Design Member',
     period: 'JUL 2026 — PRESENT',
@@ -31,6 +16,21 @@ const EXPERIENCES = [
       'Collaborating with cross-functional parser teams via Git workflows, code reviews, and simulation-driven development.',
     ],
     tags: ['FPGA', 'SystemVerilog', 'Networking'],
+  },
+    {
+    org: 'SAP',
+    role: 'Product Management Intern',
+    period: 'MAY 2026 — August 2026',
+    imgs: ['/sap.png'],
+    summary:
+      'Prioritized Administration & Monitoring features for SAP HANA Cloud, synthesizing customer requests, engineering constraints, and product strategy to define MVP scope.',
+    points: [
+      'Applied Azure OpenAI embeddings to cluster customer prompts and identify opportunities for specialized AI agents.',
+      'Performed competitive analysis of AI model capabilities and pricing to support roadmap decisions.',
+      'Validated MVP requirements with customers, engineering, and product leadership through preview testing and feedback sessions.',
+      'Analyzed product adoption with Azure Application Insights and delivered internal workshops on customer pain points.',
+    ],
+    tags: ['Product', 'AI', 'HANA Cloud'],
   },
   {
     org: 'SAP',
