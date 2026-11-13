@@ -105,7 +105,7 @@ function AboutContent() {
             </div>
 
             <div className="mt-5 font-scribble text-crimson text-lg -rotate-2 inline-block">
-              Seeking Winter 2027 co-op.
+              Seeking Winter 2028 co-op.
             </div>
 
             {/* Gear doodles */}

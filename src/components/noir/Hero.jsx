@@ -1,14 +1,13 @@
 /// <reference path="../../vite-env.d.ts" />
 import React from 'react';
 import { ChevronDown } from 'lucide-react';
-import bngDesk from '@/public/bng-desk.png';
+import bngDesk from '@/public/bng-desk-1.png';
 // pre-aligned into bng-desk's frame (scratchpad bake.ps1) so no CSS nudge is needed
 import colorDesk from '@/public/color-desk-aligned.png';
 
 const STATS = [
   'UNDER INVESTIGATION',
-  'HACKATHON ADDICT',
-  'SEEKING CO-OP // WINTER 2027',
+  'SEEKING CO-OP // WINTER 2028',
 ];
 
 export default function Hero() {
@@ -71,16 +70,16 @@ export default function Hero() {
           COMPUTER ENGINEERING - DIGITAL INVESTIGATOR
         </p>
         <p className="mt-3 font-heading text-vellum/80 text-base md:text-xl tracking-[0.15em]">
-          SOFTWARE • EMBEDDED • ML • PRODUCT
+          SOFTWARE • EMBEDDED • PRODUCT
         </p>
         {/* Light & desk — lamp cone sways over the desk, revealing the color desk only where it lands */}
         <div className="relative mx-auto my-4 md:my-6 w-72 sm:w-96 md:w-[28rem] pointer-events-none">
           <div className="w-0.5 h-6 bg-vellum/70 mx-auto" />
           <div
-            className="w-9 h-4 mx-auto shadow-md"
+            className="relative z-10 w-9 h-4 mx-auto shadow-md"
             style={{ clipPath: 'polygon(32% 0%, 68% 0%, 100% 100%, 0% 100%)', background: '#8a8a86' }}
           />
-          {/* beam space between shade and desk — keep in sync with the -4rem counter-origin below */}
+          {/* beam space between shade and desk — keep in sync with the -4.25rem counter-origin below */}
           <div className="h-16" />
           <div className="relative w-full aspect-[1307/800]">
             <img
@@ -89,9 +88,9 @@ export default function Hero() {
               className="absolute inset-0 w-full h-full object-fill"
             />
           </div>
-          {/* swaying cone: spans shade-to-desk-bottom, clipped to a triangle, rotates about its apex */}
+          {/* swaying cone: spans shade to 0.75rem past desk-bottom (keep -bottom-3 / bottom-3 in sync), clipped to a triangle, rotates about its apex */}
           <div
-            className="absolute inset-x-0 top-10 bottom-0 lamp-sway"
+            className="absolute inset-x-0 top-9 -bottom-3 lamp-sway"
             style={{
               clipPath: 'polygon(47% 0%, 53% 0%, 88% 100%, 5% 100%)',
               transformOrigin: '50% 0%',
@@ -106,8 +105,8 @@ export default function Hero() {
             />
             {/* color desk counter-rotated about the same apex so it stays pinned to the b&w desk */}
             <div
-              className="absolute inset-x-0 bottom-0 aspect-[1307/800] lamp-sway-counter"
-              style={{ transformOrigin: '50% -4rem' }}
+              className="absolute inset-x-0 bottom-3 aspect-[1307/800] lamp-sway-counter"
+              style={{ transformOrigin: '50% -4.25rem' }}
             >
               <img
                 src={colorDesk}
@@ -119,7 +118,7 @@ export default function Hero() {
         </div>
 
         {/* CTAs */}
-        <div className="flex flex-wrap items-center justify-center gap-4">
+        <div className="relative z-10 flex flex-wrap items-center justify-center gap-4">
           <a
             href="/Michelle_Dominic_Range.pdf"
             download
