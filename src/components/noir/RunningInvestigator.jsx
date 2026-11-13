@@ -45,9 +45,9 @@ export default function RunningInvestigator() {
           <div className="relative w-screen h-full flex-shrink-0 vellum-paper">
             <div className="px-6 md:px-12 pt-28">
               <div className="flex items-center gap-3">
-                <span className="font-heading text-crimson text-xs tracking-[0.3em]">↔ PURSUIT</span>
+                <span className="font-body font-semibold text-crimson text-xs tracking-[0.3em]">↔ PURSUIT</span>
                 <span className="h-px w-20 bg-crimson/50" />
-                <span className="font-heading text-ink/70 text-xs tracking-[0.3em]">KEEP SCROLLING</span>
+                <span className="font-body font-semibold text-ink/70 text-xs tracking-[0.3em]">KEEP SCROLLING</span>
               </div>
               <p className="mt-2 font-body text-ink/60 text-sm max-w-md">
                 The investigator flees the scene — follow her to the dossier.
@@ -63,7 +63,7 @@ export default function RunningInvestigator() {
           <div className="relative w-screen h-full flex-shrink-0 bg-ink">
             <div className="absolute inset-0 ink-grain opacity-30" />
             <div className="relative h-full flex flex-col items-center justify-center text-center px-6">
-              <div className="font-heading text-cyan-signal text-sm tracking-[0.3em] mb-4">
+              <div className="font-body font-semibold text-cyan-signal text-sm tracking-[0.3em] mb-4">
                 § 01 // THE SUBJECT
               </div>
               <div className="font-heading text-vellum text-4xl md:text-6xl tracking-tight">

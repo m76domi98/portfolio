@@ -208,9 +208,9 @@ export default function Skills() {
       <div className="absolute inset-0 ink-grain opacity-25" />
       <div className="relative max-w-7xl mx-auto px-4 md:px-8">
         <div className="flex items-center gap-4 mb-12">
-          <span className="font-heading text-cyan-signal text-sm tracking-[0.3em]">§ 04</span>
+          <span className="font-body font-semibold text-cyan-signal text-sm tracking-[0.3em]">§ 04</span>
           <span className="h-px flex-1 bg-cyan-signal/40" />
-          <span className="font-heading text-vellum text-sm tracking-[0.3em]">SCHEMATIC LAB</span>
+          <span className="font-body font-semibold text-vellum text-sm tracking-[0.3em]">SCHEMATIC LAB</span>
         </div>
 
         <div className="flex flex-wrap items-end justify-between gap-6 mb-12">
@@ -224,7 +224,7 @@ export default function Skills() {
 
           <button
             onClick={() => setPowered((p) => !p)}
-            className={`group flex items-center gap-3 border-2 px-5 py-3 font-heading text-sm tracking-wider transition-all clip-corner ${
+            className={`group flex items-center gap-3 border-2 px-5 py-3 font-body font-semibold text-sm tracking-wider transition-all clip-corner ${
               powered
                 ? 'border-crimson text-crimson pulse-glow'
                 : 'border-vellum/40 text-vellum/70'
@@ -255,7 +255,7 @@ export default function Skills() {
                 <line x1="30" y1="70" x2="30" y2="45" />
                 <line x1="22" y1="45" x2="38" y2="45" />
               </g>
-              <text x="30" y="35" textAnchor="middle" fill={wire} fontSize="11" className="font-heading">VCC</text>
+              <text x="30" y="35" textAnchor="middle" fill={wire} fontSize="11" className="font-body font-semibold">VCC</text>
 
               {/* op-amp on row 2, pointing left (wire gap masked by ink) */}
               <rect x="305" y="170" width="50" height="40" fill="#0A0A0C" />
@@ -270,7 +270,7 @@ export default function Skills() {
               {/* resistor on row 3 */}
               <rect x="142" y="298" width="56" height="24" fill="#0A0A0C" />
               <path d="M142 310 l7 0 4 -9 8 18 8 -18 8 18 8 -18 4 9 7 0" fill="none" stroke={wire} strokeWidth="2" />
-              <text x="170" y="290" textAnchor="middle" fill={wire} fontSize="10" className="font-heading">R1</text>
+              <text x="170" y="290" textAnchor="middle" fill={wire} fontSize="10" className="font-body font-semibold">R1</text>
 
               {/* capacitor on row 4 */}
               <rect x="322" y="416" width="16" height="28" fill="#0A0A0C" />
@@ -278,7 +278,7 @@ export default function Skills() {
                 <line x1="326" y1="416" x2="326" y2="444" />
                 <line x1="334" y1="416" x2="334" y2="444" />
               </g>
-              <text x="330" y="408" textAnchor="middle" fill={wire} fontSize="10" className="font-heading">C1</text>
+              <text x="330" y="408" textAnchor="middle" fill={wire} fontSize="10" className="font-body font-semibold">C1</text>
 
               {/* ground at the end */}
               <g stroke={wire} strokeWidth="2">
@@ -302,7 +302,7 @@ export default function Skills() {
                       textAnchor="middle"
                       fontSize="14"
                       letterSpacing="2"
-                      className="font-heading"
+                      className="font-body font-semibold"
                       fill={isActive ? '#E4DCD3' : 'rgba(228,220,211,0.55)'}
                     >
                       {s.group}
@@ -350,7 +350,7 @@ export default function Skills() {
           >
             <div className="flex items-center gap-2 mb-5 pb-3 border-b border-vellum/15">
               <Icon className={`w-5 h-5 ${powered ? 'text-crimson' : 'text-vellum/60'}`} />
-              <span className="font-heading text-vellum text-sm tracking-widest">U{active + 1} — {col.group}</span>
+              <span className="font-body font-semibold text-vellum text-sm tracking-widest">U{active + 1} — {col.group}</span>
               <span className={`ml-auto text-[10px] font-body ${powered ? 'text-crimson' : 'text-vellum/40'}`}>
                 {powered ? '● LIVE' : '○ IDLE'}
               </span>
@@ -387,7 +387,7 @@ export default function Skills() {
               }
               return subgroups.map((sg) => (
                 <div key={sg} className="mb-5 last:mb-0">
-                  <div className="font-heading text-crimson text-[10px] tracking-[0.25em] mb-3">{sg.toUpperCase()}</div>
+                  <div className="font-body font-semibold text-crimson text-[10px] tracking-[0.25em] mb-3">{sg.toUpperCase()}</div>
                   <div className="space-y-4">
                     {col.items.filter((s) => s.subgroup === sg).map(item)}
                   </div>
@@ -401,7 +401,7 @@ export default function Skills() {
           {CERTS.map((c) => (
             <span
               key={c}
-              className={`flex items-center gap-2 font-heading text-xs tracking-wider border-2 px-4 py-2 clip-corner transition-all duration-500 ${
+              className={`flex items-center gap-2 font-body font-semibold text-xs tracking-wider border-2 px-4 py-2 clip-corner transition-all duration-500 ${
                 powered ? 'border-crimson/60 text-vellum' : 'border-vellum/40 text-vellum/70'
               }`}
             >

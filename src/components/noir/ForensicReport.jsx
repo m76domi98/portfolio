@@ -58,7 +58,7 @@ function ReportLinks({ p }) {
           href={p.video}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex items-center gap-2 font-heading text-xs tracking-widest text-crimson border-2 border-crimson px-3 py-2 hover:bg-crimson hover:text-vellum transition-colors"
+          className="inline-flex items-center gap-2 font-body font-semibold text-xs tracking-widest text-crimson border-2 border-crimson px-3 py-2 hover:bg-crimson hover:text-vellum transition-colors"
         >
           <Play className="w-4 h-4" /> SURVEILLANCE FOOTAGE
         </a>
@@ -68,7 +68,7 @@ function ReportLinks({ p }) {
           href={p.github}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex items-center gap-2 font-heading text-xs tracking-widest text-ink border-2 border-ink px-3 py-2 hover:bg-ink hover:text-vellum transition-colors"
+          className="inline-flex items-center gap-2 font-body font-semibold text-xs tracking-widest text-ink border-2 border-ink px-3 py-2 hover:bg-ink hover:text-vellum transition-colors"
         >
           <Github className="w-4 h-4" /> VIEW SOURCE
         </a>
@@ -124,9 +124,9 @@ export default function ForensicReport({ project: p, caseNo, onClose }) {
         <div className="absolute -top-2 left-6 w-5 h-5 bg-crimson rounded-full" />
         <div className="flex items-center gap-2 mb-4">
           <FolderOpen className="w-4 h-4 text-crimson" />
-          <span className="font-heading text-ink text-xs tracking-widest">FORENSIC REPORT</span>
+          <span className="font-body font-semibold text-ink text-xs tracking-widest">FORENSIC REPORT</span>
           <span className="h-px flex-1 bg-ink/30" />
-          <span className="font-heading text-crimson text-[10px]">CASE OPEN</span>
+          <span className="font-body font-semibold text-crimson text-[10px]">CASE OPEN</span>
         </div>
         <div className="grid gap-5">
           <Evidence p={p} className="w-full h-auto border-2 border-ink/20" />
@@ -164,7 +164,7 @@ export default function ForensicReport({ project: p, caseNo, onClose }) {
               <div className="absolute inset-0 bg-[#E2D6BC] rotate-[3deg] translate-x-2.5 translate-y-2 shadow-[2px_3px_0_rgba(0,0,0,0.2)]" />
               <div className="relative p-5 text-ink shadow-[3px_4px_0_rgba(0,0,0,0.25)]" style={AGED_PAPER}>
                 <PaperClip />
-                <div className="font-heading text-xs tracking-[0.2em] mb-2">EXHIBIT A</div>
+                <div className="font-body font-semibold text-xs tracking-[0.2em] mb-2">EXHIBIT A</div>
                 {p.img ? (
                   <button
                     onClick={() => setIsZoomed(true)}
@@ -186,7 +186,7 @@ export default function ForensicReport({ project: p, caseNo, onClose }) {
               </div>
             </div>
             <div className="mt-auto pt-4">
-              <span className="inline-block font-heading text-crimson border-[3px] border-crimson px-3 py-1 tracking-[0.2em] rotate-[-8deg] opacity-85">
+              <span className="inline-block font-playfair text-crimson border-[3px] border-crimson px-3 py-1 tracking-[0.2em] rotate-[-8deg] opacity-85">
                 CLASSIFIED
               </span>
             </div>

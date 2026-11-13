@@ -303,7 +303,7 @@ export default function Projects() {
       {/* Mobile: simple stacked case files */}
       <div className="md:hidden bg-ink py-20 px-6 space-y-10">
         <div className="text-center">
-          <div className="font-heading text-cyan-signal text-xs tracking-[0.3em] mb-1">§ 02 // EVIDENCE LOCKER</div>
+          <div className="font-body font-semibold text-cyan-signal text-xs tracking-[0.3em] mb-1">§ 02 // EVIDENCE LOCKER</div>
           <h2 className="font-heading text-vellum text-4xl">PROJECTS</h2>
         </div>
         {PROJECTS.map((p, i) => (
@@ -316,7 +316,7 @@ export default function Projects() {
       <div className="sticky top-0 h-screen overflow-hidden bg-ink">
         {/* Heading pinned over the board */}
         <div className="absolute top-8 left-1/2 -translate-x-1/2 z-20 text-center">
-          <div className="font-heading text-cyan-signal text-xs tracking-[0.3em] mb-1">§ 02 // EVIDENCE LOCKER</div>
+          <div className="font-body font-semibold text-cyan-signal text-xs tracking-[0.3em] mb-1">§ 02 // EVIDENCE LOCKER</div>
           <h2 className="font-heading text-vellum text-4xl md:text-5xl drop-shadow-[2px_2px_0_rgba(0,0,0,0.8)]">PROJECTS</h2>
         </div>
 

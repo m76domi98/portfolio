@@ -20,12 +20,12 @@ function AboutContent() {
         <div className="absolute inset-0 ink-grain opacity-30" />
         <div className="relative max-w-xl mx-auto">
           <div className="flex items-center gap-4 mb-10">
-            <span className="font-heading text-cyan-signal text-sm tracking-[0.3em]">§ 01</span>
+            <span className="font-body font-semibold text-cyan-signal text-sm tracking-[0.3em]">§ 01</span>
             <span className="h-px flex-1 bg-cyan-signal/40" />
-            <span className="font-heading text-vellum text-sm tracking-[0.3em]">THE SUBJECT</span>
+            <span className="font-body font-semibold text-vellum text-sm tracking-[0.3em]">THE SUBJECT</span>
           </div>
 
-          <h2 className="font-heading text-vellum text-3xl md:text-4xl leading-tight mb-10">
+          <h2 className="font-body font-extrabold text-vellum text-3xl md:text-4xl leading-tight mb-10">
             The Investigator Behind the Code
           </h2>
 
@@ -45,7 +45,7 @@ function AboutContent() {
 
             {/* Stats */}
             <div>
-              <div className="font-heading text-vellum text-xl tracking-[0.2em] border-b-2 border-vellum inline-block pb-1 mb-4">
+              <div className="font-body font-semibold text-vellum text-xl tracking-[0.2em] border-b-2 border-vellum inline-block pb-1 mb-4">
                 STATS
               </div>
               <ul className="font-body text-vellum/90 text-sm md:text-base leading-relaxed space-y-1">
@@ -85,7 +85,7 @@ function AboutContent() {
             <div className="absolute -top-0 left-1/2 -translate-x-1/2 w-28 h-6 bg-[#C9A876]/80 rotate-[-1deg]" />
             <Pin className="absolute top-3 right-4 w-5 h-5 text-crimson fill-crimson" />
 
-            <h3 className="font-heading text-ink text-2xl md:text-3xl leading-tight border-b-4 border-double border-crimson pb-2 mb-4">
+            <h3 className="font-playfair text-ink text-2xl md:text-3xl leading-tight border-b-4 border-double border-crimson pb-2 mb-4">
               ABOUT ME — CLASSIFIED DOSSIER
             </h3>
 

@@ -30,7 +30,7 @@ export default function Navbar() {
       />
       <div className="relative max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between">
         <a href="#dossier" className="flex items-center gap-2 group">
-          <span className="font-heading text-vellum text-lg md:text-xl tracking-wider group-hover:text-cyan-signal transition-colors">
+          <span className="font-body font-semibold text-vellum text-lg md:text-xl tracking-wider group-hover:text-cyan-signal transition-colors">
             M.DOMINIC
           </span>
           <span className="text-crimson text-xs font-scribble -rotate-6">case #001</span>
@@ -41,7 +41,7 @@ export default function Navbar() {
             <a
               key={tab.href}
               href={tab.href}
-              className="relative font-heading text-xs tracking-wider text-vellum px-4 pt-2 pb-1 border-2 border-b-0 border-vellum/30 hover:border-cyan-signal hover:text-cyan-signal transition-all duration-200"
+              className="relative font-body font-semibold text-xs tracking-wider text-vellum px-4 pt-2 pb-1 border-2 border-b-0 border-vellum/30 hover:border-cyan-signal hover:text-cyan-signal transition-all duration-200"
               style={{
                 marginLeft: i === 0 ? 0 : '-1px',
                 borderTopLeftRadius: '4px',
@@ -55,7 +55,7 @@ export default function Navbar() {
         </nav>
 
         <button
-          className="md:hidden text-vellum font-heading text-sm border border-vellum/40 px-3 py-1"
+          className="md:hidden text-vellum font-body font-semibold text-sm border border-vellum/40 px-3 py-1"
           onClick={() => setOpen((o) => !o)}
         >
           {open ? '✕ CLOSE' : '☰ MENU'}
@@ -69,7 +69,7 @@ export default function Navbar() {
               key={tab.href}
               href={tab.href}
               onClick={() => setOpen(false)}
-              className="font-heading text-sm tracking-wider text-vellum px-3 py-2 border-l-2 border-crimson hover:border-cyan-signal hover:text-cyan-signal"
+              className="font-body font-semibold text-sm tracking-wider text-vellum px-3 py-2 border-l-2 border-crimson hover:border-cyan-signal hover:text-cyan-signal"
             >
               {tab.mobileLabel ?? tab.label}
             </a>

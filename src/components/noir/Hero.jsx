@@ -25,19 +25,19 @@ export default function Hero() {
 
       {/* Crime scene tape across the red side */}
       <div
-        className="hidden md:block absolute -right-16 top-44 z-10 rotate-[14deg] bg-[#a0132c] text-ink font-heading text-xs lg:text-sm tracking-[0.25em] whitespace-nowrap px-12 py-2 border-y-2 border-ink/60 shadow-lg"
+        className="hidden md:block absolute -right-16 top-44 z-10 rotate-[14deg] bg-[#a0132c] text-ink font-body font-extrabold text-xs lg:text-sm tracking-[0.25em] whitespace-nowrap px-12 py-2 border-y-2 border-ink/60 shadow-lg"
       >
         CRIME SCENE // CODE LINE DO NOT CROSS
       </div>
 
       {/* STATS left */}
       <div className="hidden lg:block absolute left-8 xl:left-16 top-1/2 z-10 max-w-[240px]">
-        <div className="inline-block font-heading text-vellum text-2xl tracking-widest border-b-2 border-vellum pb-1">
+        <div className="inline-block font-body font-extrabold text-vellum text-2xl tracking-widest border-b-2 border-vellum pb-1">
           STATS
         </div>
         <ul className="mt-4 space-y-2">
           {STATS.map((s) => (
-            <li key={s} className="flex items-start gap-2 font-heading text-vellum text-sm tracking-wider">
+            <li key={s} className="flex items-start gap-2 font-body font-extrabold text-vellum text-sm tracking-wider">
               <span className="text-crimson">✗</span>
               {s}
             </li>
@@ -66,10 +66,10 @@ export default function Hero() {
         <h1 className="font-heading text-vellum tracking-tight leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
           MICHELLE DOMINIC
         </h1>
-        <p className="mt-3 font-heading text-vellum/80 text-base md:text-xl tracking-[0.15em]">
-          COMPUTER ENGINEERING - DIGITAL INVESTIGATOR
+        <p className="mt-3 font-body font-extrabold text-vellum/80 text-base md:text-xl tracking-[0.15em]">
+          COMPUTER ENGINEERING 
         </p>
-        <p className="mt-3 font-heading text-vellum/80 text-base md:text-xl tracking-[0.15em]">
+        <p className="mt-3 font-body font-extrabold text-vellum/80 text-base md:text-xl tracking-[0.15em]">
           SOFTWARE • EMBEDDED • PRODUCT
         </p>
         {/* Light & desk — lamp cone sways over the desk, revealing the color desk only where it lands */}
@@ -122,14 +122,14 @@ export default function Hero() {
           <a
             href="/Michelle_Dominic_Range.pdf"
             download
-            className="group relative inline-flex items-center gap-2 bg-cyan-signal text-ink font-heading text-sm tracking-wider px-6 py-3 clip-corner hover:bg-vellum transition-colors"
+            className="group relative inline-flex items-center gap-2 bg-cyan-signal text-ink font-body font-extrabold text-sm tracking-wider px-6 py-3 clip-corner hover:bg-vellum transition-colors"
           >
             OPEN CASE FILE
             <ChevronDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
           </a>
           <a
             href="#wiretap"
-            className="font-heading text-vellum text-sm tracking-wider px-6 py-3 border-2 border-crimson hover:bg-crimson hover:text-vellum transition-colors clip-corner"
+            className="font-body font-extrabold text-vellum text-sm tracking-wider px-6 py-3 border-2 border-crimson hover:bg-crimson hover:text-vellum transition-colors clip-corner"
           >
             TRANSMIT INTEL
           </a>
@@ -138,7 +138,7 @@ export default function Hero() {
         {/* Mobile stats */}
         <div className="lg:hidden mt-12 grid grid-cols-2 gap-3 text-left">
           {STATS.map((s) => (
-            <div key={s} className="flex items-start gap-2 font-heading text-vellum text-xs tracking-wider">
+            <div key={s} className="flex items-start gap-2 font-body font-extrabold text-vellum text-xs tracking-wider">
               <span className="text-crimson">✗</span>
               {s}
             </div>

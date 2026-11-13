@@ -350,10 +350,10 @@ export default function SkillsDrive() {
           >
             <div className="border-2 border-crimson bg-ink/85 px-7 py-5 clip-corner">
               <div className="flex items-baseline gap-3 mb-3 pb-2 border-b border-vellum/15">
-                <span className="font-heading text-crimson text-[10px] tracking-[0.35em]">
+                <span className="font-body font-semibold text-crimson text-[10px] tracking-[0.35em]">
                   EXHIBIT {String.fromCharCode(65 + i)}
                 </span>
-                <span className="font-heading text-vellum text-lg tracking-[0.25em]">{tag.group}</span>
+                <span className="font-body font-semibold text-vellum text-lg tracking-[0.25em]">{tag.group}</span>
               </div>
               <div className="grid grid-cols-2 gap-x-6 gap-y-1.5">
                 {tag.items.map((name) => (
@@ -368,13 +368,13 @@ export default function SkillsDrive() {
         ))}
 
         <div className="absolute top-20 left-8 flex items-center gap-3">
-          <span className="font-heading text-cyan-signal text-xs tracking-[0.3em]">§ 04</span>
-          <span className="font-heading text-vellum/70 text-xs tracking-[0.3em]">THE PURSUIT — SKILLS IN MOTION</span>
+          <span className="font-body font-semibold text-cyan-signal text-xs tracking-[0.3em]">§ 04</span>
+          <span className="font-body font-semibold text-vellum/70 text-xs tracking-[0.3em]">THE PURSUIT — SKILLS IN MOTION</span>
         </div>
 
         <div
           ref={hintRef}
-          className="absolute bottom-10 inset-x-0 text-center font-heading text-vellum/80 text-sm tracking-[0.4em] animate-bounce"
+          className="absolute bottom-10 inset-x-0 text-center font-body font-semibold text-vellum/80 text-sm tracking-[0.4em] animate-bounce"
         >
           SCROLL TO GIVE CHASE
         </div>
@@ -384,7 +384,7 @@ export default function SkillsDrive() {
           className="absolute inset-0 flex items-center justify-center pointer-events-none"
           style={{ opacity: 0 }}
         >
-          <span className="font-heading text-vellum text-5xl md:text-7xl tracking-[0.25em] border-4 border-crimson px-10 py-6 -rotate-6 bg-ink/70">
+          <span className="font-body font-semibold text-vellum text-5xl md:text-7xl tracking-[0.25em] border-4 border-crimson px-10 py-6 -rotate-6 bg-ink/70">
             SKILLS · ON FILE
           </span>
         </div>

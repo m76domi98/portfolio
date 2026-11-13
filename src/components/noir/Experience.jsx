@@ -87,9 +87,9 @@ export default function Experience() {
 
       <div className="relative max-w-6xl mx-auto px-4 md:px-8">
         <div className="flex items-center gap-4 mb-12">
-          <span className="font-heading text-cyan-signal text-sm tracking-[0.3em]">§ 03</span>
+          <span className="font-body font-semibold text-cyan-signal text-sm tracking-[0.3em]">§ 03</span>
           <span className="h-px flex-1 bg-cyan-signal/40" />
-          <span className="font-heading text-vellum text-sm tracking-[0.3em]">EXPERIENCE // CLASSIFIED</span>
+          <span className="font-body font-semibold text-vellum text-sm tracking-[0.3em]">EXPERIENCE // CLASSIFIED</span>
         </div>
 
         <h2 className="font-heading text-vellum text-4xl md:text-6xl mb-12">CASE LOG</h2>
@@ -107,7 +107,7 @@ export default function Experience() {
               <Pin className="absolute -top-2 left-1/2 -translate-x-1/2 w-5 h-5 text-crimson fill-crimson" />
               <div className="flex flex-wrap items-baseline justify-between gap-2 mb-3">
                 <h3 className="font-heading text-ink text-xl md:text-2xl">{e.org}</h3>
-                <span className="font-heading text-crimson text-xs tracking-widest">{e.period}</span>
+                <span className="font-body font-semibold text-crimson text-xs tracking-widest">{e.period}</span>
               </div>
               <div className="font-body text-ink/70 text-xs tracking-wider mb-3">{e.role}</div>
               <div className={e.imgs ? 'md:grid md:grid-cols-[1fr_220px] md:gap-6' : ''}>
@@ -151,7 +151,7 @@ export default function Experience() {
 
               {/* Rubber stamp slams down after the file lands */}
               <motion.div
-                className="absolute bottom-4 right-4 z-10 pointer-events-none font-heading text-crimson text-xs md:text-sm tracking-[0.2em] border-[3px] border-crimson px-3 py-1 rotate-[-12deg]"
+                className="absolute bottom-4 right-4 z-10 pointer-events-none font-body font-semibold text-crimson text-xs md:text-sm tracking-[0.2em] border-[3px] border-crimson px-3 py-1 rotate-[-12deg]"
                 initial={{ opacity: 0, scale: 2.4 }}
                 whileInView={{ opacity: 0.75, scale: 1 }}
                 viewport={{ once: true, margin: '-80px' }}

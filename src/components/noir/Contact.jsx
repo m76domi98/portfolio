@@ -18,7 +18,7 @@ export default function Contact() {
       <div className="relative max-w-6xl mx-auto px-4 md:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div>
-            <div className="font-heading text-cyan-signal text-xs tracking-[0.3em] mb-2">§ 05 // THE WIRETAP</div>
+            <div className="font-body font-semibold text-cyan-signal text-xs tracking-[0.3em] mb-2">§ 05 // THE WIRETAP</div>
             <h2 className="font-heading text-vellum text-3xl md:text-5xl">MAKE CONTACT</h2>
             <p className="font-body text-vellum/60 text-sm mt-3 max-w-md">
               Recruiters, collaborators, and fellow investigators — channels open.
@@ -72,7 +72,7 @@ export default function Contact() {
             >
               <X className="w-4 h-4" />
             </button>
-            <div className="font-heading text-cyan-signal text-xs tracking-[0.2em] mb-3">DECRYPTED // PRIVACY_POLICY.TXT</div>
+            <div className="font-body font-semibold text-cyan-signal text-xs tracking-[0.2em] mb-3">DECRYPTED // PRIVACY_POLICY.TXT</div>
             <p className="font-body text-vellum/80 text-xs leading-relaxed">
               This is a personal website that does not directly collect, track, or store any personal data. It is hosted on Vercel, which automatically processes standard server logs (such as IP addresses) solely to ensure site security and performance. It also uses Vercel Analytics, a cookieless, privacy-friendly tool that reports aggregated page-view metrics (e.g. page path, referrer, device type) — it does not use cookies or track individuals across sites. External links to third-party platforms (like LinkedIn) are subject to their own privacy policies.
             </p>
