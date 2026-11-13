@@ -97,15 +97,6 @@
     );
   }
 
-  .stamp-confidential {
-    border: 3px solid #C41E3A;
-    color: #C41E3A;
-    transform: rotate(-8deg);
-    font-family: 'Special Elite', sans-serif;
-    letter-spacing: 0.15em;
-    padding: 6px 14px;
-    opacity: 0.85;
-  }
 
   .glow-cyan { text-shadow: 0 0 8px rgba(0,240,255,0.6); }
   .glow-crimson { text-shadow: 0 0 8px rgba(196,30,58,0.6); }
@@ -171,6 +162,112 @@
 }
 .lamp-sway { animation: lamp-sway 7s ease-in-out infinite; }
 .lamp-sway-counter { animation: lamp-sway-counter 7s ease-in-out infinite; }
+
+/* Wiretap letter relay - one 6s loop:
+   send 0-12%, fly 10-58% (envelope + trail share stops and easing so they stay in lockstep),
+   catch 58%, tear 62-68%, stars 68-86%, cheer 74-92%, reset 92-100% */
+.relay-fly, .relay-trail, .relay-trail-reveal, .relay-arm-throw, .relay-speed, .relay-arm-catch, .relay-arm-hold,
+.relay-alert, .relay-hop, .relay-held, .relay-tear-l, .relay-tear-r, .relay-seal, .relay-star {
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+.relay-fly { animation-name: relay-fly; offset-rotate: auto; }
+.relay-trail { animation-name: relay-trail; }
+.relay-trail-reveal { animation-name: relay-trail-reveal; }
+.relay-arm-throw { animation-name: relay-arm-throw; }
+.relay-speed { animation-name: relay-speed; }
+.relay-arm-catch { animation-name: relay-arm-catch; }
+.relay-arm-hold { animation-name: relay-arm-hold; }
+.relay-alert { animation-name: relay-alert; }
+.relay-hop { animation-name: relay-hop; }
+.relay-held { animation-name: relay-held; }
+.relay-tear-l { animation-name: relay-tear-l; }
+.relay-tear-r { animation-name: relay-tear-r; }
+.relay-seal { animation-name: relay-seal; transform-box: fill-box; transform-origin: center; }
+.relay-star { animation-name: relay-star; }
+
+@keyframes relay-fly {
+  0%, 9% { offset-distance: 0%; opacity: 0; }
+  10% { offset-distance: 0%; opacity: 1; }
+  57% { opacity: 1; }
+  58% { offset-distance: 100%; opacity: 0; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+@keyframes relay-trail-reveal {
+  0%, 10% { stroke-dashoffset: 100; }
+  58%, 100% { stroke-dashoffset: 0; }
+}
+@keyframes relay-trail {
+  0%, 58% { opacity: 1; }
+  68%, 100% { opacity: 0; }
+}
+/* you: arm swings out level and holds through the send */
+@keyframes relay-arm-throw {
+  0%, 2% { transform: rotate(0); }
+  8%, 18% { transform: rotate(-52deg); }
+  26%, 100% { transform: rotate(0); }
+}
+@keyframes relay-speed {
+  0%, 6% { opacity: 0; transform: translateX(-4px); }
+  9%, 14% { opacity: 1; transform: translateX(0); }
+  20%, 100% { opacity: 0; transform: translateX(6px); }
+}
+/* me: reach out while it flies, hold it to tear, then both arms up to cheer */
+@keyframes relay-arm-catch {
+  0%, 12% { transform: rotate(0); }
+  22%, 56% { transform: rotate(52deg); }
+  60%, 70% { transform: rotate(20deg); }
+  78%, 90% { transform: rotate(104deg); }
+  97%, 100% { transform: rotate(0); }
+}
+@keyframes relay-arm-hold {
+  0%, 54% { transform: rotate(0); }
+  60%, 70% { transform: rotate(70deg); }
+  78%, 90% { transform: rotate(-104deg); }
+  97%, 100% { transform: rotate(0); }
+}
+@keyframes relay-hop {
+  0%, 76%, 82%, 88%, 100% { transform: translateY(0); }
+  79%, 85% { transform: translateY(-8px); }
+}
+@keyframes relay-alert {
+  0%, 4%, 16%, 58%, 90%, 100% { opacity: 0; }
+  7%, 13%, 61%, 86% { opacity: 1; }
+}
+@keyframes relay-held {
+  0%, 57% { opacity: 0; }
+  58%, 72% { opacity: 1; }
+  78%, 100% { opacity: 0; }
+}
+@keyframes relay-tear-l {
+  0%, 62% { transform: translate(0, 0) rotate(0); }
+  68%, 72% { transform: translate(-3px, 1px) rotate(-14deg); }
+  78%, 100% { transform: translate(-6px, 14px) rotate(-40deg); }
+}
+@keyframes relay-tear-r {
+  0%, 62% { transform: translate(0, 0) rotate(0); }
+  68%, 72% { transform: translate(3px, 1px) rotate(14deg); }
+  78%, 100% { transform: translate(6px, 14px) rotate(40deg); }
+}
+@keyframes relay-seal {
+  0%, 63% { transform: translate(0, 0) rotate(0); opacity: 1; }
+  74% { transform: translate(-6px, 22px) rotate(90deg); opacity: 1; }
+  78%, 100% { transform: translate(-7px, 26px) rotate(120deg); opacity: 0; }
+}
+/* stars sit in a <g> already moved to the letter; this adds the burst offset + scale */
+@keyframes relay-star {
+  0%, 67% { transform: translate(0, 0) scale(0); opacity: 0; }
+  72% { opacity: 1; }
+  78% { transform: translate(var(--dx), var(--dy)) scale(var(--s)); opacity: 1; }
+  90%, 100% { transform: translate(var(--dx), calc(var(--dy) - 8px)) scale(0); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .relay-fly, .relay-trail, .relay-trail-reveal, .relay-arm-throw, .relay-speed, .relay-arm-catch, .relay-arm-hold,
+  .relay-alert, .relay-hop, .relay-held, .relay-tear-l, .relay-tear-r, .relay-seal, .relay-star { animation: none; }
+  .relay-fly { offset-distance: 50%; }
+  .relay-speed, .relay-alert, .relay-held, .relay-trail { opacity: 0; }
+}
 
 @keyframes bob {
   0%, 100% { transform: translateY(0) rotate(-1.5deg); }

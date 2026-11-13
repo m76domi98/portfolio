@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useId, useRef, useState } from 'react';
 import { Mail, Github, Linkedin, X } from 'lucide-react';
 
 const CHANNELS = [
@@ -6,6 +6,145 @@ const CHANNELS = [
   { icon: Github, label: 'GITHUB', value: '@m76domi98', href: 'https://github.com/m76domi98' },
   { icon: Linkedin, label: 'LINKEDIN', value: 'in/michelle-dominic', href: 'https://linkedin.com/in/michelle-dominic' },
 ];
+
+// Wiretap animation (one 6s loop, timing in index.css .relay-*):
+// send - you throw; in flight - letter follows an arc while its dashed trail grows behind it;
+// tear - I catch it and rip it open; stars burst out and I cheer.
+const INK = '#E4DCD3';
+const CYAN = '#00F0FF';
+const SEAL = '#C41E3A';
+const STAR = 'M0 -6 L1.4 -1.4 L6 0 L1.4 1.4 L0 6 L-1.4 1.4 L-6 0 L-1.4 -1.4 Z';
+// burst offsets from the held letter, in svg units
+const STARS = [
+  { dx: -14, dy: -30, s: 1, c: INK },
+  { dx: 4, dy: -38, s: 1.3, c: CYAN },
+  { dx: -24, dy: -16, s: 0.8, c: CYAN },
+  { dx: -4, dy: -20, s: 1.1, c: INK },
+  { dx: 14, dy: -24, s: 0.6, c: INK },
+  { dx: -18, dy: -4, s: 0.6, c: CYAN },
+];
+// flight lane geometry (px): the arc starts/ends at LANE_Y and peaks ARC_PEAK above it
+const LANE_Y = 60;
+const ARC_PEAK = 40;
+
+const arm = (x2, cls) => (
+  <line x1="30" y1="40" x2={x2} y2="58" className={cls} style={{ transformOrigin: '30px 40px' }} />
+);
+
+function Figure({ bodyClass, children }) {
+  return (
+    <div className="flex flex-col items-center">
+      <svg viewBox="0 0 60 100" className="w-14 h-auto overflow-visible" fill="none" stroke={INK} strokeWidth="3" strokeLinecap="round" aria-hidden="true">
+        <g className={bodyClass}>
+          <circle cx="30" cy="20" r="11" />
+          <line x1="30" y1="31" x2="30" y2="66" />
+          <line x1="30" y1="66" x2="18" y2="92" />
+          <line x1="30" y1="66" x2="42" y2="92" />
+          {children}
+        </g>
+      </svg>
+    </div>
+  );
+}
+
+function Sender() {
+  return (
+    <Figure>
+      {arm(16)}
+      {arm(44, 'relay-arm-throw')}
+      <g className="relay-speed" stroke={CYAN} strokeWidth="2">
+        <line x1="58" y1="37" x2="66" y2="36" />
+        <line x1="58" y1="43" x2="66" y2="42" />
+      </g>
+    </Figure>
+  );
+}
+
+function Receiver() {
+  return (
+    <Figure bodyClass="relay-hop">
+      {arm(16, 'relay-arm-catch')}
+      {arm(44, 'relay-arm-hold')}
+      {/* alert ticks by the head */}
+      <g className="relay-alert" stroke={CYAN} strokeWidth="2">
+        <line x1="12" y1="10" x2="7" y2="7" />
+        <line x1="15" y1="5" x2="12" y2="0" />
+        <line x1="21" y1="3" x2="20" y2="-3" />
+      </g>
+      {/* held letter: two halves tear apart, the seal drops, stars burst out */}
+      <g className="relay-held" stroke="#0A0A0C" strokeWidth="1.2" strokeLinecap="butt">
+        <path className="relay-tear-l" style={{ transformOrigin: '12px 60px' }} d="M0 46 L4 44 L7 47 L12 45 L12 60 L0 60 Z" fill={INK} />
+        <path className="relay-tear-r" style={{ transformOrigin: '12px 60px' }} d="M12 45 L16 47 L20 44 L24 46 L24 60 L12 60 Z" fill={INK} />
+        <circle cx="12" cy="52" r="2.6" fill={SEAL} stroke="none" className="relay-seal" />
+      </g>
+      {STARS.map((st, i) => (
+        <g key={i} transform="translate(12 48)">
+          <path
+            d={STAR}
+            fill={st.c}
+            stroke="none"
+            className="relay-star"
+            style={{ '--dx': `${st.dx}px`, '--dy': `${st.dy}px`, '--s': st.s, animationDelay: `${i * 0.05}s` }}
+          />
+        </g>
+      ))}
+    </Figure>
+  );
+}
+
+function Envelope() {
+  return (
+    <svg viewBox="0 0 36 24" className="w-9 h-6" aria-hidden="true">
+      <rect x="1" y="1" width="34" height="22" rx="1.5" fill={INK} stroke="#0A0A0C" strokeWidth="1.5" />
+      <path d="M1 2 L18 14 L35 2" fill="none" stroke="#0A0A0C" strokeWidth="1.5" />
+      <circle cx="18" cy="14" r="3" fill={SEAL} />
+    </svg>
+  );
+}
+
+function LetterRelay() {
+  const laneRef = useRef(null);
+  const maskId = `relay-trail${useId().replace(/:/g, '')}`; // useId has colons, which break url(#...)
+  const [laneWidth, setLaneWidth] = useState(0);
+
+  // the arc is built in real pixels so the envelope (offset-path) and its trail share one exact curve
+  useEffect(() => {
+    const lane = laneRef.current;
+    if (!lane) return undefined;
+    const observer = new ResizeObserver(([entry]) => setLaneWidth(entry.contentRect.width));
+    observer.observe(lane);
+    return () => observer.disconnect();
+  }, []);
+
+  const arc = `M0 ${LANE_Y} Q${laneWidth / 2} ${LANE_Y - 2 * ARC_PEAK} ${laneWidth} ${LANE_Y}`;
+
+  return (
+    <div
+      className="relative left-1/2 -translate-x-1/2 w-screen mt-10 h-36 overflow-hidden"
+      role="img"
+      aria-label="You throw a letter across the screen to me, I tear it open, stars burst out and I cheer"
+    >
+      <div className="absolute left-[6%] bottom-5"><Sender /></div>
+      <div className="absolute right-[6%] bottom-5"><Receiver /></div>
+      {/* lane runs from your outstretched hand to the spot where I hold the letter */}
+      <div ref={laneRef} className="absolute left-[calc(6%+3rem)] right-[calc(6%+2.75rem)] top-2 h-[72px]">
+        {laneWidth > 0 && (
+          <>
+            <svg className="absolute inset-0 overflow-visible relay-trail" width={laneWidth} height="72" fill="none" aria-hidden="true">
+              <mask id={maskId} maskUnits="userSpaceOnUse" x="-20" y="-40" width={laneWidth + 40} height="152">
+                <path d={arc} pathLength="100" stroke="white" strokeWidth="8" strokeDasharray="100" className="relay-trail-reveal" />
+              </mask>
+              <path d={arc} stroke={CYAN} strokeWidth="2" strokeDasharray="8 6" strokeLinecap="round" opacity="0.85" mask={`url(#${maskId})`} />
+            </svg>
+            <div className="relay-fly absolute left-0 top-0" style={{ offsetPath: `path('${arc}')` }}>
+              <Envelope />
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
 
 export default function Contact() {
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
@@ -24,8 +163,9 @@ export default function Contact() {
               Recruiters, collaborators, and fellow investigators — channels open.
             </p>
           </div>
-          <div className="stamp-confidential text-xs self-start md:self-auto">CONFIDENTIAL</div>
         </div>
+
+        <LetterRelay />
 
         <div className="mt-10 grid sm:grid-cols-3 gap-4">
           {CHANNELS.map((c) => (
