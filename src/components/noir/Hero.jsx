@@ -1,5 +1,5 @@
 /// <reference path="../../vite-env.d.ts" />
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import bngDesk from '@/public/bng-desk-1.png';
 // pre-aligned into bng-desk's frame (scratchpad bake.ps1) so no CSS nudge is needed
@@ -9,6 +9,71 @@ const STATS = [
   'UNDER INVESTIGATION',
   'SEEKING CO-OP // WINTER 2028',
 ];
+
+const GREETING = 'Hey, ';
+const IM = "I'm ";
+const NAME = 'Michelle Dominic';
+const PREFIX = GREETING + IM;
+const GLYPHS = '✦⬡∞#%&@$*<>/§+=?';
+const TICK_MS = 55;
+const TICKS_PER_LETTER = 3; // how long each name letter scrambles before it settles
+
+// "Hey, I'm " types in, then the name scrambles through glyphs and settles letter by letter
+function ScrambleName() {
+  const total = PREFIX.length + NAME.length * TICKS_PER_LETTER + 4;
+  const [tick, setTick] = useState(() =>
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches ? total : 0,
+  );
+
+  useEffect(() => {
+    if (tick >= total) return undefined;
+    const id = setTimeout(() => setTick((t) => t + 1), TICK_MS);
+    return () => clearTimeout(id);
+  }, [tick, total]);
+
+  const nameTick = tick - PREFIX.length;
+  const settled = Math.max(0, Math.floor(nameTick / TICKS_PER_LETTER));
+  const imEnd = PREFIX.length;
+
+  // every final letter is always in the flow (invisible until reached) so the layout never shifts;
+  // scramble glyphs are absolutely overlaid on their slot
+  const chars = [...(PREFIX + NAME)].map((ch, i) => {
+    const color = i >= GREETING.length && i < imEnd ? 'text-cyan-signal' : undefined;
+    if (i < PREFIX.length) {
+      return <span key={i} className={i < tick ? color : 'invisible'}>{ch}</span>;
+    }
+    const n = i - PREFIX.length;
+    if (n < settled || ch === ' ') return <span key={i} className={n > nameTick ? 'invisible' : undefined}>{ch}</span>;
+    if (n > nameTick) return <span key={i} className="invisible">{ch}</span>;
+    // ponytail: Math.random per render; fine at ~18fps for 16 chars
+    const glyph = GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+    return (
+      <span key={i} className="relative">
+        <span className="invisible">{ch}</span>
+        <span className="absolute left-0 top-0 text-cyan-signal not-italic">{glyph}</span>
+      </span>
+    );
+  });
+
+  // blinking cursor glued (nowrap) to the last revealed char so it can't open a line break mid-word
+  const pos = tick < PREFIX.length ? tick : Math.min(PREFIX.length + nameTick + 1, chars.length);
+  const cursor = (
+    <span className="inline-block w-0 animate-pulse text-cyan-signal not-italic font-light">|</span>
+  );
+  const withCursor = pos === 0
+    ? [<span key="c" className="whitespace-nowrap">{cursor}</span>, ...chars]
+    : [
+        ...chars.slice(0, pos - 1),
+        <span key="c" className="whitespace-nowrap">{chars[pos - 1]}{cursor}</span>,
+        ...chars.slice(pos),
+      ];
+
+  return (
+    <span aria-label={PREFIX + NAME}>
+      <span aria-hidden="true">{withCursor}</span>
+    </span>
+  );
+}
 
 export default function Hero() {
   return (
@@ -63,8 +128,8 @@ export default function Hero() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 pt-20 md:pt-24 pb-16 text-center">
         {/* Name + role, one line */}
-        <h1 className="font-heading text-vellum tracking-tight leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
-          MICHELLE DOMINIC
+        <h1 className="font-heading text-vellum leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
+          <ScrambleName />
         </h1>
         <p className="mt-3 font-body font-extrabold text-vellum/80 text-base md:text-xl tracking-[0.15em]">
           COMPUTER ENGINEERING 

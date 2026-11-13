@@ -186,7 +186,7 @@ export default function ForensicReport({ project: p, caseNo, onClose }) {
               </div>
             </div>
             <div className="mt-auto pt-4">
-              <span className="inline-block font-playfair text-crimson border-[3px] border-crimson px-3 py-1 tracking-[0.2em] rotate-[-8deg] opacity-85">
+              <span className="inline-block font-heading text-crimson border-[3px] border-crimson px-3 py-1 tracking-[0.2em] rotate-[-8deg] opacity-85">
                 CLASSIFIED
               </span>
             </div>

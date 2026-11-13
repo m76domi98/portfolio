@@ -85,7 +85,7 @@ function AboutContent() {
             <div className="absolute -top-0 left-1/2 -translate-x-1/2 w-28 h-6 bg-[#C9A876]/80 rotate-[-1deg]" />
             <Pin className="absolute top-3 right-4 w-5 h-5 text-crimson fill-crimson" />
 
-            <h3 className="font-playfair text-ink text-2xl md:text-3xl leading-tight border-b-4 border-double border-crimson pb-2 mb-4">
+            <h3 className="font-heading text-ink text-2xl md:text-3xl leading-tight border-b-4 border-double border-crimson pb-2 mb-4">
               ABOUT ME — CLASSIFIED DOSSIER
             </h3>
 
