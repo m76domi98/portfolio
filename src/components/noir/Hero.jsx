@@ -1,9 +1,9 @@
 /// <reference path="../../vite-env.d.ts" />
 import React, { useEffect, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
-import bngDesk from '@/public/bng-desk-1.png';
+import bngDesk from '@/public/bng-desk-1.webp';
 // pre-aligned into bng-desk's frame (scratchpad bake.ps1) so no CSS nudge is needed
-import colorDesk from '@/public/color-desk-aligned.png';
+import colorDesk from '@/public/color-desk-aligned.webp';
 
 const STATS = [
   'UNDER INVESTIGATION',
@@ -69,7 +69,8 @@ function ScrambleName() {
       ];
 
   return (
-    <span aria-label={PREFIX + NAME}>
+    <span>
+      <span className="sr-only">{PREFIX + NAME}</span>
       <span aria-hidden="true">{withCursor}</span>
     </span>
   );
@@ -149,6 +150,7 @@ export default function Hero() {
           <div className="relative w-full aspect-[1307/800]">
             <img
               src={bngDesk}
+              fetchpriority="high"
               alt="Desk in the dark"
               className="absolute inset-0 w-full h-full object-fill"
             />

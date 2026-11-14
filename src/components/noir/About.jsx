@@ -1,12 +1,12 @@
 import React, { useRef, useState } from 'react';
 import { Pin, Search, Cog } from 'lucide-react';
 
-const PROFILE_IMG = '/michelle_cover.png';
+const PROFILE_IMG = '/michelle_cover.webp';
 
 const STATS = [
   'Computer Engineering Student at Waterloo',
   'SAP HANA Cloud PM Intern ×2',
-  'FPGA Design Member @ UWASIC',
+  'RTL Design Engineer @ UWASIC',
 ];
 
 const LENS_R = 90; // lens radius in px
@@ -92,19 +92,20 @@ function AboutContent() {
             <div className="font-body font-bold text-ink/90 text-sm md:text-base leading-relaxed space-y-3">
               <p>
                 Hi! I'm Michelle — a Computer Engineering student at the University of
-                Waterloo interested in backend, ML, embedded systems, and data-driven
-                products.
+                Waterloo building across hardware and software, from RTL and embedded
+                systems to cloud software and infrastructure.
               </p>
               <p>
-                Recent trail of evidence: two Product Management internships on SAP HANA
-                Cloud, a full-stack internship building predictive models, and FPGA design
-                work on a 10 Gbps Ethernet packet parser with UWASIC. Off the clock it's
-                hackathons and hardware — an LLM Accelerator, an AI grip-assist glove, 
+                Recent trail of evidence: RTL design and verification at UWASIC, on an
+                IPv4 header parser for a 10 Gbps Ethernet pipeline and a ray-tracing chip.
+                Before that, two Product Management internships on SAP HANA Cloud and a
+                full-stack internship building forecasting models. Off the clock it's
+                hardware projects — an INT4 LLM accelerator, an AI grip-assist glove,
                 and a version control system for 3D meshes.
               </p>
             </div>
 
-            <div className="mt-5 font-scribble text-crimson text-lg -rotate-2 inline-block">
+            <div className="mt-5 font-scribble text-[#9B1630] text-lg -rotate-2 inline-block">
               Seeking Winter 2028 co-op.
             </div>
 

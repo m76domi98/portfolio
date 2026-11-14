@@ -21,7 +21,7 @@ export const SKILLS = [
       { name: 'JavaScript / TypeScript', level: 55, via: 'Summus, MeshGit', subgroup: 'Software' },
       { name: 'C#', level: 72, via: 'Stubbe’s', subgroup: 'Software' },
       { name: 'HTML / CSS', level: 55, via: 'Summus', subgroup: 'Software' },
-      { name: 'SystemVerilog', level: 65, via: 'UWASIC', subgroup: 'Hardware / RTL' },
+      { name: 'SystemVerilog', level: 65, via: 'UWASIC, INT4 GEMV', subgroup: 'Hardware / RTL' },
       { name: 'VHDL', level: 68, via: 'HVAC controller', subgroup: 'Hardware / RTL' },
       { name: 'Assembly', level: 55, via: 'coursework', subgroup: 'Hardware / RTL' },
       { name: 'SQL', level: 78, via: 'Stubbe’s, SAP', subgroup: 'Data' },
@@ -49,9 +49,11 @@ export const SKILLS = [
       { name: 'Arduino', level: 90, via: 'personal builds' },
       { name: 'STM32', level: 82, via: 'SenseSecure' },
       { name: '3D Modeling / CAD', level: 80, via: 'FAST, MeshGit' },
-      { name: 'PWM / UART', level: 80, via: 'hand.shake, SenseSecure' },
+      { name: 'PWM / UART / SPI / I2C', level: 80, via: 'hand.shake, UWASIC, SenseSecure' },
       { name: 'FPGA Design', level: 75, via: 'UWASIC, HVAC controller' },
-      { name: 'RTL Design / Verification', level: 72, via: 'UWASIC' },
+      { name: 'RTL Design / Verification', level: 72, via: 'UWASIC, INT4 GEMV' },
+      { name: 'cocotb / Verilator / Icarus', level: 72, via: 'UWASIC, INT4 GEMV' },
+      { name: 'Python Reference Models', level: 78, via: 'UWASIC, INT4 GEMV' },
       { name: 'KiCad', level: 75, via: 'SenseSecure' },
       { name: 'ESP32', level: 70, via: 'hand.shake' },
       { name: 'QNX', level: 65, via: 'hand.shake' },
@@ -70,7 +72,7 @@ export const SKILLS = [
       { name: 'Hugging Face', level: 70, via: 'Summus' },
       { name: 'SQL', level: 78, via: 'Stubbe’s, SAP' },
       { name: 'Power BI', level: 68, via: 'SAP, Stubbe’s' },
-      { name: 'Application Insights', level: 75, via: 'SAP' },
+      { name: 'Application Insights / KQL', level: 75, via: 'SAP' },
     ],
   },
 
@@ -80,6 +82,9 @@ export const SKILLS = [
     items: [
       { name: 'Git / GitHub', level: 88, via: 'every case on file' },
       { name: 'Docker', level: 80, via: 'MeshGit, ASL' },
+      { name: 'GitHub Actions CI', level: 72, via: 'MeshGit' },
+      { name: 'PostgreSQL', level: 72, via: 'MeshGit' },
+      { name: 'AWS (S3 / CloudFront)', level: 65, via: 'SAP' },
       { name: 'REST APIs / Postman', level: 82, via: 'Summus' },
       { name: 'MongoDB / Supabase', level: 72, via: 'ElevateHER' },
       { name: 'Quartus / ModelSim', level: 72, via: 'HVAC controller' },
@@ -333,10 +338,14 @@ export default function Skills() {
                   key={s.group}
                   onClick={() => setActive(i)}
                   aria-label={s.group}
-                  className={`h-2.5 rounded-full transition-all duration-300 ${
-                    i === active && powered ? 'w-8 bg-crimson' : 'w-2.5 bg-vellum/30 hover:bg-vellum/60'
-                  }`}
-                />
+                  className="group flex h-6 items-center px-1"
+                >
+                  <span
+                    className={`block h-2.5 rounded-full transition-all duration-300 ${
+                      i === active && powered ? 'w-8 bg-crimson' : 'w-2.5 bg-vellum/30 group-hover:bg-vellum/60'
+                    }`}
+                  />
+                </button>
               ))}
             </div>
           </div>

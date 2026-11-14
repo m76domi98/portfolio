@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Hero from '@/components/noir/Hero';
 
-const FRAMES = Array.from({ length: 9 }, (_, i) => `/investigator/${String(i + 2).padStart(2, '0')}.png`);
+const FRAMES = Array.from({ length: 9 }, (_, i) => `/investigator/${String(i + 2).padStart(2, '0')}.webp`);
 
 // Vertical scroll is converted to horizontal motion: the section is 300vh tall,
 // its viewport is sticky, and scroll progress drives the runner and the track.
