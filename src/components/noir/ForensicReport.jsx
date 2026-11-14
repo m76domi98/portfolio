@@ -169,10 +169,15 @@ export default function ForensicReport({ project: p, caseNo, onClose }) {
                   <button
                     onClick={() => setIsZoomed(true)}
                     aria-label={`Enlarge image of ${p.title}`}
-                    className="block w-full bg-white border-[6px] border-white shadow-[1px_2px_4px_rgba(0,0,0,0.35)] cursor-zoom-in"
+                    className={`block bg-white border-[6px] border-white shadow-[1px_2px_4px_rgba(0,0,0,0.35)] cursor-zoom-in ${
+                      p.hugImage ? 'w-fit mx-auto' : 'w-full'
+                    }`}
                   >
                     {/* folder height minus the paper's label, caption, padding and the stamp */}
-                    <Evidence p={p} className="w-full max-h-[calc(min(80vh,720px)_-_250px)] object-contain" />
+                    <Evidence
+                      p={p}
+                      className={`max-h-[calc(min(80vh,720px)_-_250px)] object-contain ${p.hugImage ? 'w-auto max-w-full' : 'w-full'}`}
+                    />
                   </button>
                 ) : (
                   <Evidence p={p} />

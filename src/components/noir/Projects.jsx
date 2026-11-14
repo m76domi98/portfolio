@@ -12,6 +12,7 @@ import ForensicReport from './ForensicReport';
  * @property {number[]} pin
  * @property {string} title
  * @property {string} [img]
+ * @property {boolean} [hugImage] shrink the white photo frame to the image instead of letterboxing
  * @property {string} [video]
  * @property {string} [github]
  * @property {import('lucide-react').LucideIcon} [icon]
@@ -84,7 +85,7 @@ const PROJECTS = [
     id: 'elevateher',
     pin: [182, 90],
     title: 'ElevateHER',
-    img: '/elevateHer.png',
+    img: '/elevateHer-screens.png',
     video: 'https://youtu.be/79R0GDeVhUc?si=ABAqgYDvfBFryECb',
     github: 'https://github.com/m76domi98/ElevateHER',
     icon: Users,
@@ -103,6 +104,7 @@ const PROJECTS = [
     pin: [235, 40],
     title: 'Summus — T&C Summarizer',
     img: '/summus.png',
+    hugImage: true,
     github: 'https://github.com/m76domi98/AI_AGENT',
     tagline: 'The fine print, decoded.',
     tech: ['JavaScript', 'FastAPI', 'Python', 'LLM'],
