@@ -1,10 +1,11 @@
 import React, { useEffect, useId, useRef, useState } from 'react';
-import { Mail, Github, Linkedin, X } from 'lucide-react';
+import { Mail, Github, Linkedin, BookOpen, X } from 'lucide-react';
 
 const CHANNELS = [
   { icon: Mail, label: 'EMAIL', value: 'mmdomini@uwaterloo.ca', href: 'mailto:mmdomini@uwaterloo.ca' },
   { icon: Github, label: 'GITHUB', value: '@m76domi98', href: 'https://github.com/m76domi98' },
   { icon: Linkedin, label: 'LINKEDIN', value: 'in/michelle-dominic', href: 'https://linkedin.com/in/michelle-dominic' },
+  { icon: BookOpen, label: 'WIKI', value: 'Appropedia/Mdominic06', href: 'https://www.appropedia.org/User:Mdominic06' },
 ];
 
 // Wiretap animation (one 6s loop, timing in index.css .relay-*):
@@ -167,7 +168,7 @@ export default function Contact() {
 
         <LetterRelay />
 
-        <div className="mt-10 grid sm:grid-cols-3 gap-4">
+        <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {CHANNELS.map((c) => (
             <a
               key={c.label}

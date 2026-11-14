@@ -5,17 +5,18 @@ import { Pin } from 'lucide-react';
 const EXPERIENCES = [
   {
     org: 'UWASIC',
-    role: 'FPGA Design Member',
-    period: 'JUL 2026 — PRESENT',
+    role: 'RTL Design Engineer',
+    period: 'JUN 2026 — PRESENT',
     imgs: ['/uwasic-logo.png'],
     summary:
-      'Developing SystemVerilog RTL for a 10 Gbps Ethernet packet parser targeting FPGA hardware on the IP packet parser team.',
+      'Designing and verifying SystemVerilog RTL on two projects: an IPv4 header parser for a 10 Gbps Ethernet pipeline and a ray-tracing chip built for Tiny Tapeout.',
     points: [
-      'Designing the IP header extraction stage, turning streaming IPv4 packet data into structured metadata registers.',
-      'Building verification logic to validate packet parsing, field extraction, and metadata generation.',
-      'Collaborating with cross-functional parser teams via Git workflows, code reviews, and simulation-driven development.',
+      'Implemented IPv4 header extraction, pulling nine fields from a 64-bit streaming datapath across three accepted beats.',
+      'Designed the ray tracer’s pixel transmit module: byte-stuffed UART framing with valid/ready handshakes, using only 24 bits of colour storage and 3 bits of control state.',
+      'Verified with Verilator and cocotb testbenches, including random backpressure, truncated headers, and upstream bubbles, checked against Python reference models.',
+      'Wrote clock-divider unit tests, including a 13-test cocotb suite matched cycle-by-cycle over 50,000-cycle runs.',
     ],
-    tags: ['FPGA', 'SystemVerilog', 'Networking'],
+    tags: ['RTL', 'SystemVerilog', 'cocotb'],
   },
     {
     org: 'SAP',
@@ -23,12 +24,12 @@ const EXPERIENCES = [
     period: 'MAY 2026 — August 2026',
     imgs: ['/sap.png'],
     summary:
-      'Prioritized Administration & Monitoring features for SAP HANA Cloud, synthesizing customer requests, engineering constraints, and product strategy to define MVP scope.',
+      'Defined MVP requirements for a unified view across subaccounts in SAP HANA Cloud, balancing customer needs, engineering feasibility, and UX.',
     points: [
-      'Applied Azure OpenAI embeddings to cluster customer prompts and identify opportunities for specialized AI agents.',
-      'Performed competitive analysis of AI model capabilities and pricing to support roadmap decisions.',
-      'Validated MVP requirements with customers, engineering, and product leadership through preview testing and feedback sessions.',
-      'Analyzed product adoption with Azure Application Insights and delivered internal workshops on customer pain points.',
+      'Analyzed 10,000+ Joule prompts, customer requests, and telemetry records with KQL, Application Insights, and Azure OpenAI embeddings to surface recurring customer needs.',
+      'Ran a Customer Engagement Initiative, deploying prototypes on AWS S3, CloudFront, and Route 53 and coordinating customer feedback sessions.',
+      'Evaluated SolarWinds Database Performance Analyzer on a Linux VM with TPC-H workloads; demoed it to customers and reported monitoring inconsistencies to the vendor.',
+      'Built a rapid HTML/CSS prototyping workflow for PM and UX, integrated with GitHub Pages, Claude skills, hooks, and an internal MCP server.',
     ],
     tags: ['Product', 'AI', 'HANA Cloud'],
   },
@@ -38,11 +39,11 @@ const EXPERIENCES = [
     period: 'SEPT 2025 — DEC 2025',
     imgs: ['/sap.png'],
     summary:
-      'Supported SAP HANA Cloud product development through roadmap planning, stakeholder coordination, and developer-facing content.',
+      'Supported SAP HANA Cloud product decisions with adoption analytics and developer-facing content.',
     points: [
-      'Created technical tutorials for HANA Cloud Central, HANA Client, and Knowledge Graph Engine — including one with 11,000+ visitors.',
-      'Analyzed HANA Client download data with Python (Pandas) and Excel to understand usage patterns.',
-      'Built a usage analytics dashboard with Azure Application Insights to track engagement across HANA Cloud Central.',
+      'Built Power BI adoption dashboards used by 30+ product managers to examine HANA Cloud product usage.',
+      'Wrote developer tutorials for HANA Cloud Central, HANA Client, and Knowledge Graph Engine; one drew 11,000+ visitors.',
+      'Analyzed HANA Client download data with Python (Pandas) and Excel to understand usage patterns and compare competing client offerings.',
     ],
     tags: ['Product', 'Analytics', 'Docs'],
   },
@@ -52,11 +53,12 @@ const EXPERIENCES = [
     period: 'JAN 2025 — APR 2025',
     imgs: ['/stubbes.png'],
     summary:
-      'Built ML pipelines and predictive models for warehouse production forecasting, and integrated AI tooling into internal manufacturing software.',
+      'Built data pipelines and forecasting models for warehouse production timelines, and integrated AI tooling into internal manufacturing software.',
     points: [
-      'Created pipelines to train and test models with Python, Excel, and SQL, cutting data preparation time by 35%.',
-      'Deployed predictive models with TensorFlow, XGBoost, and Scikit-learn, reducing forecast error by 15%.',
+      'Built Python, SQL, and Excel pipelines for model training and test data, cutting data preparation time by 35%.',
+      'Developed forecasting models with TensorFlow, XGBoost, and Scikit-learn, reducing forecast error by 15%.',
       'Integrated an AI chatbot into internal Digital Manufacturing software using C#, .NET, Node.js, and Vue.js.',
+      'Interviewed plant-floor staff to turn manufacturing workflows into software requirements, and presented model results to stakeholders.',
     ],
     tags: ['ML', 'Full Stack', 'Manufacturing'],
   },
